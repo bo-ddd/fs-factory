@@ -1,7 +1,9 @@
 <template>
 <div class="main">
   <!-- 这是layout -->
-    <HeadNav></HeadNav>
+    <div class="head">
+      <HeadNav></HeadNav>
+    </div>
     <div class="router">
       <router-view></router-view>
     </div>
@@ -15,5 +17,10 @@ import HeadNav from "../../../../components/top-nav/HeadNav.vue";
 <style scoped>
 .router{
   height: calc(100vh - 6rem);
+}
+.head{
+  position: absolute;
+    top: 0;
+    z-index: 999;
 }
 </style>
