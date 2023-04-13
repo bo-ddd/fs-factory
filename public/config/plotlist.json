@@ -1,0 +1,826 @@
+{
+  "点及文字": [
+    {
+      "name": "文字",
+      "image": "{plotPath}/label.jpg",
+      "type": "label",
+      "icon": "fa fa-text-width",
+      "style": {
+        "text": "火星科技Mars3D平台",
+        "color": "#0081c2",
+        "font_size": 27,
+        "outline": true,
+        "outlineColor": "#ffffff",
+        "outlineWidth": 2
+      }
+    },
+    {
+      "name": "点(带注记)",
+      "image": "{plotPath}/pointlbl.jpg",
+      "type": "point",
+      "style": {
+        "color": "#ff0000",
+        "label": {
+          "text": "注记",
+          "font_size": 20,
+          "color": "#ffffff",
+          "outline": true,
+          "outlineColor": "#000000",
+          "pixelOffsetX": 0,
+          "pixelOffsetY": -13
+        }
+      }
+    },
+    {
+      "name": "图标点(带注记)",
+      "image": "{plotPath}/marklbl.jpg",
+      "type": "billboard",
+      "style": {
+        "image": "img/marker/mark-green.png",
+        "label": {
+          "text": "注记",
+          "font_size": 25,
+          "color": "#ffffff",
+          "outline": true,
+          "pixelOffsetX": 0,
+          "pixelOffsetY": -50
+        }
+      }
+    },
+    {
+      "name": "图标点1",
+      "type": "billboard",
+      "style": {
+        "image": "img/marker/mark-red.png"
+      }
+    },
+    {
+      "name": "图标点2",
+      "type": "billboard",
+      "style": {
+        "image": "img/marker/mark-blue.png"
+      }
+    },
+    {
+      "name": "图标点3",
+      "type": "billboard",
+      "style": {
+        "image": "img/marker/mark-green.png"
+      }
+    },
+    {
+      "name": "点",
+      "image": "{plotPath}/point.jpg",
+      "type": "point",
+      "style": {
+        "color": "#3388FF"
+      }
+    }
+  ],
+  "小模型": [
+    {
+      "name": "小汽车",
+      "image": "{gltfServerUrl}/mars/img/qiche.jpg",
+      "type": "model",
+      "style": {
+        "scale": 0.1,
+        "url": "{gltfServerUrl}/mars/qiche.gltf"
+      }
+    },
+    {
+      "name": "警车",
+      "image": "{gltfServerUrl}/mars/img/jingche.jpg",
+      "type": "model",
+      "style": {
+        "scale": 3,
+        "url": "{gltfServerUrl}/mars/jingche/jingche.gltf"
+      }
+    },
+    {
+      "name": "消防车",
+      "image": "{gltfServerUrl}/mars/img/xiaofangche.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/firedrill/xiaofangche.gltf"
+      }
+    },
+    {
+      "name": "起重车",
+      "image": "{gltfServerUrl}/mars/img/qzcar.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/qzcar/GKZY_anim.gltf"
+      }
+    },
+    {
+      "name": "土方车",
+      "image": "{gltfServerUrl}/mars/img/tufangche.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/car/tufangche.glb"
+      }
+    },
+    {
+      "name": "挖掘机",
+      "image": "{gltfServerUrl}/mars/img/wajueji.jpg",
+      "type": "model",
+      "style": {
+        "scale": 3,
+        "url": "{gltfServerUrl}/mars/car/wajueji.glb"
+      }
+    },
+    {
+      "name": "MQ-9无人机",
+      "image": "{gltfServerUrl}/mars/img/MQ-9-Predator.jpg",
+      "type": "model",
+      "style": {
+        "scale": 1,
+        "url": "{gltfServerUrl}/mars/MQ-9-Predator.glb"
+      }
+    },
+    {
+      "name": "战机",
+      "image": "{gltfServerUrl}/mars/img/zhanji.jpg",
+      "type": "model",
+      "style": {
+        "scale": 0.1,
+        "url": "{gltfServerUrl}/mars/zhanji.glb"
+      }
+    },
+    {
+      "name": "飞机",
+      "image": "{gltfServerUrl}/mars/img/feiji.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/feiji.glb"
+      }
+    },
+    {
+      "name": "渔船",
+      "image": "{gltfServerUrl}/mars/img/ship-09.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/ship/ship09.glb",
+        "scale": 1
+      }
+    },
+    {
+      "name": "煤炭船",
+      "image": "{gltfServerUrl}/mars/img/ship-05.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/ship/ship05.glb",
+        "scale": 1
+      }
+    },
+    {
+      "name": "拖轮",
+      "image": "{gltfServerUrl}/mars/img/ship-04.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/ship/ship04.glb",
+        "scale": 1
+      }
+    },
+    {
+      "name": "散货船",
+      "image": "{gltfServerUrl}/mars/img/ship-01.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/ship/ship01.glb",
+        "scale": 1
+      }
+    },
+    {
+      "name": "集装箱船",
+      "image": "{gltfServerUrl}/mars/img/ship-03.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/ship/ship03.glb",
+        "scale": 1
+      }
+    },
+    {
+      "name": "化工品船",
+      "image": "{gltfServerUrl}/mars/img/ship-08.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/ship/ship08.glb",
+        "scale": 1
+      }
+    },
+    {
+      "name": "行人",
+      "image": "{gltfServerUrl}/mars/img/man.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/man/walk.gltf"
+      }
+    },
+    {
+      "name": "巡逻人员",
+      "image": "{gltfServerUrl}/mars/img/gongren.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/man/gongren.glb"
+      }
+    },
+    {
+      "name": "消防员",
+      "image": "{gltfServerUrl}/mars/img/xiaofangyuan.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/firedrill/xiaofangyuan.glb"
+      }
+    },
+    {
+      "name": "风力发电机",
+      "image": "{gltfServerUrl}/mars/img/fengche.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/fengche.gltf"
+      }
+    },
+    {
+      "name": "电线塔",
+      "image": "{gltfServerUrl}/mars/img/tower.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/tower/tower.glb"
+      }
+    },
+    {
+      "name": "电线架子",
+      "image": "{gltfServerUrl}/mars/img/railway-jiazi.jpg",
+      "type": "model",
+      "style": {
+        "url": "{gltfServerUrl}/mars/railway/jiazi.glb",
+        "scale": 0.001
+      }
+    }
+  ],
+  "二维平面类": [
+    {
+      "name": "线",
+      "image": "{plotPath}/polyline.jpg",
+      "type": "polyline",
+      "style": {
+        "clampToGround": false,
+        "color": "#2E81FF"
+      }
+    },
+    {
+      "name": "闭合线",
+      "image": "{plotPath}/polyline.jpg",
+      "type": "polyline",
+      "style": {
+        "closure": true,
+        "clampToGround": false,
+        "color": "#2E81FF"
+      }
+    },
+    {
+      "name": "贴地线",
+      "image": "{plotPath}/polyline_clampToGround.jpg",
+      "type": "polyline",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "流动线",
+      "image": "{plotPath}/polyline_flow.jpg",
+      "type": "polyline",
+      "style": {
+        "clampToGround": false,
+        "materialType": "LineFlow",
+        "image": "img/textures/line-color-yellow.png",
+        "color": "#33e8df"
+      }
+    },
+    {
+      "name": "动态线",
+      "image": "{plotPath}/polyline_flow2.jpg",
+      "type": "polyline",
+      "style": {
+        "clampToGround": false,
+        "materialType": "LineFlow",
+        "image": "img/textures/line-pulse.png",
+        "color": "#33e8df",
+        "width": 8
+      }
+    },
+    {
+      "name": "曲线",
+      "image": "{plotPath}/curve.jpg",
+      "type": "curve",
+      "styleType": "polyline",
+      "style": {
+        "clampToGround": false,
+        "width": 2,
+        "color": "#33e8df"
+      }
+    },
+    {
+      "name": "贴地曲线",
+      "image": "{plotPath}/curve_clampToGround.jpg",
+      "type": "curve",
+      "styleType": "polyline",
+      "style": {
+        "clampToGround": true,
+        "width": 2,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "走廊",
+      "image": "{plotPath}/corridor.jpg",
+      "type": "corridor",
+      "style": {
+        "clampToGround": false,
+        "height": 800.0,
+        "width": 200.0,
+        "color": "#33e8df"
+      }
+    },
+    {
+      "name": "贴地走廊",
+      "image": "{plotPath}/corridor_clampToGround.jpg",
+      "type": "corridor",
+      "style": {
+        "clampToGround": true,
+        "height": 800.0,
+        "width": 200.0,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "面",
+      "image": "{plotPath}/polygon.jpg",
+      "type": "polygon",
+      "style": {
+        "clampToGround": false,
+        "color": "#3388FF",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "贴地面",
+      "image": "{plotPath}/polygon_clampToGround.jpg",
+      "type": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "矩形",
+      "image": "{plotPath}/rectangle.jpg",
+      "type": "rectangle",
+      "style": {
+        "color": "#2E81FF",
+        "opacity": 0.5
+      }
+    },
+    {
+      "name": "贴地矩形",
+      "image": "{plotPath}/rectangle_clampToGround.jpg",
+      "type": "rectangle",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "平面",
+      "image": "{plotPath}/plane.jpg",
+      "type": "plane",
+      "style": {
+        "dimensions_x": 1000,
+        "dimensions_y": 1000,
+        "plane_normal": "z",
+        "color": " #36FF5B"
+      }
+    },
+    {
+      "name": "正三角形",
+      "image": "{plotPath}/regular3.jpg",
+      "type": "regular",
+      "styleType": "polygon",
+      "style": {
+        "border": 3,
+        "color": "#2ef7e6",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "正方形",
+      "image": "{plotPath}/regular4.jpg",
+      "type": "regular",
+      "styleType": "polygon",
+      "style": {
+        "border": 4,
+        "color": "#2ef7e6",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "正五边形",
+      "image": "{plotPath}/regular5.jpg",
+      "type": "regular",
+      "styleType": "polygon",
+      "style": {
+        "border": 5,
+        "color": "#2ef7e6",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "圆",
+      "image": "{plotPath}/circle.jpg",
+      "type": "circle",
+      "style": {
+        "clampToGround": false,
+        "color": "#3388FF",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "贴地圆",
+      "image": "{plotPath}/circle_clampToGround.jpg",
+      "type": "circle",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "动态圆",
+      "image": "{plotPath}/circle_animation.jpg",
+      "type": "circle",
+      "style": {
+        "materialType": "CircleWave",
+        "count": 2,
+        "outline": false
+      }
+    },
+    {
+      "name": "椭圆",
+      "image": "{plotPath}/ellipse.jpg",
+      "type": "ellipse",
+      "style": {
+        "clampToGround": false,
+        "color": "#3388FF",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "贴地椭圆",
+      "image": "{plotPath}/ellipse_clampToGround.jpg",
+      "type": "ellipse",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "扇形",
+      "image": "{plotPath}/sector.jpg",
+      "type": "sector",
+      "styleType": "polygon",
+      "style": {
+        "color": "#2ef7e6",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "弓形",
+      "image": "{plotPath}/lune.jpg",
+      "type": "lune",
+      "styleType": "polygon",
+      "style": {
+        "color": "#2ef7e6",
+        "opacity": 0.4
+      }
+    },
+    {
+      "name": "贴地矩形图片",
+      "type": "rectangle",
+      "styleType": "rectangle",
+      "style": {
+        "materialType": "Image",
+        "image": "img/tietu/gugong.jpg",
+        "repeat": 1,
+        "opacity": 1.0
+      }
+    },
+    {
+      "name": "圆形图片",
+      "type": "circle",
+      "style": {
+        "materialType": "Image",
+        "image": "img/tietu/leida.jpg",
+        "outline": false,
+        "repeat": 1,
+        "opacity": 0.8
+      }
+    },
+    {
+      "name": "多边形图片",
+      "type": "polygon",
+      "style": {
+        "materialType": "Image",
+        "image": "img/textures/poly-soil.jpg",
+        "repeat": 1,
+        "opacity": 1.0
+      }
+    }
+  ],
+  "三维立体类": [
+    {
+      "name": "墙体",
+      "image": "{plotPath}/wall.jpg",
+      "type": "wall",
+      "style": {
+        "color": "#36ff5b",
+        "diffHeight": 1000
+      }
+    },
+    {
+      "name": "闭合墙体",
+      "image": "{plotPath}/wall.jpg",
+      "type": "wall",
+      "style": {
+        "closure": true,
+        "color": "#36ff5b",
+        "diffHeight": 1000
+      }
+    },
+    {
+      "name": "动态墙体",
+      "image": "{plotPath}/wall_fence.jpg",
+      "type": "wall",
+      "style": {
+        "materialType": "LineFlow",
+        "image": "img/textures/fence.png",
+        "axisY": true,
+        "color": "#36ff5b",
+        "outline": false,
+        "diffHeight": 1000
+      }
+    },
+    {
+      "name": "动态箭头墙体",
+      "image": "{plotPath}/wall_arrow.jpg",
+      "type": "wall",
+      "style": {
+        "materialType": "LineFlow",
+        "image": "img/textures/arrow.png",
+        "axisY": false,
+        "repeat_x": 10,
+        "color": "#36ff5b",
+        "outline": false,
+        "diffHeight": 1000
+      }
+    },
+    {
+      "name": "竖立图片(墙)",
+      "type": "wall",
+      "image": "{plotPath}/wall_tanhao.jpg",
+      "maxPointNum": 2,
+      "style": {
+        "materialType": "LineFlow",
+        "image": "img/textures/fence.png",
+        "axisY": true,
+        "color": "#ff0000",
+        "image2": "img/textures/tanhao.png",
+        "color2": "#FFFF00",
+        "outline": false,
+        "diffHeight": 1000
+      }
+    },
+    {
+      "name": "拉伸走廊",
+      "image": "{plotPath}/extrudedCorridor.jpg",
+      "type": "corridor",
+      "style": {
+        "width": 500,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "管道",
+      "image": "{plotPath}/polylineVolume.jpg",
+      "type": "polylineVolume",
+      "hide": true,
+      "style": {
+        "shape": "pipeline",
+        "radius": 100,
+        "color": "#00ff00",
+        "opacity": 0.9
+      }
+    },
+    {
+      "name": "多边立体",
+      "image": "{plotPath}/extrudedPolygon.jpg",
+      "type": "polygon",
+      "style": {
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "立方体",
+      "image": "{plotPath}/extrudedRectangle.jpg",
+      "type": "rectangle",
+      "style": {
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "立体正三角形",
+      "image": "{plotPath}/regular3d.jpg",
+      "type": "regular",
+      "styleType": "polygon",
+      "style": {
+        "border": 3,
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "立体正方形",
+      "image": "{plotPath}/regular4d.jpg",
+      "type": "regular",
+      "styleType": "polygon",
+      "style": {
+        "border": 4,
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "立体正五边形",
+      "image": "{plotPath}/regular5d.jpg",
+      "type": "regular",
+      "styleType": "polygon",
+      "style": {
+        "border": 5,
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "盒子",
+      "image": "{plotPath}/box.jpg",
+      "type": "box",
+      "style": {
+        "color": "#00ff00",
+        "dimensions_x": 1000.0,
+        "dimensions_y": 1000.0,
+        "dimensions_z": 1000.0
+      }
+    },
+    {
+      "name": "圆柱体",
+      "image": "{plotPath}/extrudedCircle.jpg",
+      "type": "circle",
+      "style": {
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "圆锥体",
+      "image": "{plotPath}/cylinder.jpg",
+      "type": "cylinder",
+      "style": {
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "椭圆柱体",
+      "image": "{plotPath}/extrudedEellipse.jpg",
+      "type": "ellipse",
+      "style": {
+        "diffHeight": 100,
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "球体",
+      "image": "{plotPath}/ellipsoid.jpg",
+      "type": "ellipsoid",
+      "style": {
+        "color": "#00ff00"
+      }
+    },
+    {
+      "name": "半球体",
+      "image": "{plotPath}/ellipsoid.jpg",
+      "type": "ellipsoid",
+      "style": {
+        "maximumConeDegree": 90,
+        "color": "#00ff00"
+      }
+    }
+  ],
+  "军事标绘": [
+    {
+      "name": "粗直箭头",
+      "image": "{plotPath}/straightArrow.jpg",
+      "type": "straightArrow",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "粗单尖直箭头",
+      "image": "{plotPath}/fineArrow.jpg",
+      "type": "fineArrow",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "燕尾直箭头",
+      "image": "{plotPath}/fineArrowYW.jpg",
+      "type": "fineArrowYW",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "攻击箭头",
+      "image": "{plotPath}/attackArrow.jpg",
+      "type": "attackArrow",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "平尾攻击箭头",
+      "image": "{plotPath}/attackArrowPW.jpg",
+      "type": "attackArrowPW",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "燕尾攻击箭头",
+      "image": "{plotPath}/attackArrowYW.jpg",
+      "type": "attackArrowYW",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "钳击箭头",
+      "image": "{plotPath}/doubleArrow.jpg",
+      "type": "doubleArrow",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "闭合曲面",
+      "image": "{plotPath}/closeVurve.jpg",
+      "type": "closeVurve",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    },
+    {
+      "name": "集结地",
+      "image": "{plotPath}/gatheringPlace.jpg",
+      "type": "gatheringPlace",
+      "styleType": "polygon",
+      "style": {
+        "clampToGround": true,
+        "color": "rgba(255,0,0,0.5)"
+      }
+    }
+  ]
+}
