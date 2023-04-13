@@ -26,8 +26,12 @@ module.exports = {
     camelcase: "off", // 强制驼峰命名规则
     indent: "off", // 强制一致的缩进风格
     eqeqeq: "error", // 是否使用 === 替代 ==
-    quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: true }], // 使用双引号
-    curly: ["error", "all"], // 强制所有控制语句使用一致的括号风格  @fixable if 后面必须要有 {，除非是单行 if
+    quotes: ["off", "double", { avoidEscape: true, allowTemplateLiterals: true }], // 使用双引号
+    curly: ["off", "all"], // 强制所有控制语句使用一致的括号风格  @fixable if 后面必须要有 {，除非是单行 if
+
+    "space-infix-ops": "off", //=前后需要空格
+    'semi':0, //多余的分号
+    "space-before-blocks":"off", //方法前加空格
 
     "padded-blocks": "off", // 块内行首行尾是否空行
     "global-require": "off", // require 必须在全局作用域下
@@ -39,9 +43,9 @@ module.exports = {
     "guard-for-in": "off", // for in 内部必须有 hasOwnProperty
     "constructor-super": "error", // constructor 中必须有 super
     "dot-location": ["off", "property"], // @fixable 链式调用的时候，点号必须放在第二行开头处，禁止放在第一行结尾处
-    "comma-style": ["error", "last"], // 控制逗号在行尾出现还是在行首出现 (默认行尾)
+    "comma-style": ["off", "last"], // 控制逗号在行尾出现还是在行首出现 (默认行尾)
     "space-before-function-paren": ["off", "always"], // 函数定义时括号前的空格
-    "object-curly-newline": ["error", { multiline: true, consistent: true }], // @fixable 大括号内的首尾必须有换行
+    "object-curly-newline": ["off", { multiline: true, consistent: true }], // @fixable 大括号内的首尾必须有换行
     "computed-property-spacing": ["error", "never"], // "SwitchCase" (默认：0) 强制 switch 语句中的 case 子句的缩进水平
 
     "no-debugger": "warn", // 是否允许debugger
@@ -50,7 +54,7 @@ module.exports = {
     "no-trailing-spaces": "off", // 一行最后不允许有空格
     "no-prototype-builtins": "off", // 是否允许使用Object.prototype
     "no-template-curly-in-string": "off", // 关闭${xxx}检测
-    "no-mixed-spaces-and-tabs": "error", // 不允许混用tab和空格
+    "no-mixed-spaces-and-tabs": "off", // 不允许混用tab和空格
     "no-new": "error", // 禁止在非赋值或条件语句中使用 new 操作符
     "no-new-wrappers": "error", // 禁止对 String，Number 和 Boolean 使用 new 操作符
     "no-self-assign": "error", // 禁止自我赋值
@@ -72,7 +76,7 @@ module.exports = {
     "no-dupe-keys": "error", // 禁止对象字面量中出现重复的 key
     "no-func-assign": "error", // 禁止对 function 声明重新赋值
     "no-nested-ternary": "error", // 禁用嵌套的三元表达式
-    "no-multiple-empty-lines": ["error", { max: 3 }], // 空行最多不能超过两行
+    "no-multiple-empty-lines": ["off", { max: 3 }], // 空行最多不能超过两行
     "new-cap": "off" // 关闭eslint fromDegrees方法报错
   }
 }
