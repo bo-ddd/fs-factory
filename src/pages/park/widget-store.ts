@@ -38,9 +38,13 @@ const store: StoreOptions<WidgetState> = {
       {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/demo/my-dialog/index.vue"))),
         name: "my-dialog"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/mycar/index.vue"))),
+        name: "mycar"
       }
     ],
-    openAtStart: ["my-dialog"]
+    openAtStart: ["mycar"]
   }
 }
 
