@@ -1,32 +1,27 @@
 <template>
 <div class="major">
-        <div class="header flex-ja-center">
-            <dv-decoration-5 style="width: 40vw; height: 4vh" :color="['#01c0d5']" />
-            <span class="title">浮山重大危险源监管</span>
-            <dv-decoration-5 style="width: 40vw; height: 4vh" :color="['#01c0d5']" />
-        </div>
 
         <div class="main">
 
             <dv-border-box-6 class="item">
 
                 <div class="height">
-                    <titles title="危险源统计">
+                    <Title title="危险源统计">
                         <!-- <ClassifyChart></ClassifyChart> -->
-                    </titles>
+                    </Title>
                 </div>
 
                 <div class="height">
-                    <titles title="每日危险源数量">
+                    <Title title="每日危险源数量">
                         <!-- <HazardContrast></HazardContrast> -->
-                    </titles>
+                    </Title>
                 </div>
 
                 <div class="height">
-                    <titles class="compo-title" title="隐患详情">
+                    <Title class="compo-title" title="隐患详情">
 
                         <dv-scroll-board :config="hiddenTrouble" style="width: 25vw; height: 26rem" />
-                    </titles>
+                    </Title>
                 </div>
 
 
@@ -35,7 +30,7 @@
 
 
             <dv-border-box-6 class="item">
-                <titles title="企业分类监管">
+                <Title title="企业分类监管">
                   <div class="aaa" >
                     <div>企业编号:001</div>
                     <div>企业名称:企业A</div>
@@ -45,11 +40,11 @@
                     <div>企业邮箱:d@example.com</div>
                     <div>企业类型:建筑业</div>
                   </div>
-                </titles>
+                </Title>
             </dv-border-box-6>
 
             <dv-border-box-6 class="item">
-                <titles title="监测预警">
+                <Title title="监测预警">
                     <div class="park-status">
 
                         <div class="center">
@@ -82,12 +77,12 @@
                         </div>
                     </div>
                     <dv-scroll-board :config="warning" style="width: 25vw; height: 36rem;" />
-                </titles>
+                </Title>
 
             </dv-border-box-6>
 
             <dv-border-box-6 class="item">
-                <titles title="企业名称">
+                <Title title="企业名称">
                     <div class="enterprise">
                         <div>
                             <dv-decoration-11 style="width:200px;height:60px;">浮山化工院A厂区</dv-decoration-11>
@@ -99,13 +94,13 @@
                             <dv-decoration-11 style="width:200px;height:60px;">浮山化工院G厂区</dv-decoration-11>
                         </div>
                     </div>
-                </titles>
+                </Title> 
             </dv-border-box-6>
 
             <dv-border-box-6 class="item">
-                <titles title="事故记录">
+                <Title title="事故记录">
                     <dv-scroll-board :config="accidentRecords" style="width: 25vw; height: 24rem" />
-                </titles>
+                </Title>
             </dv-border-box-6>
 
         </div>
@@ -115,6 +110,7 @@
 <script setup lang="ts">
 import { reactive } from "vue"
 import { ElMessage } from "element-plus"
+import Title from '../../../../components/EnergyManagementView.vue'
 const accidentRecords = reactive({
                 header: ["危险源编号", "事故时间", "影响范围", "受伤人数", "死亡人数"],
                 data: [
@@ -179,18 +175,17 @@ const hiddenTrouble = reactive({
 
 const to = function() {
     ElMessage({
-        message:"暂无厂区！！！",
-        type:'success'
+        message : "暂无厂区！！！",
+        type : 'warning'
     })
 }
-
-// import titles from '@/components/EnergyManagementView.vue';
+// import Title from '@/components/EnergyManagementView.vue';
 // import ClassifyChart from './ClassifyChart.vue';
 // import HazardContrast from './HazardContrast.vue';
 // import { Message } from 'element-ui';
 // export default {
 //     components: {
-//         // titles, ClassifyChart, HazardContrast
+//         // Title, ClassifyChart, HazardContrast
 //     },
 //     data() {
 //         return {
@@ -272,31 +267,15 @@ const to = function() {
 .height {
     height: 33%;
 }
-.flex-ja-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .major {
     background: url('@/assets/images/bg.gif') no-repeat;
     background-size: cover;
     box-sizing: border-box;
-    height: 100vh;
-}
-
-.header {
-    height: 6vh;
-    gap: 3rem;
-}
-
-.header .title {
-    font-weight: 900;
-    font-size: 3rem;
-    color: #01c0d5;
-}
-
-.main {
     height: 94vh;
+}
+.main {
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
