@@ -34,6 +34,8 @@
     "mars3d-heatmap": "~3.4.0",
     "mars3d-mapv": "~3.4.0",
     "nprogress": "^0.2.0",
+    "sass": "^1.62.0",
+    "sess": "^0.1.4",
     "uuid": "^8.3.2",
     "vue": "^3.2.37",
     "vue-color-kit": "^1.0.5",
