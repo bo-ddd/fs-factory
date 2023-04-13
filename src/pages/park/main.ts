@@ -1,5 +1,6 @@
 import "mars3d-cesium/Build/Cesium/Widgets/widgets.css"
 import "mars3d/dist/mars3d.css"
+import "./assets/css/main.css"
 
 import "./assets/lib/flexible"
 import { createApp } from "vue"
