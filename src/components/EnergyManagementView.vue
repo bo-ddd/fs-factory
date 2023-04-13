@@ -32,7 +32,7 @@ body {
     margin: 0 auto;
     border-radius: 0.5rem;
     .heteromorphic-box {
-      height: 20%;
+      height: 4rem;
       .icon-box {
         display: flex;
         .arrowhead {
@@ -69,7 +69,7 @@ body {
       }
     }
     .body-box{
-      height: 80%;
+      height: calc(100% - 4rem);
     }
   }
 }
