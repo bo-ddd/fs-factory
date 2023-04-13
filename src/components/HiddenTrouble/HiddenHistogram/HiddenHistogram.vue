@@ -16,6 +16,7 @@ const init = function () {
     grid: {
         top:"10%",
         bottom:'10%',
+       
         containLabel:true,
     },
     xAxis: {
