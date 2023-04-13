@@ -40,13 +40,13 @@ figcaption {
 
 }
 
-@keyframes moveLine {
+@keyframes dynamicBorder {
   0% {
     border: .2rem solid #7700ff;
   }
 
   40% {
-    border: .2rem solid #6f00ff;
+    border: .2rem solid #874ed1;
   }
 
   60% {
