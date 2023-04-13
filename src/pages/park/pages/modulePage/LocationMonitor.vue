@@ -1,14 +1,21 @@
 <template>
-  <div>page</div>
+  <div>page
+
+    
+  <main-view />
+  </div>
 </template>
 
 <script lang="ts" setup>
+import MainView from "@mars/components/mars-work/main-view.vue"
 import { ref, reactive } from "vue"
+import { ElMessage } from "element-plus"
 const a = ref("hahah")
 const a2 = reactive({
   a: 888,
   b: 999
 })
+
 
 const hiddenTrouble = reactive({
   header: ["危险源编号", "监测时间", '监测数值'],
@@ -33,7 +40,11 @@ const hiddenTrouble = reactive({
 
 const aa = function () {
   console.log(111)
+  ElMessage({
+    message:'hahahha',
+    type:"success"
+  })
 }
-
+aa()
 const b: any = 78
 </script>

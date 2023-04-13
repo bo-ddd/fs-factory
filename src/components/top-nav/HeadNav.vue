@@ -2,7 +2,7 @@
   <div>
     <div class="top-nav">
       <div class="LOGO">
-        <img class="icon-get" src="/src/img/parkInfo/LOGO.png" alt="" />
+        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt="" />
         <div class="textshadow">佛山智慧化工</div>
       </div>
       <div class="nav-list">
@@ -17,9 +17,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
-let timechuo: any = ref('');
-let tabledate: any = [
+import { Ref, ref } from 'vue'
+const timechuo:Ref<string> = ref('');
+const tabledate: any = [
   {
     title: '园区信息管理',
     id: 1,
@@ -57,13 +57,13 @@ let tabledate: any = [
   },
 ]
 setInterval(() => {
-  let date: any = new Date()
-  let Y: any = date.getFullYear() + ' - '
-  let M: any = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ' - '
-  let D: any = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
-  let h: any = date.getHours() + ':'
-  let m: any = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
-  let s: any = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+  const date: any = new Date()
+  const Y: any = date.getFullYear() + ' - '
+  const M: any = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ' - '
+  const D: any = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+  const h: any = date.getHours() + ':'
+  const m: any = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+  const s: any = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
   timechuo.value = Y + M + D + h + m + s
 }, 1000)
 
@@ -72,7 +72,6 @@ const nav = (item: any) => {
     i.isActive = false;
   })
   item.isActive = !item.isActive;
-  console.log('切换到了：' + item.title + ' 页面')
 }
 </script>
 
