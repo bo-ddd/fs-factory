@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from "vue-router"
-import { createRouter, createWebHashHistory, createMemoryHistory, createWebHistory } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router"
 
 const routes: RouteRecordRaw[] = [
     {
@@ -35,6 +35,12 @@ const routes: RouteRecordRaw[] = [
                 name: "locationMonitor",
                 path: "/locationMonitor",
                 component: () => import("../pages/modulePage/LocationMonitor.vue")
+            },
+            {
+                // 人/车/物流监控
+                name: "vehicleMonitoring",
+                path: "/vehicleMonitoring",
+                component: () => import("../pages/modulePage/VehicleMonitoring.vue")
             },
             {
                 // 园区信息管理
