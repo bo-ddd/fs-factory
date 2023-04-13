@@ -12,13 +12,7 @@ const typeComparison = function () {
         tooltip: {
             trigger: 'item'
         },
-        grid: {
-            left: '10%',
-            right: '10%',
-            bottom: '5%',
-            top: '5%',
-            containLabel: true
-        },
+    
         series: [
             {
                 type: 'pie',
@@ -32,11 +26,8 @@ const typeComparison = function () {
                     { value: 300, name: '射线处理作业' },
                     { value: 300, name: '水上作业' }],
                 label: {
-                    // show: true,
-                    // position: 'top',
                     fontSize: 10,
                     color: '#fff'
-
                 },
 
             }
