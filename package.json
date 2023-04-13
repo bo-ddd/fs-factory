@@ -37,6 +37,8 @@
     "sass": "^1.62.0",
     "sess": "^0.1.4",
     "uuid": "^8.3.2",
+    "video.js": "^8.0.4",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "^3.2.37",
     "vue-color-kit": "^1.0.5",
     "vue-router": "^4.0.14",
