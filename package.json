@@ -17,11 +17,12 @@
   },
   "dependencies": {
     "@icon-park/svg": "^1.4.0",
+    "@kjgl77/datav-vue3": "^1.4.2",
     "@turf/turf": "^6.5.0",
     "ant-design-vue": "^3.2.5",
     "axios": "^0.25.0",
     "core-js": "^3.20.3",
-    "echarts": "^5.2.2",
+    "echarts": "^5.4.2",
     "echarts-gl": "^2.0.8",
     "element-plus": "^2.3.3",
     "kml-geojson": "^1.2.0",
