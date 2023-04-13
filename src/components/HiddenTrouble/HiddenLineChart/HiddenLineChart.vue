@@ -46,6 +46,9 @@ const line = function () {
       type: "value",
       boundaryGap: [0, "100%"]
     },
+    textStyle:{
+        color:"#fff"
+    },
     dataZoom: [
       {
         type: "inside",

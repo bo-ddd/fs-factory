@@ -1,6 +1,7 @@
 <template>
   <div class="border">
     <div class="box">
+        <div class="title"></div>
       <div class="security-risk">
         <dv-border-box-11 title="安全风险监管">
           <div class="flex left-top">
@@ -158,24 +159,28 @@ const enviroment = reactive({
 })
 </script>
 <style scoped lang="scss">
-.border{
-        height:100vh;
-}
 .box {
   background: url("../../assets/images/bg.gif");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  height: 100vh;
   display: grid;
   box-sizing: border-box;
   padding: 3rem 1rem;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 6rem 1fr 1fr;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
+        "title title title"
     "security-risk  middle  hidden-treatment"
     "operation-process  middle  hidden-type";
 }
-
+.title{
+        grid-area: title;
+}
+.bottom{
+        height:calc(100% - 10rem);
+}
 .mt-2 {
   margin-top: 2rem;
 }
@@ -253,9 +258,6 @@ const enviroment = reactive({
   display: flex;
   justify-content: space-around;
   height: 5rem;
-}
-.middle .bottom{
-   height: calc(100% - 7rem);
 }
 
 .right-top {
