@@ -77,7 +77,7 @@ const nav = (item: any) => {
 
 <style lang="scss">
 .top-nav {
-  width: 100vw;
+  width: 100%;
   height: 6rem;
   background-image: linear-gradient(180deg, rgba(0, 21, 255, 0.3), rgba(0, 0, 0, 0));
   display: flex;
