@@ -1,10 +1,5 @@
 <template>
 <div class="major">
-        <div class="header flex-ja-center">
-            <dv-decoration-5 style="width: 40vw; height: 4vh" :color="['#01c0d5']" />
-            <span class="title">浮山重大危险源监管</span>
-            <dv-decoration-5 style="width: 40vw; height: 4vh" :color="['#01c0d5']" />
-        </div>
 
         <div class="main">
 
@@ -272,31 +267,15 @@ const to = function() {
 .height {
     height: 33%;
 }
-.flex-ja-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .major {
     background: url('@/assets/images/bg.gif') no-repeat;
     background-size: cover;
     box-sizing: border-box;
-    height: 100vh;
-}
-
-.header {
-    height: 6vh;
-    gap: 3rem;
-}
-
-.header .title {
-    font-weight: 900;
-    font-size: 3rem;
-    color: #01c0d5;
-}
-
-.main {
     height: 94vh;
+}
+.main {
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
