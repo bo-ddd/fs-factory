@@ -11,7 +11,7 @@ const a2 = reactive({
 })
 
 const hiddenTrouble = reactive({
-  header: ["危险源编号", "监测时间", "监测数值"],
+  header: ["危险源编号", "监测时间", '监测数值'],
   data: [
     ["no1", "火灾隐患", "触电火灾隐患"],
     ["no8", "环境隐患", "噪音超标"],
@@ -22,7 +22,7 @@ const hiddenTrouble = reactive({
     ["no73", "机械故障隐患", "设备故障"],
     ["no2", "消防隐患", "消防通道被堵"],
     ["no4", "生产安全隐患", "防护设施不全"],
-    ["no6", "其他隐患", "其他隐患描述"]
+    ["no6", "其他隐患", "其他隐患描述"],
   ],
   columnWidth: [100, 200, 100, 100],
   align: ["center", "center", "center", "center", "center"],

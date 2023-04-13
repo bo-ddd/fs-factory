@@ -30,12 +30,14 @@ module.exports = {
     curly: ["off", "all"], // 强制所有控制语句使用一致的括号风格  @fixable if 后面必须要有 {，除非是单行 if
 
     "space-infix-ops": "off", //=前后需要空格
-    'semi':0, //多余的分号
+    'semi':"off", //多余的分号
     "space-before-blocks":"off", //方法前加空格
+    "key-spacing":"off", //key前需要空格
+    "comma-dangle":"off",//最后一项不能加逗号
 
     "padded-blocks": "off", // 块内行首行尾是否空行
     "global-require": "off", // require 必须在全局作用域下
-    "comma-dangle": "error", // 强制在对象和数组文字中一致地使用尾随逗号
+    // "comma-dangle": "error", // 强制在对象和数组文字中一致地使用尾随逗号
     "valid-jsdoc": "off", // 强制使用有效的 JSDoc 注释
     "consistent-return": "off", // 要求 return 语句要么总是指定返回的值，要么不指定
     "default-case": "off", // switch 语句强制 default 分支，也可添加 // no default 注释取消此次警告
