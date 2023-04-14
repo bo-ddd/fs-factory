@@ -1,12 +1,12 @@
 <template>
-    <div class="view">
+    <div class="view" v-show="isView">
         <div class="lxs-fs-webcam" v-show="showView">
             <!-- 摄像头页面 -->
             <div class="left">
                 <div class="lxs-main_body">
                     <!-- 这里放主要突出的主体摄像头画面 -->
                     <lxsBox :lxs-box-data="{ isOpenCartoon: true }" class="dom" style="width: 100%; height: 100%;">
-                        <video :id='video.idName' class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
+                        <video :id='video.idName' class="video-js vjs-fluid vjs-big-play-centered">
                             <source :src=video.url type="application/x-mpegURL">
                         </video>
                     </lxsBox>
@@ -67,10 +67,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item mb-05" v-for="(item, index) in rightVideo"
-                            :key="index">
-                            <video :id='item.idName' @click="cheage(item.id, rightVideo)"
-                                class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
+                        <div class="item mb-05" v-for="(item, index) in rightVideo" :key="index">
+                            <video :id='item.idName' class="video-js vjs-fluid vjs-big-play-centered" autoplay="true">
                                 <source :src=item.url>
                             </video>
                         </div>
@@ -78,6 +76,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="loader">
+        loading...
     </div>
 </template>
 
@@ -87,91 +88,52 @@ export default {
     name: 'lxsFsFormwork1',
     data() {
         return {
+            isView: false,
             showView: true,
-            video: {},
-            rightVideo: [],
-            videoList: [],
-            videoInstance: null,
-            isok: true,
-        }
-    },
-    created() {
-        const giveTacitConsentTodata = [
-            {
+            video: {
                 id: 1,
                 isActive: true,
                 idName: 'lxs_myvideo1',
                 url: 'https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ1C0AF/0/1/20220330T143454/5e7ed935e38989a507d1bfcf0d6016ee.m3u8?proto=https'
             },
-            {
-                id: 2,
-                isActive: false,
-                idName: 'lxs_myvideo2',
-                url: 'https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https'
-            },
-            {
-                id: 3,
-                isActive: false,
-                idName: 'lxs_myvideo3',
-                url: 'https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https'
-            },
-            {
-                id: 4,
-                isActive: false,
-                idName: 'lxs_myvideo4',
-                url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9D0PAZCBF04/0/1/20220330T143522/4ca74d947c6632a68d6098cdb81edccc.m3u8'
-            },
-            {
-                id: 5,
-                isActive: false,
-                idName: 'lxs_myvideo5',
-                url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9D0PAZF9E52/0/1/20220330T143525/ffaf69b9650e206129e66a51764bf46e.m3u8'
-            },
-            {
-                id: 6,
-                isActive: false,
-                idName: 'lxs_myvideo6',
-                url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9D0PAZF8534/0/1/20220330T143525/290fab874d979672ebc970f4f9124df6.m3u8'
-            },
-            {
-
-                id: 7,
-                isActive: false,
-                idName: 'lxs_myvideo7',
-                url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9D0PAZ7BBB3/0/1/20220330T143511/919e3bd8f434af588d83d801c22280d7.m3u8'
-            },
-            {
-                id: 8,
-                isActive: false,
-                idName: 'lxs_myvideo8',
-                url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9D0PAZCBF04/0/1/20220330T143522/4ca74d947c6632a68d6098cdb81edccc.m3u8'
-            },
-            {
-                id: 9,
-                isActive: false,
-                idName: 'lxs_myvideo9',
-                url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9C7RAZF87CB/0/1/20220330T143454/224a3a865ea07949de88c6ebc6ae451b.m3u8'
-            },
-        ];
-        const data = JSON.parse(JSON.stringify(giveTacitConsentTodata));
-        const videoData = JSON.parse(JSON.stringify(data[0]))
-        videoData.idName = 'lxs_major';
-        this.video = videoData;
-
-        const rightData = [
-            JSON.parse(JSON.stringify(data[1])),
-            JSON.parse(JSON.stringify(data[2])),
-        ];
-        rightData.forEach((item, i) => {
-            item.idName = 'lxs_right' + (i + 1);
-        })
-        this.rightVideo = rightData;
-        this.videoList = data;
+            rightVideo: [
+                {
+                    id: 2,
+                    isActive: false,
+                    idName: 'lxs_myvideo2',
+                    url: 'https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https'
+                },
+                {
+                    id: 3,
+                    isActive: false,
+                    idName: 'lxs_myvideo3',
+                    url: 'https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https'
+                },
+            ],
+            videoList: [],
+            videoInstance: null,
+        }
     },
-    async mounted() {
+    created() {
+        this.video.idName = 'lxs_major';
+        setTimeout(() => {
+            this.flesh()
+        }, 500)
+    },
+    mounted() {
         this.initVideoDom()
     },
     methods: {
+        flesh() {
+            let isok = window.localStorage.getItem('isFirst');
+            if (isok === 'abcdefg') {
+                this.$router.go(0);
+                window.localStorage.setItem('isFirst', '1111')
+            } else {
+                console.log(1);
+                this.isView = true;
+            }
+        },
         // 初始化video的配置
         initVideo(id) {
             let init;
@@ -179,7 +141,7 @@ export default {
                 init = {
                     controls: true, // 是否显示控制条
                     preload: 'auto',
-                    autoplay: false,
+                    autoplay: true,
                     fluid: true, // 自适应宽高
                     language: 'zh-CN', // 设置语言
                     muted: true, // 是否静音
@@ -190,7 +152,7 @@ export default {
                             { name: 'playToggle' }, // 播放按钮
                             {
                                 name: 'volumePanel', // 音量控制
-                                inline: false, // 不使用水平方式
+                                inline: true, // 不使用水平方式
                             },
                             { name: 'FullscreenToggle' } // 全屏
                         ]
@@ -210,12 +172,11 @@ export default {
         // 初始化渲染video的dom
         initVideoDom() {
             setTimeout(() => {
-                this.$nextTick(() => {
-                    this.initVideo('lxs_major');
-                    this.rightVideo.forEach((item) => {
-                        this.initVideo(item.idName);
-                    })
-                })
+                // this.$nextTick(() => {
+                this.initVideo('lxs_major');
+                this.initVideo('lxs_myvideo2');
+                this.initVideo('lxs_myvideo3');
+                // })
             }, 200);
         },
         // 添加选中状态
@@ -233,6 +194,32 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.loader {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'ZCODL Kuaile', cursive;
+    font-size: 10rem;
+    color: palevioletred;
+}
+
+.loader::after {
+    content: "\2026";
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation: dots steps(4, end) 2s infinite;
+    width: 0px;
+}
+
+@keyframes dots {
+    to {
+        width: 1.25em;
+    }
+}
+
 .mb-1 {
     margin-bottom: 1rem !important;
 
