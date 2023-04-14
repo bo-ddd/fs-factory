@@ -3,7 +3,7 @@
     <div class="top-nav">
       <div class="LOGO">
         <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt="" />
-        <div class="textshadow">浮山智慧化工</div>
+        <div class="textshadow">浮山双新产业园区</div>
       </div>
       <div class="nav-list">
         <div class="nav-font" @click="nav(item)" v-for="(item, i) in tabledate" :key="i">
@@ -12,12 +12,18 @@
           <div class="nav-border"></div>
         </div>
       </div>
-      <div class="time-stamp">{{ timechuo }}</div>
+      <div class="time-stamp">{{ timechuo || '2023 - 04 - 17 17:06:08' }}</div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref } from 'vue'
+import { Ref, ref, toRefs } from 'vue'
+
+const props = defineProps<{
+  defaultTitle?: string
+}>();
+const { defaultTitle } = toRefs(props);
+
 const timechuo:Ref<string> = ref('');
 const tabledate: any = [
   {
@@ -67,11 +73,26 @@ setInterval(() => {
   timechuo.value = Y + M + D + h + m + s
 }, 1000)
 
+
+
 const nav = (item: any) => {
   tabledate.forEach((i: any) => {
-    i.isActive = false;
+    
+      i.isActive = false;
+    
   })
   item.isActive = !item.isActive;
+}
+// console.log(defaultTitle);
+// eslint-disable-next-line eqeqeq
+if (defaultTitle.value != '') {
+  tabledate.forEach((i: any) => {
+    // eslint-disable-next-line eqeqeq
+    if (i.title == defaultTitle.value) {
+      nav(i);
+      
+    }  
+  })
 }
 </script>
 
@@ -85,12 +106,12 @@ const nav = (item: any) => {
   align-items: center;
 
   .LOGO {
-    width: 35rem;
+    // width: 35rem;
     height: 3.5rem;
     display: flex;
     align-items: center;
     gap: 13px;
-    margin-left: 4.4rem;
+    // margin-left: 4.4rem;
 
     .textshadow {
       font-size: 2.4rem;
@@ -98,7 +119,6 @@ const nav = (item: any) => {
       color: #9ad1f6;
       font-style: italic;
       text-shadow: 3px 1px 3px rgb(0, 234, 255);
-      width: 247px;
     }
   }
 
@@ -135,7 +155,6 @@ const nav = (item: any) => {
   }
 
   .time-stamp {
-    width: 16rem;
     display: flex;
     align-items: center;
     color: #fff;
