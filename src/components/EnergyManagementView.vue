@@ -3,7 +3,7 @@
     <div class="heteromorphic-box">
       <div class="heteromorphic-b"></div>
       <div class="icon-box">
-        <img class="arrowhead" src="@/assets/images/arrowhead.png" alt="" />
+        <img class="arrowhead" src="../../public/img/parkInfo/arrowhead.png" alt="" />
         <div class="heteromorphic-a">
           <div class="title-size">
             {{ title }}
@@ -16,6 +16,15 @@
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+// import { defineProps } from 'vue';
+defineProps<{
+  title?: string
+}>();
+// const { title } = props;
+</script>
+
 <style lang="scss" scoped>
 body {
   .title-box {
@@ -23,7 +32,7 @@ body {
     margin: 0 auto;
     border-radius: 0.5rem;
     .heteromorphic-box {
-      height: 20%;
+      height: 4rem;
       .icon-box {
         display: flex;
         .arrowhead {
@@ -60,15 +69,8 @@ body {
       }
     }
     .body-box{
-      height: 80%;
+      height: calc(100% - 4rem);
     }
   }
 }
 </style>
-<script lang="ts" setup>
-import { defineProps } from 'vue'
-let props = defineProps<{
-  title?: string
-}>()
-const { title } = props
-</script>
