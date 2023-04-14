@@ -19,7 +19,7 @@ export default ({ mode }: ConfigEnv) => {
   console.log(`ENV：`, ENV)
   
   return defineConfig({
-    base: ENV.VITE_BASE_URL,
+    base: '/',
     server: {
       host: "localhost",
       https: false,

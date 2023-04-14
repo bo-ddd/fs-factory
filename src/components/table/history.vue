@@ -5,28 +5,27 @@
 </template>
 
 <script lang="ts" setup>
-  import { ScrollBoard } from '@kjgl77/datav-vue3';
+import { ScrollBoard } from '@kjgl77/datav-vue3';
 import { reactive } from "vue"
 const config = reactive({
-  header: ["时间", "地点", "类型", "描述"],
+  header: ["演练日期", "演练类型", "演练地点", "组织单位"],
   data: [
-    ["2021-05-17", "工厂C仓库", "人为事故", "贸易纠纷引发人为暴力事件"],
-    ["2021-05-17", "工厂C仓库", "人为事故", "贸易纠纷引发人为暴力事件"],
-    ["2021-05-17", "工厂C仓库", "人为事故", "贸易纠纷引发人为暴力事件"],
-    ["2021-05-17", "工厂C仓库", "人为事故", "贸易纠纷引发人为暴力事件"],
-    ["2021-05-17", "工厂C仓库", "人为事故", "贸易纠纷引发人为暴力事件"],
-    ["2021-05-17", "工厂C仓库", "人为事故", "贸易纠纷引发人为暴力事件"]
+    ['2023-03-15', '火灾应急演练', '山西恒锦盛科技有限公司', '消防科'],
+    ['2023-02-05', '网络攻击演练', '厂区B', '技术部'],
+    ['2023-02-12', '公共卫生事件演练', '山西恒锦盛科技有限公司', '感染预防控制科'],
+    ['2023-02-04', '停电演练', '厂区C', '保卫科'],
+    ['2023-01-08', '地震演练', '厂区A', '应急预案办公室'],
+    ['2023-03-29', '事故演练', '山西恒锦盛科技有限公司', '公路管理部门'],
   ],
-  index: true,
-  columnWidth: [50],
-  align: ["center"]
+  columnWidth: [],
+  // align: ["center", "center", "center", "center"]
 })
 </script>
 
 <style lang="scss" scoped>
 .history {
   height: calc(100% - 4rem);
-  padding:0 2rem 2rem ; 
+  padding: 0 2rem 2rem;
   box-sizing: border-box;
 }
 </style>

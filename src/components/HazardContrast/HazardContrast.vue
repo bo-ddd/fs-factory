@@ -15,7 +15,7 @@ const typeComparison = function () {
         },
         legend: {
             textStyle: { color: '#fff' },
-            data: ['浮山A厂区', '浮山B厂区', '浮山C厂区']
+            data: ['山西恒锦盛科技有限公司', '浮山A厂区', '浮山B厂区']
         },
         grid: {
             top: "10%",
