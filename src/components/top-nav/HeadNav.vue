@@ -135,7 +135,7 @@ const nav = (item: any) => {
   }
 
   .time-stamp {
-    // width: 16rem;
+    width: 16rem;
     display: flex;
     align-items: center;
     color: #fff;
