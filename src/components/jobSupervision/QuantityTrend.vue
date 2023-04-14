@@ -12,8 +12,8 @@ const typeComparison = function () {
   const data = []
   let day = date.getDate()
   for (let i = 0; i < 7; i++) {
-    data.unshift((date.getMonth() + 1) + '月' + day + '日')
     day--
+    data.unshift((date.getMonth() + 1) + '月' + day + '日')
   }
   const optionTrend: EChartsOption = {
     textStyle:{
