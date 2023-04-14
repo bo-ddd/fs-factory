@@ -35,15 +35,15 @@
 
         <!-- 企业设备管理 button  enterprise-equipment_Administration -->
         <div class="enterprise-equipment">
-            <Button title="企业设备管理"></Button>
+            <Button @click="open" title="企业设备管理"></Button>
         </div>
         <!-- 企业装置信息 enterprise-installation-->
         <div class="enterprise-installation">
-            <Button title="企业装置信息"></Button>
+            <button2View @click="open" title="企业装置信息"></button2View>
         </div>
         <!-- 楼宇(企业)信息 具体看楼宇表-->
         <div class="building-info">
-            <Button title="楼宇信息"></Button>
+            <Button @click="open" title="楼宇信息"></Button>
         </div>
 
         <!-- mars3D -->
@@ -76,12 +76,22 @@ import borderBox from "../../../../components/EnergyManagementView.vue";
 import parkAreaInfo from "../../../../components/parkInfo/parkAreaInfo.vue";
 import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
 import enterpriseInfo from "../../../../components/parkInfo/enterpriseInfo.vue";
-import histogram from '../../../../components/parkInfo/histogram.vue'
-import Button from "../../../../components/buttom-1View.vue"
-import iconPark from '../../assets/images/icon-park.png'
-import iconAddress from '../../assets/images/icon-address.png'
-import iconOccupancy from '../../assets/images/icon-occupancy.png'
-import iconBuilding from '../../assets/images/icon-building.png'
+import histogram from '../../../../components/parkInfo/histogram.vue';
+import Button from "../../../../components/buttom-1View.vue";
+import button2View from "@mars/components/button-2View.vue";
+import iconPark from '../../assets/images/icon-park.png';
+import iconAddress from '../../assets/images/icon-address.png';
+import iconOccupancy from '../../assets/images/icon-occupancy.png';
+import iconBuilding from '../../assets/images/icon-building.png';
+import { ElMessage } from 'element-plus';
+
+
+import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+import { onMounted, ref } from 'vue';
+
 const carInfo = {
     header: ['时间', '车位', '停车状态', '所属企业'],
     data: [
@@ -96,7 +106,7 @@ const carInfo = {
     headerBGC: 'none',
     oddRowBGC: 'none',
     evenRowBGC: 'none',
-    align:['center', 'center', 'center', 'center']
+    align: ['center', 'center', 'center', 'center']
 }
 const logisticsInfo = {
     header: ['物流ID', '物流企业', '物流状态', '记录'],
@@ -138,16 +148,91 @@ const parkInfo = [
         title: '建筑面积',
         content: '100亩'
     },
-
-
 ]
+const open = () => {
+  ElMessage('暂无权限');
+  console.log(ElMessage);
+  
+}
+
+const scene = new THREE.Scene()
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.set(-40, 50, 30);
+camera.updateProjectionMatrix();
+const renderer = new THREE.WebGLRenderer({
+  antialias: true
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+let controls = new OrbitControls(camera, renderer.domElement)
+controls.enableDamping = true;
+
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('../../../../../public/draco')
+const gltfLoader = new GLTFLoader();
+gltfLoader.setDRACOLoader(dracoLoader)
+gltfLoader.load('../../../../../public/gltf/20221010170924_parent_directory_住宅楼21.gltf', function (gltf) {
+  const model = gltf.scene;
+  scene.add(model)
+})
+
+
+const light1 = new THREE.DirectionalLight(0xffffff, 1)
+light1.position.set(0, 0, 10)
+scene.add(light1)
+const light2 = new THREE.DirectionalLight(0xffffff, 1)
+light2.position.set(0, 0, -10)
+scene.add(light2)
+const light3 = new THREE.DirectionalLight(0xffffff, 1)
+light3.position.set(10, 0, 0)
+scene.add(light3)
+const light4 = new THREE.DirectionalLight(0xffffff, 1)
+light4.position.set(-10, 0, 0)
+scene.add(light4)
+const light5 = new THREE.DirectionalLight(0xffffff, 1)
+light5.position.set(5, 10, 0)
+scene.add(light5)
+const light6 = new THREE.DirectionalLight(0xffffff, 1)
+light6.position.set(0, 10, 0)
+scene.add(light6)
+const light7 = new THREE.DirectionalLight(0xffffff, 1)
+light7.position.set(0, 10, 5)
+scene.add(light7)
+const light8 = new THREE.DirectionalLight(0xffffff, 1)
+light8.position.set(0, 10, 0)
+scene.add(light8)
+
+onMounted(() => {
+  renderer.setClearColor("#000")
+  scene.background = new THREE.Color('black');
+  let gf:any=document.querySelector('.map');
+    gf.appendChild(renderer.domElement);
+})
+
+
+function render() {
+  requestAnimationFrame(render)
+  renderer.render(scene, camera)
+  controls.update();
+}
+render()
+
 </script>
 
 <style scoped lang="less">
+::v-deep(canvas){
+    width: 100% !important;
+    height: 100% !important;
+}
 .main {
     font-size: 1.4rem;
     height: 100vh;
-    background-image: url("../../../../../public/img/parkInfo/bj-4.gif");
+    // background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bj-4.gif");
     background-size: cover;
     background-repeat: no-repeat;
     display: grid;
@@ -163,36 +248,36 @@ const parkInfo = [
     ;
     color: #fff;
 }
-.info-box{
+
+.info-box {
     display: flex;
     flex-wrap: wrap;
-    // border: 1px solid red;
     height: 100%;
-
-//    padding: ;
 }
-.info-box .item-img{
+
+.info-box .item-img {
     width: 5rem;
     height: 5rem;
     margin-right: 2rem;
 }
-.info-box .item-title{
+
+.info-box .item-title {
     color: #02e4f2;
     font-size: 2rem;
     font-weight: bold;
     padding: .5rem 0;
 }
-.info-box .item-content{
+
+.info-box .item-content {
     font-size: 1rem;
-    color:#66c9e4;
+    color: #66c9e4;
     font-weight: bold;
 
 }
+
 .info-box .info-item {
     display: flex;
-    // justify-content: center;
     align-items: center;
-    // border: 1px solid red;
     width: 21rem;
     height: 100%;
 }
@@ -263,5 +348,11 @@ const parkInfo = [
     box-sizing: border-box;
     grid-area: park-area_info;
     background: rgba(18, 33, 64, .5);
+}
+
+.enterprise-equipment, .enterprise-installation, .building-info {  
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
