@@ -1,10 +1,11 @@
 <template>
   <div class="history">
-    <dv-scroll-board :config="config" style="width:100%;height:100%" />
+    <ScrollBoard :config="config" style="width:100%;height:100%" />
   </div>
 </template>
 
 <script lang="ts" setup>
+  import { ScrollBoard } from '@kjgl77/datav-vue3';
 import { reactive } from "vue"
 const config = reactive({
   header: ["时间", "地点", "类型", "描述"],
@@ -24,8 +25,8 @@ const config = reactive({
 
 <style lang="scss" scoped>
 .history {
-  height: calc(100% - 5rem);
-  padding: 2rem;
+  height: calc(100% - 4rem);
+  padding:0 2rem 2rem ; 
   box-sizing: border-box;
 }
 </style>

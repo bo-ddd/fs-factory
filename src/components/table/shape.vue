@@ -1,10 +1,11 @@
 <template>
   <div class="shape">
-    <dv-scroll-board :config="config1" style="width:100%;height:100%" />
+    <ScrollBoard :config="config1" style="width:100%;height:100%" />
   </div>
 </template>
   
 <script lang="ts" setup>
+import { ScrollBoard } from '@kjgl77/datav-vue3';
 import { reactive } from "vue"
 const config1 = reactive({
   header: ["类型", "位置", "时间", "结果"],
@@ -25,8 +26,8 @@ const config1 = reactive({
   
 <style lang="scss" scoped>
 .shape {
-  height: calc(100% - 5rem);
-  padding: 2rem;
+  height: calc(100% - 4rem);
+  padding:0 2rem 2rem ; 
   box-sizing: border-box;
 }
 </style>

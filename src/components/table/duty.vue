@@ -1,10 +1,11 @@
 <template>
   <div class="duty">
-    <dv-scroll-board :config="config2" style="width:100%;height:100%" />
+    <ScrollBoard :config="config2" style="width:100%;height:100%" />
   </div>
 </template>
   
   <script lang="ts" setup>
+  import { ScrollBoard } from '@kjgl77/datav-vue3';
 import { reactive } from "vue"
 const config2 = reactive({
   header: ["人员", "职位", "部门"],
@@ -23,8 +24,8 @@ const config2 = reactive({
   
   <style lang="scss" scoped>
 .duty {
-  height: calc(100% - 5rem);
-  padding: 2rem;
+  height: calc(100% - 4rem);
+  padding:0 2rem 2rem ; 
   box-sizing: border-box;
 }
 </style>
