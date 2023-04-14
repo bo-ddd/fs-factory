@@ -29,7 +29,7 @@ export function onMounted(mapInstance) {
 
     // 在layer上绑定监听事件
     graphicLayer.on(mars3d.EventType.click, function (event) {
-        console.log("监听layer，单击了矢量对象", event)
+        // console.log("监听layer，单击了矢量对象", event)
     })
 
     bindLayerPopup() // 在图层上绑定popup,对所有加到这个图层的矢量数据都生效
