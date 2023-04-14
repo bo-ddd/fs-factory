@@ -17,7 +17,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, toRefs, defineEmits } from 'vue'
+import { Ref, ref, toRefs, defineEmits, reactive } from "vue"
 
 const props = defineProps<{
   defaultTitle?: string
@@ -28,8 +28,8 @@ const { defaultTitle } = toRefs(props);
 const emits = defineEmits(['success']);
 
 
-const timechuo:Ref<string> = ref('');
-const tabledate: any = [
+const timechuo: Ref<string> = ref("")
+const tabledate: any = reactive([
   {
     title: '园区信息管理',
     id: 1,
@@ -65,7 +65,12 @@ const tabledate: any = [
     id: 7,
     isActive: false
   },
-]
+  {
+    title: "应急救援管理",
+    id: 8,
+    isActive: false
+  }
+])
 setInterval(() => {
   const date: any = new Date()
   const Y: any = date.getFullYear() + ' - '
@@ -88,15 +93,12 @@ const nav = (item: any) => {
   })
   item.isActive = !item.isActive;
 }
-// console.log(defaultTitle);
-// eslint-disable-next-line eqeqeq
-if (defaultTitle.value != '') {
+
+if (defaultTitle.value !== "") {
   tabledate.forEach((i: any) => {
-    // eslint-disable-next-line eqeqeq
-    if (i.title == defaultTitle.value) {
-      nav(i);
-      
-    }  
+    if (i.title === defaultTitle.value) {
+      nav(i)
+    }
   })
 }
 
@@ -116,7 +118,7 @@ if (defaultTitle.value != '') {
     height: 3.5rem;
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap:0 2rem;
     // margin-left: 4.4rem;
 
     .textshadow {
