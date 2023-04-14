@@ -56,7 +56,7 @@ function addDemoGraphic3(graphicLayer) {
         style: {
             url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
             heading: 101,
-            scale: 0.25,
+            scale: 0.4,
             minimumPixelSize: 10,
             silhouette: false,
             distanceDisplayCondition: true,
@@ -72,11 +72,14 @@ function addDemoGraphic3(graphicLayer) {
             }
         }
     })
+
     graphicLayer.addGraphic(graphic)
-    graphic.moveTo({
-        position: [111.8418, 36.01393333333333, 788],
-        time: 300
-    })
+    setTimeout(() => {
+        graphic.moveTo({
+            position: [111.8418, 36.01393333333333, 788],
+            time: 300
+        })
+    }, 3000)
 }
 
 
@@ -103,7 +106,7 @@ export function addRandomGraphicByCount(count) {
         graphicLayer.addGraphic(graphic)
     }
 
-    graphicLayer.enabledEvent = true 
+    graphicLayer.enabledEvent = true
     return result.points.length
 }
 
