@@ -65,6 +65,12 @@ const routes: RouteRecordRaw[] = [
                 name: "hiddenTrouble",
                 path: "/hiddenTrouble",
                 component: () => import("../pages/modulePage/HiddenTrouble.vue")
+            },
+            {
+                // 安防监控管理
+                name: "securityMonitoringManagement",
+                path: "/securityMonitoringManagement",
+                component: () => import("../pages/modulePage/securityMonitoringManagement.vue")
             }
         ]
     }

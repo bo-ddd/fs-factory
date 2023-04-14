@@ -1,43 +1,42 @@
 <template>
   <div class="border">
     <div class="box">
-        <div class="title"></div>
+      <div class="title"></div>
       <div class="security-risk">
-        <dv-border-box-11 title="安全风险监管">
-          <div class="flex left-top">
-            <dv-active-ring-chart :config="cake" style="width: 15rem; height: 15rem" />
-            <dv-active-ring-chart :config="cake" style="width: 15rem; height: 15rem" />
-            <dv-active-ring-chart :config="cake" style="width: 15rem; height: 15rem" />
+        <dv-border-box-11 title="安全系数评估">
+          <div class="box-item flex-column">
+            <dv-capsule-chart :config="config" class="safeRate"/>
           </div>
-          <dv-capsule-chart :config="config" style="width: 50rem; height: 20rem" />
         </dv-border-box-11>
       </div>
       <div class="operation-process">
-        <dv-border-box-11 title="安全走势图">
-          <div class="flex left-bottom">
-            <LineChart></LineChart>
+        <dv-border-box-11 title="安全运行天数">
+          <div class="box-item">
+            <div class="flex left-bottom">
+              <LineChart></LineChart>
+            </div>
           </div>
         </dv-border-box-11>
       </div>
       <div class="middle">
-        <dv-border-box-12 class="flex-col">
-                
-          <p class="title">风险分布</p>
-
-          <div class="top">
-            <p class="lable">风险<span class="num">10</span>处</p>
-            <p class="lable">隐患<span class="num">10</span>处</p>
+        <dv-border-box-11 title="风险分布" class="flex-col">
+          <div class="box-item flex-column">
+            <!-- <div class="top">
+              <p class="lable">风险<span class="num">0</span>处</p>
+              <p class="lable">隐患<span class="num">0</span>处</p>
+            </div> -->
+            <div class="bottom">
+              <Histogram></Histogram>
+            </div>
           </div>
-        <div class="bottom"> 
-
-                <Histogram></Histogram>
-        </div>
-        </dv-border-box-12>
+        </dv-border-box-11>
       </div>
       <div class="hidden-treatment">
         <dv-border-box-11 title="隐患排查治理">
-          <div class="right right-top">
-            <dv-scroll-board :config="row" style="width: 55rem; height: 28rem" />
+          <div class="box-item flex-center">
+            <div>
+              <dv-scroll-board :config="row" style="width: 55rem; height: 28rem" />
+            </div>
           </div>
         </dv-border-box-11>
       </div>
@@ -49,38 +48,51 @@
         </dv-border-box-11>
       </div>
     </div>
-</div>
+  </div>
 </template>
 <script setup lang="ts">
-import LineChart from "../../../../components/HiddenTrouble/HiddenLineChart/HiddenLineChart.vue"
-import Histogram from "../../../../components/HiddenTrouble/HiddenHistogram/HiddenHistogram.vue"
 import { reactive } from "vue"
 const config = reactive({
-  radius: "50%",
-  activeRadius: "60%",
+//   radius: "50%",
+//   activeRadius: "60%",
   data: [
     {
-      name: "生产",
-      value: 55
+      name: "生产设备",
+      value: 80
     },
     {
-      name: "出售",
-      value: 120
+      name: "生产状况",
+      value: 88
     },
     {
-      name: "买进",
-      value: 78
+      name: "经济状况",
+      value: 99
     },
     {
-      name: "税务",
-      value: 66
-    }
+      name: "应急资源",
+      value: 80
+    },
+    {
+      name: "公共设施",
+      value: 89
+    },
+    {
+      name: "环境质量",
+      value: 87
+    },
+    {
+      name: "运输状况",
+      value: 100
+    },
   ],
-  digitalFlopStyle: {
-    fontSize: 20
-  },
-  showOriginValue: true,
-  lineWidth: 10
+  colors: ['#e062ae', '#fb7293', '#e690d1', '#58a6a8', '#99d9c9', '#32c5e5', '#96bfff'],
+  unit:'百分比',
+  showValue:true
+//   digitalFlopStyle: {
+//     fontSize: 20
+//   },
+//   showOriginValue: true,
+//   lineWidth: 10
 })
 const cake = reactive({
   data: [
@@ -112,11 +124,11 @@ const column = reactive({
   data: [
     {
       name: "火灾",
-      value: 1
+      value: 2
     },
     {
       name: "气体泄露",
-      value: 10
+      value: 1
     },
     {
       name: "辐射",
@@ -128,28 +140,28 @@ const column = reactive({
     },
     {
       name: "失窃",
-      value: 0
+      value: 2
     }
   ],
   showValue: true
 })
 const row = reactive({
-  header: ["隐患", "是否处理", "负责人"],
+  header: ["隐患", "是否处理", "安全负责人"],
   data: [
-    ["火灾", "已处理", "安全部马格烜"],
-    ["气体泄露", "已处理", "安全部侯任性"],
-    ["液体泄漏", "已处理", "安全部侯任性"],
-    ["工程车", "已处理", "安全部朱大壮"],
-    ["辐射物质", "已处理", "安全部朱大壮"],
-    ["设施设备", "已处理", "安全部王胖胖"],
-    ["储存区", "已处理", "安全部王胖胖"],
-    ["静电", "已处理", "安全部朱大壮"],
-    ["现场安全", "已处理", "安全部马格烜"],
-    ["生产", "已处理", "安全部王胖胖"]
+    ["火灾", "已处理", "马格烜"],
+    ["气体泄露", "已处理", "侯鑫茹"],
+    ["液体泄漏", "已处理", "卫正阳"],
+    ["工程车", "已处理", "朱鑫鹏"],
+    ["辐射物质", "已处理", "许鹏璞"],
+    ["设施设备", "已处理", "周永峰"],
+    ["储存区", "已处理", "刘芳建"],
+    ["静电", "已处理", "李展鹏"],
+    ["现场安全", "已处理", "杨豪杰"],
+    ["生产", "已处理", "张震"]
   ],
   index: true,
   columnWidth: [50],
-  align: ["center"]
+  align: ["center", "center", "center", "center"]
 })
 const enviroment = reactive({
   value: 66,
@@ -171,15 +183,15 @@ const enviroment = reactive({
   grid-template-rows: 6rem 1fr 1fr;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-        "title title title"
+    "title title title"
     "security-risk  middle  hidden-treatment"
     "operation-process  middle  hidden-type";
 }
-.title{
-        grid-area: title;
+.title {
+  grid-area: title;
 }
-.bottom{
-        height:calc(100% - 10rem);
+.bottom {
+  height: 80%;
 }
 .mt-2 {
   margin-top: 2rem;
@@ -188,39 +200,54 @@ const enviroment = reactive({
 .mt-6 {
   margin-top: 6rem;
 }
+.flex-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
 .mb-2 {
   margin-bottom: 2rem;
 }
 
 .security-risk {
   grid-area: security-risk;
-  padding: 1rem 2rem 2rem;
 }
 
 .operation-process {
   grid-area: operation-process;
-  padding: 0 2rem;
   box-sizing: border-box;
   .left-bottom {
     height: 100%;
   }
 }
-
+.box-item {
+  height: 100%;
+  padding: 7rem 1rem 0 1rem;
+  box-sizing: border-box;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.left-top {
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .hidden-treatment {
   grid-area: hidden-treatment;
-  padding: 1rem 2rem 2rem;
   box-sizing: border-box;
 }
 
 .hidden-type {
   grid-area: hidden-type;
-  padding: 0 2rem;
 }
 
 .middle {
   grid-area: middle;
   text-align: center;
-  margin-top: 1rem;
   height: 100%;
 }
 
@@ -251,7 +278,7 @@ const enviroment = reactive({
   text-align: right;
   margin-bottom: 2rem;
   border-left: 0.6rem solid red;
-  height:3rem;
+  height: 3rem;
 }
 
 .middle .top {
