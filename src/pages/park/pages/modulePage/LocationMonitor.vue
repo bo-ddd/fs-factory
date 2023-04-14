@@ -1,8 +1,9 @@
 <template>
   <div>page
 
-    
+    <div class="h">
   <main-view />
+    </div>
   </div>
 </template>
 
@@ -48,3 +49,11 @@ const aa = function () {
 aa()
 const b: any = 78
 </script>
+
+<style scoped>
+  .h{
+    /* width: 800px;
+    height: 800px; */
+  }
+</style>
+
