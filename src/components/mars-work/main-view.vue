@@ -37,7 +37,7 @@ const widgetStore = useWidgetStore()
 const widgets = computed(() => widgetStore.state.widgets)
 const openAtStart = computed(() => widgetStore.state.openAtStart)
 
-const configUrl = `${process.env.BASE_URL}config/config.json?time=${new Date().getTime()}`
+const configUrl = `sadhfh/config/config.json?time=${new Date().getTime()}`
 
 const props = withDefaults(
   defineProps<{

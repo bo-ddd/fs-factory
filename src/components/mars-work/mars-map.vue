@@ -139,7 +139,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 /**cesium 工具按钮栏*/
 .cesium-viewer-toolbar {
   top: auto !important;

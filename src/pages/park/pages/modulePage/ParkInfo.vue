@@ -174,10 +174,10 @@ let controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true;
 
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('../../../../../public/draco')
+dracoLoader.setDecoderPath('/public/draco')
 const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader)
-gltfLoader.load('../../../../../public/gltf/20221010170924_parent_directory_住宅楼21.gltf', function (gltf) {
+gltfLoader.load('/public/gltf/20221010170924_parent_directory_住宅楼21.gltf', function (gltf) {
   const model = gltf.scene;
   scene.add(model);
 });
