@@ -8,7 +8,6 @@
         <el-form-item label="密码">
           <el-input v-model="form.pswd" />
         </el-form-item>
-
         <el-form-item>
           <el-button type="primary" @click="onSubmit">登录</el-button>
         </el-form-item>

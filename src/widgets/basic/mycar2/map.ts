@@ -39,9 +39,9 @@ export function onMounted(mapInstance) {
     bindLayerContextMenu() // 在图层绑定右键菜单,对所有加到这个图层的矢量数据都生效
 
     // 加一些演示数据
-    // addDemoGraphic1(graphicLayer)
+    addDemoGraphic12(graphicLayer)
     // addDemoGraphic2(graphicLayer)
-    addDemoGraphic3(graphicLayer)
+    // addDemoGraphic3(graphicLayer)
     // addDemoGraphic4(graphicLayer)
 }
 
@@ -56,6 +56,29 @@ export function onUnmounted() {
     graphicLayer = null
 }
 
+function addDemoGraphic12(graphicLayer) {
+    const graphic = new mars3d.graphic.ModelEntity({
+      name: "飞机",
+      position: [111.8444, 36.02393333333333, 788],
+      style: {
+      heading: 43,
+        url: "//data.mars3d.cn/gltf/mars/feiji.glb",
+        scale: 2
+      }
+    })
+    graphicLayer.addGraphic(graphic)
+  
+    // 开始 自旋转效果
+    graphic.rotateStart({
+      direction: false, // 控制方向, true逆时针，false顺时针
+      time: 20, // time：给定飞行一周所需时间(单位 秒)，控制速度
+      autoStopAngle: 43
+    })
+  
+    // setTimeout(() => {
+    //   graphic.rotateStop()
+    // }, 3000)
+  }
 function addDemoGraphic1(graphicLayer) {
     const graphic = new mars3d.graphic.ModelEntity({
         name: "警车",
@@ -157,37 +180,6 @@ function addGeoJson(geojson, graphicLayer) {
     graphicLayer.addGraphic(graphicCopy)
 }
 
-function addDemoGraphic2(graphicLayer) {
-    const graphic = new mars3d.graphic.ModelEntity({
-        name: "风机",
-        position: [116.35104, 30.86225, 374.4],
-        style: {
-            url: "//data.mars3d.cn/gltf/mars/fengche.gltf",
-            heading: 270,
-            scale: 30,
-            minimumPixelSize: 100,
-            silhouette: false,
-
-            distanceDisplayCondition: true,
-            distanceDisplayCondition_near: 0,
-            distanceDisplayCondition_far: 9000,
-            distanceDisplayBillboard: {
-                // 当视角距离超过一定距离(distanceDisplayCondition_far定义的) 后显示为图标对象的样式
-                image: "img/marker/square.png",
-                scale: 1
-            },
-
-            // 高亮时的样式（默认为鼠标移入，也可以指定type:'click'单击高亮），构造后也可以openHighlight、closeHighlight方法来手动调用
-            highlight: {
-                silhouette: true,
-                silhouetteColor: "#00ffff",
-                silhouetteSize: 3
-            }
-        },
-        attr: { remark: "示例2" }
-    })
-    graphicLayer.addGraphic(graphic)
-}
 
 function addDemoGraphic3(graphicLayer) {
     const graphic = new mars3d.graphic.ModelEntity({
@@ -196,17 +188,17 @@ function addDemoGraphic3(graphicLayer) {
         // position: [116.349194, 30.864603, 376.58],
         style: {
             url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
-            heading: 10,
+            heading: 15,
             scale: 0.1,
             minimumPixelSize: 10,
-            silhouette: false,
-            distanceDisplayCondition:true,
-            clampToGround:true,
+            // silhouette: false,
+            // distanceDisplayCondition: true,
+            // clampToGround: true,
             label: {
-                text: "晋A12345",
+                text: "晋LMX662",
                 font_size: 18,
-                color: "#0000FF",
-                pixelOffsetY: -10,
+                color: "#0033ff",
+                pixelOffsetY: -5,
                 distanceDisplayCondition: true,
                 distanceDisplayCondition_far: 10000,
                 distanceDisplayCondition_near: 0
@@ -214,56 +206,30 @@ function addDemoGraphic3(graphicLayer) {
 
             // 高亮时的样式（默认为鼠标移入，也可以指定type:'click'单击高亮），构造后也可以openHighlight、closeHighlight方法来手动调用
             // highlight: {
-                // label: {
-                    // font_size: 30
-                // },
-                // silhouette: true,
-                // silhouetteColor: "#ff0000",
-                // silhouetteSize: 4
+            // label: {
+            // font_size: 30
+            // },
+            // silhouette: true,
+            // silhouetteColor: "#ff0000",
+            // silhouetteSize: 4
             // }
         },
         attr: { remark: "示例3" }
     })
     graphicLayer.addGraphic(graphic)
-    // 移动模型
-    // graphic.moveTo({
-    //     position: [111.84, 36.08333333333333, 10],
-    //     time: 400 // 移动的时长(单位 秒)
-    // })
-}
-
-function addDemoGraphic4(graphicLayer) {
-    const propertyFJ = getSampledPositionProperty([
-        [116.341348, 30.875522, 500],
-        [116.341432, 30.871815, 500],
-        [116.347965, 30.866654, 500],
-        [116.352154, 30.855531, 500],
-        [116.341181, 30.85326, 500],
-        [116.334609, 30.856601, 500],
-        [116.337695, 30.866505, 500],
-        [116.345018, 30.870448, 500],
-        [116.345028, 30.870436, 500]
-    ])
-
-    // 飞机
-    const graphicModel = new mars3d.graphic.ModelEntity({
-        position: propertyFJ,
-        orientation: new Cesium.VelocityOrientationProperty(propertyFJ),
-        style: {
-            url: "//data.mars3d.cn/gltf/mars/wrj.glb",
-            scale: 0.1,
-            minimumPixelSize: 20
-        },
-        path: {
-            width: 2,
-            leadTime: 0, // 不显示前方路线
-            color: "#00ffff"
-        },
-        attr: { remark: "示例4" },
-        hasEdit: false
+    graphic.moveTo({
+        position: [111.84544, 36.02393333333388, 788],
+        time: 10, // 移动的时长(单位 秒)
+        onEnd: () => {
+            graphic.rotateStart({
+                direction: true,
+                time: 6,
+                autoStopAngle:50
+            })
+        }
     })
-    graphicLayer.addGraphic(graphicModel)
 }
+
 
 // 计算演示的SampledPositionProperty轨迹
 function getSampledPositionProperty(points) {
