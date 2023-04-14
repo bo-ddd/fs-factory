@@ -7,7 +7,7 @@
       </div>
       <div class="nav-list">
         <div class="nav-font" @click="nav(item)" v-for="(item, i) in tabledate" :key="i">
-          <div :class="[item.isActive ? 'box' : '']"></div>
+          <div :class="[ router.currentRoute.value.href==item.path ? 'box' : '']"></div>
           <div class="nav-get">{{ item.title }}</div>
           <div class="nav-border"></div>
         </div>
@@ -18,6 +18,9 @@
 </template>
 <script setup lang="ts">
 import { Ref, ref, toRefs, defineEmits, reactive } from "vue"
+import { useRouter } from "vue-router";
+
+let router : any = useRouter();
 
 const props = defineProps<{
   defaultTitle?: string
@@ -33,44 +36,53 @@ const tabledate: any = reactive([
   {
     title: '园区信息管理',
     id: 1,
-    isActive: true
+    isActive: true,
+    path: "/parkInfo",
   },
   {
     title: '风险分区隐患管理',
     id: 2,
-    isActive: false
+    isActive: false,
+    path: "/securityMonitoringManagement",
   },
   {
     title: '重大危险源管理',
     id: 3,
-    isActive: false
+    isActive: false,
+    path: "/hiddenTrouble",
   },
   {
     title: '报警管理',
     id: 4,
-    isActive: false
+    isActive: false,
+    path: "/MajorHazard",
   },
   {
     title: '特殊作业监管',
     id: 5,
-    isActive: false
+    isActive: false,
+    path: "/meetEarly",
   },
   {
     title: '卡口管理',
     id: 6,
-    isActive: false
+    isActive: false,
+    path: "/jobSupervision",
   },
   {
     title: '应急救援管理',
     id: 7,
-    isActive: false
+    isActive: false,
+    path: "/vehicleMonitoring",
   },
   {
     title: "应急救援管理",
     id: 8,
-    isActive: false
+    isActive: false,
+    path: "/EmergencyManage",
   }
-])
+]);
+
 setInterval(() => {
   const date: any = new Date()
   const Y: any = date.getFullYear() + ' - '
@@ -85,21 +97,7 @@ setInterval(() => {
 
 
 const nav = (item: any) => {
-  emits('success', item);
-  tabledate.forEach((i: any) => {
-    
-      i.isActive = false;
-    
-  })
-  item.isActive = !item.isActive;
-}
-
-if (defaultTitle.value !== "") {
-  tabledate.forEach((i: any) => {
-    if (i.title === defaultTitle.value) {
-      nav(i)
-    }
-  })
+  emits("success", item);
 }
 
 </script>
