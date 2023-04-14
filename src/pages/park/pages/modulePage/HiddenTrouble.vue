@@ -3,19 +3,14 @@
     <div class="box">
       <div class="title"></div>
       <div class="security-risk">
-        <dv-border-box-11 title="安全风险监管">
+        <dv-border-box-11 title="安全系数评估">
           <div class="box-item flex-column">
-            <div class="left-top">
-              <dv-active-ring-chart :config="cake" class="cake" />
-              <dv-active-ring-chart :config="cake" class="cake" />
-              <dv-active-ring-chart :config="cake" class="cake" />
-            </div>
-            <dv-capsule-chart :config="config" style="width: 50rem; height: 20rem" />
+            <dv-capsule-chart :config="config" class="safeRate"/>
           </div>
         </dv-border-box-11>
       </div>
       <div class="operation-process">
-        <dv-border-box-11 title="安全走势图">
+        <dv-border-box-11 title="安全运行天数">
           <div class="box-item">
             <div class="flex left-bottom">
               <LineChart></LineChart>
@@ -26,10 +21,10 @@
       <div class="middle">
         <dv-border-box-11 title="风险分布" class="flex-col">
           <div class="box-item flex-column">
-            <div class="top">
-              <p class="lable">风险<span class="num">10</span>处</p>
-              <p class="lable">隐患<span class="num">10</span>处</p>
-            </div>
+            <!-- <div class="top">
+              <p class="lable">风险<span class="num">0</span>处</p>
+              <p class="lable">隐患<span class="num">0</span>处</p>
+            </div> -->
             <div class="bottom">
               <Histogram></Histogram>
             </div>
@@ -58,31 +53,46 @@
 <script setup lang="ts">
 import { reactive } from "vue"
 const config = reactive({
-  radius: "50%",
-  activeRadius: "60%",
+//   radius: "50%",
+//   activeRadius: "60%",
   data: [
     {
-      name: "生产",
-      value: 55
+      name: "生产设备",
+      value: 80
     },
     {
-      name: "出售",
-      value: 120
+      name: "生产状况",
+      value: 88
     },
     {
-      name: "买进",
-      value: 78
+      name: "经济状况",
+      value: 99
     },
     {
-      name: "税务",
-      value: 66
-    }
+      name: "应急资源",
+      value: 80
+    },
+    {
+      name: "公共设施",
+      value: 89
+    },
+    {
+      name: "环境质量",
+      value: 87
+    },
+    {
+      name: "运输状况",
+      value: 100
+    },
   ],
-  digitalFlopStyle: {
-    fontSize: 20
-  },
-  showOriginValue: true,
-  lineWidth: 10
+  colors: ['#e062ae', '#fb7293', '#e690d1', '#58a6a8', '#99d9c9', '#32c5e5', '#96bfff'],
+  unit:'百分比',
+  showValue:true
+//   digitalFlopStyle: {
+//     fontSize: 20
+//   },
+//   showOriginValue: true,
+//   lineWidth: 10
 })
 const cake = reactive({
   data: [
@@ -114,15 +124,15 @@ const column = reactive({
   data: [
     {
       name: "火灾",
-      value: 1
+      value: 2
     },
     {
       name: "气体泄露",
-      value: 10
+      value: 1
     },
     {
       name: "辐射",
-      value: 5
+      value: 0
     },
     {
       name: "行人安全",
@@ -130,28 +140,28 @@ const column = reactive({
     },
     {
       name: "失窃",
-      value: 8
+      value: 2
     }
   ],
   showValue: true
 })
 const row = reactive({
-  header: ["隐患", "是否处理", "负责人"],
+  header: ["隐患", "是否处理", "安全负责人"],
   data: [
-    ["火灾", "已处理", "安全部马格烜"],
-    ["气体泄露", "已处理", "安全部侯鑫茹"],
-    ["液体泄漏", "已处理", "安全部卫正阳"],
-    ["工程车", "已处理", "安全部朱鑫鹏"],
-    ["辐射物质", "已处理", "安全部许鹏璞"],
-    ["设施设备", "已处理", "安全部周永峰"],
-    ["储存区", "已处理", "安全部刘芳建"],
-    ["静电", "已处理", "安全部李展鹏"],
-    ["现场安全", "已处理", "安全部杨豪杰"],
-    ["生产", "已处理", "安全部张震"]
+    ["火灾", "已处理", "马格烜"],
+    ["气体泄露", "已处理", "侯鑫茹"],
+    ["液体泄漏", "已处理", "卫正阳"],
+    ["工程车", "已处理", "朱鑫鹏"],
+    ["辐射物质", "已处理", "许鹏璞"],
+    ["设施设备", "已处理", "周永峰"],
+    ["储存区", "已处理", "刘芳建"],
+    ["静电", "已处理", "李展鹏"],
+    ["现场安全", "已处理", "杨豪杰"],
+    ["生产", "已处理", "张震"]
   ],
   index: true,
   columnWidth: [50],
-  align: ["center"]
+  align: ["center", "center", "center", "center"]
 })
 const enviroment = reactive({
   value: 66,
@@ -181,7 +191,7 @@ const enviroment = reactive({
   grid-area: title;
 }
 .bottom {
-  height: 70%;
+  height: 80%;
 }
 .mt-2 {
   margin-top: 2rem;
@@ -212,7 +222,7 @@ const enviroment = reactive({
 }
 .box-item {
   height: 100%;
-  padding: 7rem 0rem 0 0rem;
+  padding: 7rem 1rem 0 1rem;
   box-sizing: border-box;
 }
 .flex-column {
@@ -225,10 +235,6 @@ const enviroment = reactive({
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-.cake {
-  width: 100%;
-  height: 100%;
 }
 .hidden-treatment {
   grid-area: hidden-treatment;
