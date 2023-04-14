@@ -42,9 +42,13 @@ const store: StoreOptions<WidgetState> = {
       {
         component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/mycar/index.vue"))),
         name: "mycar"
+      },
+      {
+        component: markRaw(defineAsyncComponent(() => import("@mars/widgets/basic/mycar2/index.vue"))),
+        name: "mycar2"
       }
     ],
-    openAtStart: ["mycar"]
+    openAtStart: ["mycar2"]
   }
 }
 
