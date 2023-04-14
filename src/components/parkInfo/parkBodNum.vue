@@ -71,21 +71,21 @@ const parkBod = function () {
             min: 0,
             max: 100
         }
-    };type BarLabelOption = NonNullable<echarts.BarSeriesOption['label']>;
+    }; type BarLabelOption = NonNullable<echarts.BarSeriesOption['label']>;
 
-const labelOption: BarLabelOption = {
-    show: true,
-    position: app.config.position as BarLabelOption['position'],
-    distance: app.config.distance as BarLabelOption['distance'],
-    align: app.config.align as BarLabelOption['align'],
-    verticalAlign: app.config.verticalAlign as BarLabelOption['verticalAlign'],
-    rotate: app.config.rotate as BarLabelOption['rotate'],
-    formatter: '{c}  {name|{a}}',
-    fontSize: 16,
-    rich: {
-        name: {}
-    }
-};
+    const labelOption: BarLabelOption = {
+        show: true,
+        position: app.config as BarLabelOption['position'],
+        distance: app.config as BarLabelOption['distance'],
+        align: app.config as BarLabelOption['align'],
+        verticalAlign: app.config as BarLabelOption['verticalAlign'],
+        rotate: app.config as BarLabelOption['rotate'],
+        formatter: '{c}  {name|{a}}',
+        fontSize: 16,
+        rich: {
+            name: {}
+        }
+    };
 
     app.config = {
         rotate: 90,
@@ -131,7 +131,10 @@ const labelOption: BarLabelOption = {
             }
         },
         legend: {
-            data: ['Forest', 'Steppe', 'Desert', 'Wetland']
+            data: ['园区从业人员总数', '园区内从业人员数', '园区外从业人员数'],
+            textStyle:{
+                color:'#fff'
+            }
         },
         toolbox: {
             show: true,
@@ -144,15 +147,29 @@ const labelOption: BarLabelOption = {
                 magicType: { show: true, type: ['line', 'bar', 'stack'] },
                 restore: { show: true },
                 saveAsImage: { show: true }
+            },
+            iconStyle:{
+                color:'#fff',
             }
         },
         xAxis: [
             {
                 type: 'category',
                 axisTick: { show: false },
-                data: ['2012', '2013', '2014', '2015', '2016']
+                data: ['2019', '2020', '2021', '2022', '2023'],
             }
         ],
+        textStyle:{
+            color:'#fff',
+        },
+        grid: {
+            top: "10%",
+            bottom: "0%",
+            left: '0%',
+            right: '10%',
+            containLabel: true
+
+        },
         yAxis: [
             {
                 type: 'value'
@@ -160,41 +177,50 @@ const labelOption: BarLabelOption = {
         ],
         series: [
             {
-                name: 'Forest',
+                name: '园区从业人员总数',
                 type: 'bar',
                 barGap: 0,
-                label: labelOption,
+                label: {
+                    show: true,
+                    position: 'right',
+                    valueAnimation: true,
+                    color:'#fff',
+                    fontSize:10,
+                },
                 emphasis: {
                     focus: 'series'
                 },
-                data: [320, 332, 301, 334, 390]
+                data: [320, 332, 301, 334, 390],
             },
             {
-                name: 'Steppe',
+                name: '园区内从业人员数',
                 type: 'bar',
-                label: labelOption,
+                label: {
+                    show: true,
+                    position: 'right',
+                    valueAnimation: true,
+                    color:'#fff',
+                    fontSize:10,
+                },
                 emphasis: {
                     focus: 'series'
                 },
                 data: [220, 182, 191, 234, 290]
             },
             {
-                name: 'Desert',
+                name: '园区外从业人员数',
                 type: 'bar',
-                label: labelOption,
+                label: {
+                    show: true,
+                    position: 'right',
+                    valueAnimation: true,
+                    color:'#fff',
+                    fontSize:10,
+                },
                 emphasis: {
                     focus: 'series'
                 },
                 data: [150, 232, 201, 154, 190]
-            },
-            {
-                name: 'Wetland',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [98, 77, 101, 99, 40]
             }
         ]
     };

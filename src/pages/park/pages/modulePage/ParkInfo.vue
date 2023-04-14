@@ -16,7 +16,9 @@
         </div>
         <!-- 园区面积 -->
         <div class="park-area_info">
-            <borderBox title="园区面积信息统计"></borderBox>
+            <borderBox title="园区面积信息统计">
+                <parkAreaInfo></parkAreaInfo>
+            </borderBox>
         </div>
 
         <!-- 企业设备管理 button  enterprise-equipment_Administration -->
@@ -31,22 +33,61 @@
 
         <!-- 园区企业信息 -->
         <div class="enterprise-info">
-            <borderBox title="园区企业信息"></borderBox>
+            <borderBox title="园区企业信息">
+                <enterpriseInfo></enterpriseInfo>
+            </borderBox>
         </div>
         <!-- 园区车辆信息  开停车状态 -->
         <div class="car-info">
-            <borderBox title="园区车辆信息"></borderBox>
+            <borderBox title="园区设备开停车">
+                <dv-scroll-board :config="carInfo" />
+            </borderBox>
         </div>
         <!-- 园区物流情况 -->
         <div class="logistics-info">
-            <borderBox title="园区物流情况"></borderBox>
+            <borderBox title="园区物流情况">
+                <dv-scroll-board :config="logisticsInfo" />
+            </borderBox>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import borderBox from "../../../../components/EnergyManagementView.vue";
+import parkAreaInfo from "../../../../components/parkInfo/parkAreaInfo.vue";
 import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
+import enterpriseInfo from "../../../../components/parkInfo/enterpriseInfo.vue";
+
+const carInfo = {
+    header: ['时间', '车位', '停车状态', '所属企业'],
+    data: [
+        ['2021-01-01 08:00', 'ABCD0001', '停止', '行1列3'],
+        ['2021-01-02 09:00', 'ABCD0002', '开启', '行2列3'],
+        ['2021-01-03 10:00', 'ABCD0003', '开启', '行3列3'],
+        ['2021-01-03 10:00', 'ABCD0003', '停止', '行3列3'],
+        ['2021-01-03 10:00', 'ABCD0003', '停车', '行3列3'],
+        ['2021-01-03 10:00', 'ABCD0003', '开启', '行3列3'],
+        ['2021-01-03 10:00', 'ABCD0003', '停车', '行3列3'],
+    ],
+    headerBGC:'none',
+    oddRowBGC:'none',
+    evenRowBGC:'none',
+}
+const logisticsInfo = {
+    header: ['物流ID', '物流企业', '物流状态', '记录'],
+    data: [
+        ['ABCD0001', '企业A', '进货', '2021-01-01 08:00'],
+        ['ABCD0002', '企业A', '出货', '2021-01-02 09:00'],
+        ['ABCD0003', '企业B', '出货', '2021-01-03 10:00'],
+        ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
+        ['ABCD0003', '企业B', '进货', '2021-01-03 10:00'],
+        ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
+        ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
+    ],
+    headerBGC:'none',
+    oddRowBGC:'none',
+    evenRowBGC:'none',
+}
 </script>
 
 <style scoped lang="less">
