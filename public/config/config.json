@@ -1,7 +1,7 @@
 ﻿{
   "map3d": {
     "scene": {
-      "center": { "lat": 36.02333333333333, "lng": 111.8478, "alt": 1333.9, "heading": 359.2, "pitch": -39.5 },
+       "center": { "lat": 36.020720, "lng": 111.843592, "alt": 1000, "heading": 13, "pitch": -37 },
       "scene3DOnly": false,
       "shadows": false,
       "removeDblClick": true,
