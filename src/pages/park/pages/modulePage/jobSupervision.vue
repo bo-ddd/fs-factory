@@ -2,54 +2,55 @@
         <div class="job-supervision">
                 <div class="item"></div>
                 <div class="item">
-                        <dv-border-box-12 class="datav">
+                        <BorderBox12 class="datav">
                                 <div class="datav-head">
                                         厂区特殊作业管理
                                 </div>
                                 <div class="table  datav-content">
-                                        <dv-scroll-board :config="config" style="width:100%;height:100%; " />
+                                        <ScrollBoard :config="config" style="width:100%;height:100%; "></ScrollBoard>
                                 </div>
-                        </dv-border-box-12>
+                        </BorderBox12>
                 </div>
                 <div class="item">
-                        <dv-border-box-12 class="datav">
+                        <BorderBox12 class="datav">
                                 <div class="datav-head">
                                         厂区特殊作业环境监测
                                 </div>
                                 <div class="table  datav-content">
-                                        <dv-scroll-board :config="config1" style="width:100%;height:100%; " />
+                                        <ScrollBoard :config="config1" style="width:100%;height:100%; "></ScrollBoard>
                                 </div>
-                        </dv-border-box-12>
+                        </BorderBox12>
                 </div>
                 <div class="item">
-                        <dv-border-box-12 class="datav">
+                        <BorderBox12 class="datav">
                                 <div class="datav-head">
                                         厂区特殊作业智能告警
                                 </div>
                                 <div class="table  datav-content">
-                                        <dv-scroll-board :config="config2" style="width:100%;height:100%; " />
+                                        <ScrollBoard :config="config2" style="width:100%;height:100%; ">
+                                        </ScrollBoard>
                                 </div>
-                        </dv-border-box-12>
+                        </BorderBox12>
                 </div>
                 <div class="item">
-                        <dv-border-box-12 class="datav">
+                        <BorderBox12 class="datav">
                                 <div class="datav-head">
                                         厂区特殊作业数据可视化
                                 </div>
                                 <div class="table  datav-content">
                                         <QuantityTrend></QuantityTrend>
                                 </div>
-                        </dv-border-box-12>
+                        </BorderBox12>
                 </div>
                 <div class="item">
-                        <dv-border-box-12 class="datav">
+                        <BorderBox12 class="datav">
                                 <div class="datav-head">
                                         厂区特殊作业近期数据存储和备份时间统计
                                 </div>
                                 <div class="table  datav-content">
                                         <DataBackup></DataBackup>
                                 </div>
-                        </dv-border-box-12>
+                        </BorderBox12>
 
                 </div>
 
@@ -57,6 +58,7 @@
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { BorderBox12, ScrollBoard } from '@kjgl77/datav-vue3';
 import QuantityTrend from "../../../../components/jobSupervision/QuantityTrend.vue"
 import DataBackup from "../../../../components/jobSupervision/DataBackup.vue"
 const config = reactive({

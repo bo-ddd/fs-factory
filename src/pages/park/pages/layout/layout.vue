@@ -2,7 +2,7 @@
   <div class="main">
     <!-- 这是layout -->
     <div class="head">
-      <HeadNav defaultTitle="园区信息管理" @success="hh"></HeadNav>
+      <HeadNav @success="hh"></HeadNav>
     </div>
     <div class="router">
       <router-view></router-view>
@@ -15,7 +15,6 @@ import HeadNav from "../../../../components/top-nav/HeadNav.vue"
 import { useRouter } from "vue-router"
 
 const router = useRouter()
-
 const routeInfo = [
   {
     name: "parkInfo",
@@ -23,24 +22,20 @@ const routeInfo = [
     label: {
       name: "园区信息管理"
     }
-    // component: () => import("../pages/modulePage/ParkInfo.vue")
   },
   {
     name: "securityMonitoringManagement",
     path: "/securityMonitoringManagement",
-    // component: () => import("../pages/modulePage/securityMonitoringManagement.vue")
     label: {
       name: "安防监控管理"
     }
   },
   {
-    // 隐患管理
     name: "hiddenTrouble",
     path: "/hiddenTrouble",
     label: {
       name: "风险分区隐患管理"
     }
-    // component: () => import("../pages/modulePage/HiddenTrouble.vue")
   },
   {
     name: "MajorHazard",
@@ -48,7 +43,6 @@ const routeInfo = [
     label: {
       name: "重大危险源管理"
     }
-    // component: () => import("../pages/modulePage/MajorHazard.vue")
   },
   {
     name: "meetEarly",
@@ -56,7 +50,6 @@ const routeInfo = [
     label: {
       name: "报警管理"
     }
-    // component: () => import("../pages/modulePage/MeetEarly.vue")
   },
   {
     name: "jobSupervision",
@@ -64,7 +57,6 @@ const routeInfo = [
     label: {
       name: "特殊作业监管"
     }
-    // component: () => import("../pages/modulePage/jobSupervision.vue")
   },
   {
     name: "vehicleMonitoring",
@@ -72,7 +64,6 @@ const routeInfo = [
     label: {
       name: "卡口管理"
     }
-    // component: () => import("../pages/modulePage/VehicleMonitoring.vue")
   },
   {
     name: "EmergencyManage",
@@ -80,18 +71,16 @@ const routeInfo = [
     label: {
       name: "应急救援管理"
     }
-    // component: () => import("../pages/modulePage/emergencyManage.vue")
   }
 ]
 
 const hh = function (res) {
-  console.log(res)
   const jj = routeInfo.filter((el) => {
     // eslint-disable-next-line eqeqeq
-    return el.label.name == res.title
+    return el.label.name == res.title;
   })
-  console.log(jj[0].name)
-  router.push({ path: jj[0].name })
+  
+  router.push({ path: jj[0].name });
 }
 </script>
 
