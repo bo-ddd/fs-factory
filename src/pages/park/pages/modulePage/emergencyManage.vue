@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BorderBox10 } from '@kjgl77/datav-vue3';
 import { onMounted } from "vue"
 import * as echarts from "echarts"
 import history from "../../../../components/table/history.vue"
@@ -57,8 +58,7 @@ const init = function () {
       trigger: "item"
     },
     legend: {
-      top: "5%",
-      left: "center",
+       left: "center",
       textStyle: {
         color: "#fff",
         fontSize: "12"
@@ -68,7 +68,7 @@ const init = function () {
       {
         name: "应急救援队伍统计",
         type: "pie",
-        radius: ["40%", "70%"],
+        radius: ["50%", "70%"],
         avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 10,
@@ -116,12 +116,16 @@ const articleInit = function () {
       fontSize: "12"
     },
     legend: {
-      top: "5%",
       left: "center",
       textStyle: {
         color: "#fff",
         fontSize: "12"
       }
+    },
+    grid:{
+      top:'3%',
+      bottom:'3%',
+      containLabel:true
     },
     xAxis: {
       type: "category",
@@ -154,7 +158,6 @@ const proruptionInit = function () {
       trigger: "item"
     },
     legend: {
-      top: "5%",
       left: "center",
       textStyle: {
         color: "#fff",
@@ -165,7 +168,7 @@ const proruptionInit = function () {
       {
         name: "突发事件占比统计",
         type: "pie",
-        radius: ["40%", "70%"],
+        radius: ["50%", "70%"],
         avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 10,
@@ -212,50 +215,47 @@ onMounted(() => {
 <template>
   <div class="home-view">
     <div class="troops-box">
-      <dv-border-box10 style="width: 100%;height: 100%;">
-        <h2>应急救援队伍统计</h2>
-        <div class="troops" style="width: 100%;height:  calc(100% - 5rem);"></div>
-      </dv-border-box10>
+      <BorderBox10 style="width: 100%;height: 100%;">
+        <div class="grid-title">应急救援队伍统计</div>
+        <div class="troops" style="width: 100%;height:  calc(100% - 4rem);"></div>
+      </BorderBox10>
     </div>
     <div class="article-box">
-      <dv-border-box10>
-        <h2>应急物资统计</h2>
-        <div class="article" style="width: 100%;height:  calc(100% - 5rem);"></div>
-      </dv-border-box10>
+      <BorderBox10>
+        <div class="grid-title">应急物资统计</div>
+        <div class="article" style="width: 100%;height:  calc(100% - 4rem);"></div>
+      </BorderBox10>
     </div>
     <div class="left3">
-      <dv-border-box10>
-        <h2>历史应急演练记录表</h2>
+      <BorderBox10>
+        <div class="grid-title">历史应急演练记录表</div>
         <history></history>
-      </dv-border-box10>
+      </BorderBox10>
     </div>
     <div class="map" id="map"></div>
     <div class="history">
-      <dv-border-box10>
-        <h2>应急事件处理情况</h2>
+      <BorderBox10>
+        <div class="grid-title">应急事件处理情况</div>
         <shape></shape>
-      </dv-border-box10>
+      </BorderBox10>
     </div>
     <div class="proruption-box">
-      <dv-border-box10>
-        <h2>突发事件占比统计</h2>
-        <div class="proruption" style="width: 100%;height:  calc(100% - 5rem);"></div>
-      </dv-border-box10>
+      <BorderBox10>
+        <div class="grid-title">突发事件占比统计</div> 
+        <div class="proruption" style="width: 100%;height:  calc(100% - 4rem);"></div>
+      </BorderBox10>
     </div>
     <div class="right3">
-      <dv-border-box10>
-        <h2>值班人员列表</h2>
+      <BorderBox10>
+        <div class="grid-title">值班人员列表</div>
         <duty></duty>
-      </dv-border-box10>
+      </BorderBox10>
     </div>
   </div>
 </template>
 
 <style scoped lang="less">
-h2 {
-  font-size: 3rem;
-  color: #fff;
-}
+
 .home-view {
   height: 100vh;
   padding: 6rem 1rem 1rem 1rem;
@@ -301,5 +301,10 @@ h2 {
   .right3 {
     grid-area: right3;
   }
+}
+.grid-title{
+  font-size: 2rem;
+  height: 4rem;
+  line-height: 4rem;
 }
 </style>

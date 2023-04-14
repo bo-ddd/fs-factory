@@ -33,12 +33,6 @@ const routes: RouteRecordRaw[] = [
             },
             {
                 // 人/车/物流监控
-                name: "locationMonitor",
-                path: "/locationMonitor",
-                component: () => import("../pages/modulePage/LocationMonitor.vue")
-            },
-            {
-                // 人/车/物流监控
                 name: "vehicleMonitoring",
                 path: "/vehicleMonitoring",
                 component: () => import("../pages/modulePage/VehicleMonitoring.vue")
