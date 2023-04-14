@@ -56,7 +56,7 @@ const initMars3d = (option: any) => {
   }
 
   // 开场动画
-  map.openFlyAnimation()
+  // map.openFlyAnimation()
 
   // 针对不同终端的优化配置
   if (mars3d.Util.isPCBroswer()) {
