@@ -10,30 +10,39 @@ const init = function () {
   const myChart = echarts.init(chartDom)
 
   const option: EChartsOption = {
-    textStyle:{
-        color:"#fff"
+    legend: {
+      textStyle: {
+        color: "#fff"
+      }
+      
     },
-    grid: {
-        top:"10%",
-        bottom:'10%',
-       
-        containLabel:true,
-    },
-    xAxis: {
-      type: "category",
-      data: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
-    
-    },
-    yAxis: {
-      type: "value"
+    toolbox: {
+      show: true
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: "bar"
+        name: "Nightingale Chart",
+        type: "pie",
+        radius: [30, 80],
+        center: ["50%", "50%"],
+        roseType: "area",
+        itemStyle: {
+          borderRadius: 8
+        },
+        data: [
+          { value: 40, name: "厂区A" },
+          { value: 38, name: "厂区B" },
+          { value: 32, name: "厂区C" },
+          { value: 30, name: "脱硫塔" },
+          { value: 23, name: "罐区" }
+        ],
+        label: {
+          color: "#fff"
+        }
       }
     ]
   }
+
   option && myChart.setOption(option)
 }
 onMounted(() => {
