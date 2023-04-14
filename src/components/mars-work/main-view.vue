@@ -60,9 +60,8 @@ const loaded = ref(false)
 const marsOnload = (map: any) => {
   console.log("map构造完成", map)
   mapInstance = map
-  emit("mapLoaded", mapInstance)
   loaded.value = true
-  console.log("输出", mapInstance)
+  emit("mapLoaded", mapInstance)
 }
 </script>
 
