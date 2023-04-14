@@ -5,7 +5,7 @@
       <div class="security-risk">
         <dv-border-box-11 title="安全系数评估">
           <div class="box-item flex-column">
-            <dv-capsule-chart :config="config" class="safeRate"/>
+            <dv-capsule-chart :config="config" class="safeRate" />
           </div>
         </dv-border-box-11>
       </div>
@@ -35,7 +35,7 @@
         <dv-border-box-11 title="隐患排查治理">
           <div class="box-item flex-center">
             <div>
-              <dv-scroll-board :config="row" style="width: 55rem; height: 28rem" />
+              <dv-scroll-board :config="row" style="width: 55rem; height: 90%" />
             </div>
           </div>
         </dv-border-box-11>
@@ -53,8 +53,8 @@
 <script setup lang="ts">
 import { reactive } from "vue"
 const config = reactive({
-//   radius: "50%",
-//   activeRadius: "60%",
+  //   radius: "50%",
+  //   activeRadius: "60%",
   data: [
     {
       name: "生产设备",
@@ -86,13 +86,12 @@ const config = reactive({
     },
   ],
   colors: ['#e062ae', '#fb7293', '#e690d1', '#58a6a8', '#99d9c9', '#32c5e5', '#96bfff'],
-  unit:'百分比',
-  showValue:true
-//   digitalFlopStyle: {
-//     fontSize: 20
-//   },
-//   showOriginValue: true,
-//   lineWidth: 10
+  showValue: true
+  //   digitalFlopStyle: {
+  //     fontSize: 20
+  //   },
+  //   showOriginValue: true,
+  //   lineWidth: 10
 })
 const cake = reactive({
   data: [
@@ -161,7 +160,9 @@ const row = reactive({
   ],
   index: true,
   columnWidth: [50],
-  align: ["center", "center", "center", "center"]
+  align: ["center", "center", "center", "center"],
+  oddRowBGC:'none',
+  evenRowBGC:'none'
 })
 const enviroment = reactive({
   value: 66,
@@ -187,12 +188,15 @@ const enviroment = reactive({
     "security-risk  middle  hidden-treatment"
     "operation-process  middle  hidden-type";
 }
+
 .title {
   grid-area: title;
 }
+
 .bottom {
   height: 80%;
 }
+
 .mt-2 {
   margin-top: 2rem;
 }
@@ -200,11 +204,12 @@ const enviroment = reactive({
 .mt-6 {
   margin-top: 6rem;
 }
-.flex-center{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
+.flex-center {
+  display: flex;
+  justify-content: center;
 }
+
 .mb-2 {
   margin-bottom: 2rem;
 }
@@ -216,26 +221,36 @@ const enviroment = reactive({
 .operation-process {
   grid-area: operation-process;
   box-sizing: border-box;
+
   .left-bottom {
     height: 100%;
   }
 }
+
 .box-item {
   height: 100%;
   padding: 7rem 1rem 0 1rem;
   box-sizing: border-box;
 }
+
 .flex-column {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+
+.safeRate {
+  width: 90%;
+  height: 80%;
+}
+
 .left-top {
   height: 30%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .hidden-treatment {
   grid-area: hidden-treatment;
   box-sizing: border-box;
@@ -313,11 +328,13 @@ const enviroment = reactive({
   width: 100%;
   height: 40vh;
 }
+
 :deep(.dv-full-screen-container) {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
+
 :deep(.dv-border-box-9) {
   width: 100%;
   height: 100vh;
@@ -345,5 +362,4 @@ const enviroment = reactive({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-</style>
+}</style>
