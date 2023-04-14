@@ -34,7 +34,7 @@
                 <div class="item">
                         <dv-border-box-12 class="datav">
                                 <div class="datav-head">
-                                        厂区特殊作业数据趋势
+                                        厂区特殊作业数据可视化
                                 </div>
                                 <div class="table  datav-content">
                                         <QuantityTrend></QuantityTrend>
@@ -44,10 +44,10 @@
                 <div class="item">
                         <dv-border-box-12 class="datav">
                                 <div class="datav-head">
-                                        厂区特殊作业数据存储和备份
+                                        厂区特殊作业近期数据存储和备份时间统计
                                 </div>
                                 <div class="table  datav-content">
-                                        <dv-scroll-board :config="config3" style="width:100%;height:100%; " />
+                                        <DataBackup></DataBackup>
                                 </div>
                         </dv-border-box-12>
 
@@ -58,8 +58,9 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import QuantityTrend from "../../../../components/jobSupervision/QuantityTrend.vue"
+import DataBackup from "../../../../components/jobSupervision/DataBackup.vue"
 const config = reactive({
-        header: ['作业名称', '特殊作业描述', '作业人员', '作业设备ID'],
+        header: ['作业名称', '作业描述', '作业人员', '作业设备'],
         data: [
                 ['高空作业', '需使用护具和防护绳', '张三', '吊车'],
                 ['引爆化学品', '需要专业技能和设备配合', '李四', '防护服'],
@@ -75,13 +76,13 @@ const config = reactive({
         align: ['center', 'center', 'center', 'center']
 })
 const config1 = reactive({
-        header: ['作业场所ID', '温度', '湿度', '噪声', '监测时间'],
+        header: ['作业场所', '温度', '湿度', '噪声', '监测时间'],
         data: [
-                [1, 25.6, 60.2, 68.5, '2021-06-01 12:30:00'],
-                [1, 26.5, 65.4, 70.2, '2021-06-01 14:30:00'],
-                [2, 24.8, 57.3, 65.8, '2021-06-02 15:00:00'],
-                [3, 25.8, 57.3, 60.0, '2021-06-03 11:00:00'],
-                [4, 24.8, 57.3, 85.0, '2021-06-05 09:00:00']
+                ['车间A', 25.6, 60.2, 68.5, '2021-06-01 12:30:00'],
+                ['车间A', 26.5, 65.4, 70.2, '2021-06-01 14:30:00'],
+                ['车间B', 24.8, 60.3, 65.8, '2021-06-02 15:00:00'],
+                ['车间C', 25.8, 55.5, 60.0, '2021-06-03 11:00:00'],
+                ['车间D', 24.8, 59.1, 85.0, '2021-06-05 09:00:00']
         ],
         waitTime: 1000,
         rowNum: 4,
@@ -107,31 +108,31 @@ const config2 = reactive({
         evenRowBGC: 'none',
         align: ['center', 'center', 'center', 'center']
 })
-const config3 = reactive({
-        header: ['备份类型', '备份位置', '备份时间'],
-        data: [
-                ['日常备份', '/data/backup', '2021-03-04'],
-                ['日常备份', '/data/backup', '2021-03-14'],
-                ['日常备份', '/data/backup', '2021-04-01'],
-                ['月度备份', '/data/backup', '2021-05-01'],
-                ['日常备份', '/data/backup', '2021-05-04'],
-                ['日常备份', '/data/backup', '2021-06-04'],
-                ['月度备份', '/data/backup', '2021-07-01'],
-                ['年度备份', '/data/backup', '2021-12-01'],
+// const config3 = reactive({
+//         header: ['备份类型', '备份位置', '备份时间'],
+//         data: [
+//                 ['日常备份', '/data/backup', '2021-03-04'],
+//                 ['日常备份', '/data/backup', '2021-03-14'],
+//                 ['日常备份', '/data/backup', '2021-04-01'],
+//                 ['月度备份', '/data/backup', '2021-05-01'],
+//                 ['日常备份', '/data/backup', '2021-05-04'],
+//                 ['日常备份', '/data/backup', '2021-06-04'],
+//                 ['月度备份', '/data/backup', '2021-07-01'],
+//                 ['年度备份', '/data/backup', '2021-12-01'],
 
-        ],
-        waitTime: 1000,
-        rowNum: 4,
-        headerBGC: 'none',
-        oddRowBGC: 'none',
-        evenRowBGC: 'none',
-        align: ['center', 'center', 'center']
-})
+//         ],
+//         waitTime: 1000,
+//         rowNum: 4,
+//         headerBGC: 'none',
+//         oddRowBGC: 'none',
+//         evenRowBGC: 'none',
+//         align: ['center', 'center', 'center']
+// })
 
 </script>
 <style scoped lang="scss">
 .job-supervision {
-        background: url("../../assets/images/bg.gif");
+        background: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif");
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;

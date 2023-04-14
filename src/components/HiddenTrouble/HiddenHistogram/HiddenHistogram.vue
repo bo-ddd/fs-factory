@@ -12,7 +12,7 @@ const init = function () {
   const option: EChartsOption = {
     legend: {
       textStyle: {
-        color: "#fff"
+        color: "#fff",
       }
       
     },
@@ -23,7 +23,7 @@ const init = function () {
       {
         name: "Nightingale Chart",
         type: "pie",
-        radius: [30, 80],
+        radius: [50, 200],
         center: ["50%", "50%"],
         roseType: "area",
         itemStyle: {
@@ -37,7 +37,8 @@ const init = function () {
           { value: 23, name: "罐区" }
         ],
         label: {
-          color: "#fff"
+          color: "#fff",
+          fontSize:15
         }
       }
     ]
