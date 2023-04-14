@@ -11,6 +11,7 @@ export let map // mars3d.Map三维地图对象
 // 需要覆盖config.json中地图属性参数（当前示例框架中自动处理合并）
 export const mapOptions = {
   scene: {
+    // fxaa: true,
     center: { lat: 31.686288, lng: 117.229619, alt: 11333.9, heading: 359.2, pitch: -39.5 }
   }
 }
@@ -47,12 +48,12 @@ const position = Cesium.Cartesian3.fromDegrees(116.39, 39.9, 0);
 function addDemoGraphic3(graphicLayer) {
   const graphicCar = new mars3d.graphic.ModelEntity({
     name: "汽车",
-    position: [117.159619, 31.796288, 10],
+    position: [111.84, 36.03333333333333, 10],
     style: {
       url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
-      scale: 0.1,
-      heading: 0,
-      minimumPixelSize: 1,
+      scale: 10,
+      heading: 30,
+      minimumPixelSize: 100,
       label: {
         text: "皖A12345",
         font_size: 18,
@@ -76,7 +77,7 @@ function addDemoGraphic3(graphicLayer) {
 
   // 移动模型
   graphicCar.moveTo({
-    position: [117.159619, 31.996288, 10],
+    position: [111.84, 36.08333333333333, 10],
     time: 4000 // 移动的时长(单位 秒)
   })
 }
