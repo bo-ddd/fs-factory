@@ -17,7 +17,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, toRefs, defineEmits } from "vue"
+import { Ref, ref, toRefs, defineEmits, reactive } from "vue"
 
 const props = defineProps<{
   defaultTitle?: string
@@ -27,7 +27,7 @@ const { defaultTitle } = toRefs(props)
 const emits = defineEmits(["success"])
 
 const timechuo: Ref<string> = ref("")
-const tabledate: any = [
+const tabledate: any = reactive([
   {
     title: "园区信息管理",
     id: 1,
@@ -68,7 +68,7 @@ const tabledate: any = [
     id: 8,
     isActive: false
   }
-]
+])
 setInterval(() => {
   const date: any = new Date()
   const Y: any = date.getFullYear() + " - "
@@ -87,12 +87,10 @@ const nav = (item: any) => {
   })
   item.isActive = !item.isActive
 }
-// console.log(defaultTitle);
-// eslint-disable-next-line eqeqeq
-if (defaultTitle.value != "") {
+
+if (defaultTitle.value !== "") {
   tabledate.forEach((i: any) => {
-    // eslint-disable-next-line eqeqeq
-    if (i.title == defaultTitle.value) {
+    if (i.title === defaultTitle.value) {
       nav(i)
     }
   })
