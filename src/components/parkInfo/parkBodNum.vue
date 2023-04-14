@@ -141,13 +141,13 @@ const parkBod = function () {
             orient: 'vertical',
             left: 'right',
             top: 'center',
-            feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: { show: true, type: ['line', 'bar', 'stack'] },
-                restore: { show: true },
-                saveAsImage: { show: true }
-            },
+            // feature: {
+            //     mark: { show: true },
+            //     dataView: { show: true, readOnly: false },
+            //     magicType: { show: true, type: ['line', 'bar', 'stack'] },
+            //     restore: { show: true },
+            //     saveAsImage: { show: true }
+            // },
             iconStyle:{
                 color:'#fff',
             }
@@ -190,7 +190,7 @@ const parkBod = function () {
                 emphasis: {
                     focus: 'series'
                 },
-                data: [320, 332, 301, 334, 390],
+                data: [370, 414, 392, 388, 420],
             },
             {
                 name: '园区内从业人员数',
