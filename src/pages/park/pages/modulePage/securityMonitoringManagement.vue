@@ -1,11 +1,11 @@
 <template>
     <div class="video_page">
-        <video-page v-if="lxsData.type == 1" :lxsData="lxsData" />
+        <video-page :lxsData="sss" />
     </div>
 </template>
 
 <script setup lang="ts">
-const lxsData = {
+let sss: any = {
     type: 1,
 }
 </script>
@@ -16,7 +16,7 @@ const lxsData = {
     height: 100vh;
     box-sizing: border-box;
     padding-top: 6rem;
-    background-image: url('../../assets/images/bg.gif');
+    background-image: url('https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif');
     background-repeat: no-repeat;
     background-size: cover;
 }
