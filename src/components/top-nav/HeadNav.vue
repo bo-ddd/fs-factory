@@ -3,7 +3,7 @@
     <div class="top-nav">
       <div class="LOGO">
         <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt="" />
-        <div class="textshadow">佛山智慧化工</div>
+        <div class="textshadow">浮山智慧化工</div>
       </div>
       <div class="nav-list">
         <div class="nav-font" @click="nav(item)" v-for="(item, i) in tabledate" :key="i">
@@ -26,32 +26,32 @@ const tabledate: any = [
     isActive: true
   },
   {
-    title: '资产管理',
+    title: '风险分区隐患管理',
     id: 2,
     isActive: false
   },
   {
-    title: '安防监控管理',
+    title: '重大危险源管理',
     id: 3,
     isActive: false
   },
   {
-    title: '能源管理',
+    title: '报警管理',
     id: 4,
     isActive: false
   },
   {
-    title: '人员管理',
+    title: '特殊作业监管',
     id: 5,
     isActive: false
   },
   {
-    title: '统计分析',
+    title: '卡口管理',
     id: 6,
     isActive: false
   },
   {
-    title: '设备管理',
+    title: '应急救援管理',
     id: 7,
     isActive: false
   },
@@ -108,7 +108,7 @@ const nav = (item: any) => {
     align-items: center;
     gap: 71px;
     color: #fff;
-    width: 95rem;
+    // width: 95rem;
 
     .nav-font {
       font-size: 1.1rem;

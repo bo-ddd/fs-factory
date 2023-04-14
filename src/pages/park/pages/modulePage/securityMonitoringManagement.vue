@@ -85,16 +85,20 @@
             <div class="item">
                 <lxsBox class="lxsBox" :lxsBoxData="center2Data">
                     <div class="video_list">
-                        <video id='lxs_myvideo2' class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
-                            <source
-                                src='https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https'
-                                style="width: 100%; height: 100%;" type="application/x-mpegURL">
-                        </video>
-                        <video id="lxs_myvideo3" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
-                            <source
-                                src='https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https'
-                                style="width: 100%; height: 100%;" type="application/x-mpegURL">
-                        </video>
+                        <div class="video_item video_left">
+                            <video id='lxs_myvideo2' class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
+                                <source
+                                    src='https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https'
+                                    style="width: 100%; height: 100%;" type="application/x-mpegURL">
+                            </video>
+                        </div>
+                        <div class="video_item video_right">
+                            <video id="lxs_myvideo3" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
+                                <source
+                                    src='https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https'
+                                    style="width: 100%; height: 100%;" type="application/x-mpegURL">
+                            </video>
+                        </div>
                     </div>
                 </lxsBox>
             </div>
@@ -749,15 +753,20 @@ export default {
 
 .home .item:nth-of-type(7) {
     grid-area: center2;
+    overflow: hidden;
 
     .video_list {
-        display: flex;
-        width: 100%;
+        width: 100% !important;
         height: 100% !important;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
+        overflow: hidden !important;
+        display: flex;
+        justify-content: space-between;
 
+        .video_item {
+            width: 50% !important; 
+            height: 100% !important;
+        }
+    }
 }
 
 .home .item:nth-of-type(8) {
