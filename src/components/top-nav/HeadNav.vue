@@ -113,7 +113,7 @@ if (defaultTitle.value != "") {
     height: 3.5rem;
     display: flex;
     align-items: center;
-    // gap: 2rem;
+    gap:0 2rem;
     // margin-left: 4.4rem;
 
     .textshadow {
