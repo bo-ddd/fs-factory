@@ -5,7 +5,7 @@
       <div class="security-risk">
         <BorderBox11 title="安全系数评估">
           <div class="box-item flex-column">
-            <dv-capsule-chart :config="config" class="safeRate" />
+            <CapsuleChart :config="config" class="safeRate" />
           </div>
         </BorderBox11>
       </div>
@@ -35,7 +35,7 @@
         <BorderBox11 title="隐患排查治理">
           <div class="box-item flex-center">
             <div>
-              <dv-scroll-board :config="row" style="width: 55rem; height: 90%" />
+              <ScrollBoard :config="row" style="width: 55rem; height: 90%" />
             </div>
           </div>
         </BorderBox11>
@@ -43,7 +43,7 @@
       <div class="hidden-type">
         <BorderBox11 title="隐患类型">
           <div class="right flex right-bottom">
-            <dv-conical-column-chart :config="column" style="width: 50rem; height: 30rem" />
+            <ConicalColumnChart :config="column" style="width: 50rem; height: 30rem" />
           </div>
         </BorderBox11>
       </div>
@@ -52,8 +52,9 @@
 </template>
 <script setup lang="ts">
 import { reactive } from "vue"
-import { BorderBox11 } from '@kjgl77/datav-vue3'
-
+import { BorderBox11, ConicalColumnChart, ScrollBoard, CapsuleChart } from '@kjgl77/datav-vue3'
+import LineChart from '../../../../components/HiddenTrouble/HiddenLineChart/HiddenLineChart.vue'
+import Histogram from '../../../../components/HiddenTrouble/HiddenHistogram/HiddenHistogram.vue'
 const config = reactive({
   //   radius: "50%",
   //   activeRadius: "60%",
