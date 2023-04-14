@@ -1,90 +1,151 @@
 <template>
-  <div class="login flex_al_ju-center">
-    <div id="animationTab" class="login_form animation1" @webkitAnimationEnd="login_animation()">
-      <el-form class="form" :model="form" label-width="120px">
-        <el-form-item label="用户名">
-          <el-input v-model="form.name" placeholder="sadsad" />
-        </el-form-item>
-        <el-form-item label="密码">
-          <el-input v-model="form.pswd" />
-        </el-form-item>
-
-        <el-form-item>
-          <el-button type="primary" @click="onSubmit">登录</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
-  </div>
+  <div class="main">
+      
+      <dv-border-box-1 :color="['#245970','bule']">
+          <div class="title">
+              <div class=" fs-3 cl-white pd-2">浮山双新园区智能管控</div>
+              <dv-decoration-5 class="dv-5" dur="2"  style="width:80rem;height:10rem;" />
+          </div>
+          <div class="box-login">
+              <dv-border-box-13 class="dv-login">
+                  <dv-border-box-8 :reverse="true">
+                      <div>
+                          <div class="login ">登录</div>
+                          <dv-decoration-8 class="dv-8" style="width:30rem;height:5rem;" />
+                      </div>
+                      <div class="box-inp">
+                          
+                          <div class="box">
+                              <div class="mr-2 cl-white">账户</div>
+                              <input class="inp" type="text" value="Admin">
+                          </div>
+                          <div class="box">
+                              <div class="mr-2 cl-white">密码</div>
+                              <input class="inp" type="password" value="">
+                          </div>
+                          
+                      </div>
+                      <div class="btn" @click="toPage()"><dv-decoration-9
+                      style="width:10rem;height:10rem;">进入</dv-decoration-9></div>
+                  </dv-border-box-8>
+          </dv-border-box-13>
+      </div>
+      
+      
+  </dv-border-box-1>
+</div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-// 登录的from表单加载动画
-function login_animation(): void {
-  const dom: any = document.getElementById('animationTab');
-  dom.classList.remove('animation1');
-  dom.classList.add('animation2');
-}
-
-const form = reactive({
-  name: '',
-  pswd: '',
-})
-
-const onSubmit = () => {
-  console.log('submit!')
-}
+const toPage = function() {
+  router.push('layout')
+  }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
+.box {
+width: 40rem;
+font-size: 2rem;
+display: flex;
+align-items: center;
+}
+.title{
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.dv-5{
+position: absolute;
+top: 20%;
+}
+.main {
+width: 100vw;
+height: 100vh;
+background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/industry/images/xk2.png");
+background-size: 100% 100%;
+background-repeat: no-repeat;
+color: #2e77f8;
+
+}
+.mt-1{
+margin-top: 1rem;
+}
+.mr-2 {
+margin-right: 2rem;
+}
+
+.box-login {
+width: 60rem;
+height: 45rem;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.box-inp {
+height: 20rem;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+position: absolute;
+top: 20%;
+left: 16%;
+}
+
+.dv-box {
+width: 100%;
+position: relative;
+}
+
+.dv-login {
+box-sizing: border-box;
+padding: 2rem;
+}
+
 .login {
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../../assets/images/bgd-login.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  .login_form {
-    width: 50rem;
-    height: 30rem;
-    border: .2rem solid #ccc;
-    border-radius: 1rem;
-    overflow: hidden;
-  }
+display: flex;
+justify-content: center;
+color: white;
+font-size: 3rem;
+position: relative;
+padding-top: 1rem;
 }
 
-.animation1 {
-  animation: slitherDynamicBorder .5s linear;
+.dv-8 {
+position: absolute;
+top: 8%;
+left: 22%;
 }
-
-.animation2 {
-  animation: dynamicBorder 1s infinite linear;
+.cl-white{
+color: white;
 }
-
-@keyframes slitherDynamicBorder {
-  0% {
-    height: 0;
-    border: .2rem solid #7700ff;
-  }
-
-  40% {
-    border: .2rem solid #874ed1;
-  }
-
-  60% {
-    border: .2rem solid #003380;
-  }
-
-  100% {
-    height: 30rem;
-    border: .2rem solid #031cff;
-  }
+.fs-3{
+font-size: 3rem;
 }
-
-.flex_al_ju-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.inp {
+font-size: 2rem;
+text-indent: 2em;
+color: white;
+width: 30rem;
+height: 4rem;
+background: none;
+outline: none;
+border-bottom: 1px solid #ccc;
+}
+.pd-2{
+padding: 2rem;
+}
+.btn {
+color: white;
+font-size: 2rem;
+position: absolute;
+top: 70%;
+left: 41.5%;
 }
 </style>

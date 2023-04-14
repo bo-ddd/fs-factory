@@ -52,7 +52,7 @@
 
                         <div class="center">
                             <div class="round warning-level">
-                                <img class="icon-unusual" src="../../../park/assets/images/icon-unusual-blue.png" alt="">
+                                <img class="icon-unusual" src="../../assets/images/icon-unusual-blue.png" alt="">
                                 <div>低风险</div>
                             </div>
                             <div class="warning-level-title title">
@@ -62,7 +62,7 @@
 
                         <div class="center">
                             <div class="round commitment">
-                                <img class="icon-unusual" src="../../../park/assets/images/icon-unusual-red.png" alt="">
+                                <img class="icon-unusual" src="../../assets/images/icon-unusual-red.png" alt="">
                                 <div>高风险</div>
                             </div>
                             <div class="commitment-title title">

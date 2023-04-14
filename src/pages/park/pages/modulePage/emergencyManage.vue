@@ -1,5 +1,305 @@
+<script setup lang="ts">
+import { onMounted } from "vue"
+import * as echarts from "echarts"
+import history from "../../../../components/table/history.vue"
+import shape from "../../../../components/table/shape.vue"
+import duty from "../../../../components/table/duty.vue"
+import AMapLoader from "@amap/amap-jsapi-loader"
+
+const aMap = () => {
+  return AMapLoader.load({
+    key: "9a08b1085292817f6ca0f8aede5e1e44", // 申请好的Web端开发者Key，首次调用 load 时必填
+    version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+    plugins: ["AMap.DistrictSearch", "AMap.Weather", "AMap.Geocoder", "AMap.Marker"],
+    Loca: {
+      // 是否加载 Loca， 缺省不加载
+      version: "2.0.0" // Loca 版本，缺省 1.3.2
+    }
+  })
+}
+
+async function mapInit() {
+  await aMap()
+    .then((AMap) => {
+      const map = new AMap.Map("map", {
+        center: [111.8478, 36.02333333333333],
+        zoom: 12.2,
+        pitch: 40,
+        mapStyle: "amap://styles/blue",
+        viewMode: "3D",
+        showMarker: true,
+        showCircle: true,
+        panToLocation: true,
+        zoomToAccuracy: true
+      })
+      const markerContent =
+        "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
+      const marker = new AMap.Marker({
+        position: [111.8478, 36.02333333333333],
+        // 将 html 传给 content
+        content: markerContent,
+        // 以 icon 的 [center bottom] 为原点
+        offset: new AMap.Pixel(-13, -30)
+      })
+      map.add(marker)
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+}
+
+const init = function () {
+  const charDom = document.getElementsByClassName("troops")[0] as HTMLElement
+  const myChart = echarts.init(charDom)
+
+  const option: echarts.EChartsOption = {
+    tooltip: {
+      trigger: "item"
+    },
+    legend: {
+      top: "5%",
+      left: "center",
+      textStyle: {
+        color: "#fff",
+        fontSize: "12"
+      }
+    },
+    series: [
+      {
+        name: "应急救援队伍统计",
+        type: "pie",
+        radius: ["40%", "70%"],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: "#fff",
+          borderWidth: 2
+        },
+        label: {
+          show: false,
+          position: "center"
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 16,
+            fontWeight: "bold"
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 10, name: "搜索" },
+          { value: 14, name: "救援" },
+          { value: 8, name: "医疗" },
+          { value: 6, name: "技术人员" }
+        ]
+      }
+    ]
+  }
+  option && myChart.setOption(option)
+  window.addEventListener("resize", function () {
+    myChart.resize()
+  })
+}
+const articleInit = function () {
+  const charDom2 = document.getElementsByClassName("article")[0] as HTMLElement
+  const myChart2 = echarts.init(charDom2)
+
+  const option2: echarts.EChartsOption = {
+    tooltip: {
+      trigger: "item"
+    },
+    textStyle: {
+      color: "#fff",
+      fontSize: "12"
+    },
+    legend: {
+      top: "5%",
+      left: "center",
+      textStyle: {
+        color: "#fff",
+        fontSize: "12"
+      }
+    },
+    xAxis: {
+      type: "category",
+      axisLabel: {
+        rotate: 40
+      },
+      data: ["应急灯具", "空气呼吸器", "避难衣", "应急输液器", "发电机", "燃气灶", "水桶"]
+    },
+    yAxis: {
+      type: "value"
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: "bar"
+      }
+    ]
+  }
+  option2 && myChart2.setOption(option2)
+  window.addEventListener("resize", function () {
+    myChart2.resize()
+  })
+}
+const proruptionInit = function () {
+  const charDom3 = document.getElementsByClassName("proruption")[0] as HTMLElement
+  const myChart3 = echarts.init(charDom3)
+
+  const option3: echarts.EChartsOption = {
+    tooltip: {
+      trigger: "item"
+    },
+    legend: {
+      top: "5%",
+      left: "center",
+      textStyle: {
+        color: "#fff",
+        fontSize: "12"
+      }
+    },
+    series: [
+      {
+        name: "突发事件占比统计",
+        type: "pie",
+        radius: ["40%", "70%"],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: "#fff",
+          borderWidth: 2
+        },
+        label: {
+          show: false,
+          position: "center"
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 16,
+            fontWeight: "bold"
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 20, name: "罢工" },
+          { value: 14, name: "自然灾害" },
+          { value: 8, name: "化学药品泄露" },
+          { value: 6, name: "设备故障" }
+        ]
+      }
+    ]
+  }
+  option3 && myChart3.setOption(option3)
+  window.addEventListener("resize", function () {
+    myChart3.resize()
+  })
+}
+
+onMounted(() => {
+  init()
+  articleInit()
+  proruptionInit()
+  mapInit()
+})
+</script>
+
 <template>
-<div>
-        emergencyManage
-</div>
+  <div class="home-view">
+    <div class="troops-box">
+      <dv-border-box10 style="width: 100%;height: 100%;">
+        <h2>应急救援队伍统计</h2>
+        <div class="troops" style="width: 100%;height:  calc(100% - 5rem);"></div>
+      </dv-border-box10>
+    </div>
+    <div class="article-box">
+      <dv-border-box10>
+        <h2>应急物资统计</h2>
+        <div class="article" style="width: 100%;height:  calc(100% - 5rem);"></div>
+      </dv-border-box10>
+    </div>
+    <div class="left3">
+      <dv-border-box10>
+        <h2>历史应急演练记录表</h2>
+        <history></history>
+      </dv-border-box10>
+    </div>
+    <div class="map" id="map"></div>
+    <div class="history">
+      <dv-border-box10>
+        <h2>应急事件处理情况</h2>
+        <shape></shape>
+      </dv-border-box10>
+    </div>
+    <div class="proruption-box">
+      <dv-border-box10>
+        <h2>突发事件占比统计</h2>
+        <div class="proruption" style="width: 100%;height:  calc(100% - 5rem);"></div>
+      </dv-border-box10>
+    </div>
+    <div class="right3">
+      <dv-border-box10>
+        <h2>值班人员列表</h2>
+        <duty></duty>
+      </dv-border-box10>
+    </div>
+  </div>
 </template>
+
+<style scoped lang="less">
+h2 {
+  font-size: 3rem;
+  color: #fff;
+}
+.home-view {
+  height: 100vh;
+  padding: 6rem 1rem 1rem 1rem;
+  box-sizing: border-box;
+  background: url(https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif) no-repeat;
+  background-size: cover;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "left1 main right1"
+    "left2 main right2"
+    "left3 main right3";
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+
+  .troops-box {
+    grid-area: left1;
+  }
+
+  .article-box {
+    grid-area: left2;
+  }
+
+  .left3 {
+    grid-area: left3;
+  }
+
+  .map {
+    grid-area: main;
+  }
+
+  .history {
+    grid-area: right1;
+  }
+
+  .proruption-box {
+    grid-area: right2;
+  }
+
+  .right3 {
+    grid-area: right3;
+  }
+}
+</style>

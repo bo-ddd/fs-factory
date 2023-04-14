@@ -35,6 +35,7 @@ module.exports = {
     "key-spacing": "off", //key前需要空格
     "comma-dangle": "off",//最后一项不能加逗号
     "semi-spacing": "off",
+    "eol-last":"off",
 
     "padded-blocks": "off", // 块内行首行尾是否空行
     "global-require": "off", // require 必须在全局作用域下
