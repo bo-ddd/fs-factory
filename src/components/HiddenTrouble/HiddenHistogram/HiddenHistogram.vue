@@ -23,14 +23,14 @@ const init = function () {
       {
         name: "Nightingale Chart",
         type: "pie",
-        radius: [50, 200],
+        radius: [50, 150],
         center: ["50%", "50%"],
         roseType: "area",
         itemStyle: {
           borderRadius: 8
         },
         data: [
-          { value: 40, name: "厂区A" },
+          { value: 40, name: "山西恒锦盛科技有限公司" },
           { value: 38, name: "厂区B" },
           { value: 32, name: "厂区C" },
           { value: 30, name: "脱硫塔" },
