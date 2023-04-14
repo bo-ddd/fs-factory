@@ -5,7 +5,7 @@
             <div class="left">
                 <div class="lxs-main_body">
                     <!-- 这里放主要突出的主体摄像头画面 -->
-                    <lxsBox :lxsBoxData="lxsData" class="dom" style="width: 100%; height: 100%;">
+                    <lxsBox :lxs-box-data="{ isOpenCartoon: true }" class="dom" style="width: 100%; height: 100%;">
                         <video :id='video.idName' class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
                             <source :src=video.url type="application/x-mpegURL">
                         </video>
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="right">
-                <dv-border-box-8 class="lxs-nav">
+                <div class="lxs-nav">
                     <!-- 这里放2个其余摄像头画面 和 人员经过的提示 -->
                     <div class="flex-lie-center" style="width: 100%; height: 100%;">
                         <div class="item reminder_alarm">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item mb-05" :class="item.isActive ? 'active' : ''" v-for="(item, index) in rightVideo"
+                        <div class="item mb-05" v-for="(item, index) in rightVideo"
                             :key="index">
                             <video :id='item.idName' @click="cheage(item.id, rightVideo)"
                                 class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
@@ -75,7 +75,7 @@
                             </video>
                         </div>
                     </div>
-                </dv-border-box-8>
+                </div>
             </div>
         </div>
     </div>
@@ -85,7 +85,6 @@
 import videojs from 'video.js';
 export default {
     name: 'lxsFsFormwork1',
-    props: ['lxsData'],
     data() {
         return {
             showView: true,
@@ -93,7 +92,7 @@ export default {
             rightVideo: [],
             videoList: [],
             videoInstance: null,
-            isok: true
+            isok: true,
         }
     },
     created() {
@@ -154,13 +153,7 @@ export default {
                 url: 'http://cmgw-vpc.lechange.com:8888/LCO/7C0C9C7RAZF87CB/0/1/20220330T143454/224a3a865ea07949de88c6ebc6ae451b.m3u8'
             },
         ];
-        const data = JSON.parse(JSON.stringify(this.lxsData.data ? this.lxsData.data : giveTacitConsentTodata));
-
-        if (this.lxsData.data) {
-            console.log('用户传的', this.lxsData.data)
-        } else {
-            console.log('默认值', data)
-        }
+        const data = JSON.parse(JSON.stringify(giveTacitConsentTodata));
         const videoData = JSON.parse(JSON.stringify(data[0]))
         videoData.idName = 'lxs_major';
         this.video = videoData;
@@ -175,7 +168,7 @@ export default {
         this.rightVideo = rightData;
         this.videoList = data;
     },
-    mounted() {
+    async mounted() {
         this.initVideoDom()
     },
     methods: {
@@ -216,15 +209,14 @@ export default {
         },
         // 初始化渲染video的dom
         initVideoDom() {
-            this.$nextTick(() => {
-                this.initVideo('lxs_major');
-                this.rightVideo.forEach((item) => {
-                    this.initVideo(item.idName);
+            setTimeout(() => {
+                this.$nextTick(() => {
+                    this.initVideo('lxs_major');
+                    this.rightVideo.forEach((item) => {
+                        this.initVideo(item.idName);
+                    })
                 })
-                // this.videoList.forEach(element => {
-                //     this.initVideo(element.idName);
-                // });
-            })
+            }, 200);
         },
         // 添加选中状态
         cheage(id, data) {
@@ -293,13 +285,14 @@ export default {
 .lxs-fs-webcam .right {
     flex: 0 1 20%;
     box-sizing: border-box;
+    animation: dynamicBorder 5s infinite linear;
 }
 
 .lxs-fs-webcam .right .lxs-nav {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: .5rem;
+    // padding: .5rem;
     border-radius: 1rem;
 }
 
@@ -386,11 +379,6 @@ export default {
     border-radius: 1rem;
 }
 
-.active {
-    overflow: hidden;
-    animation: moveLine 5s infinite linear;
-}
-
 .mb-05 {
     margin-bottom: .5rem;
 }
@@ -445,41 +433,5 @@ export default {
 .view2 .view2-box .item .video-js {
     width: 100%;
     height: 100%;
-}
-
-@keyframes moveLine {
-    0% {
-        border: .2rem solid Red;
-    }
-
-    20% {
-        border: .2rem solid orange;
-    }
-
-    40% {
-        border: .2rem solid yellow;
-    }
-
-    60% {
-        border: .2rem solid green;
-    }
-
-    80% {
-        border: .2rem solid blue;
-    }
-
-    100% {
-        border: .2rem solid purple;
-    }
-}
-
-@keyframes streamer {
-    0% {
-        background-position: 0%;
-    }
-
-    100% {
-        background-position: 200%;
-    }
 }
 </style>

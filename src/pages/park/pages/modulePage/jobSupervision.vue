@@ -7,7 +7,7 @@
                                         厂区特殊作业管理
                                 </div>
                                 <div class="table  datav-content">
-                                        <ScrollBoard :config="config" style="width:100%;height:100%; "></ScrollBoard>
+                                        <scroll-board :config="config" style="width:100%;height:100%; "></scroll-board>
                                 </div>
                         </BorderBox12>
                 </div>
@@ -17,7 +17,7 @@
                                         厂区特殊作业环境监测
                                 </div>
                                 <div class="table  datav-content">
-                                        <ScrollBoard :config="config1" style="width:100%;height:100%; "></ScrollBoard>
+                                        <scroll-board :config="config1" style="width:100%;height:100%; "></scroll-board>
                                 </div>
                         </BorderBox12>
                 </div>
@@ -27,8 +27,7 @@
                                         厂区特殊作业智能告警
                                 </div>
                                 <div class="table  datav-content">
-                                        <ScrollBoard :config="config2" style="width:100%;height:100%; ">
-                                        </ScrollBoard>
+                                        <scroll-board :config="config2" style="width:100%;height:100%" />
                                 </div>
                         </BorderBox12>
                 </div>
