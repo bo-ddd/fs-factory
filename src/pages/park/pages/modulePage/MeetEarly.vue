@@ -5,29 +5,29 @@
                 </div>
                 <div class="main">
 
-                        <dv-border-box-6 class="item">
+                        <BorderBox6 class="item">
                                 <Title title="事件列表">
-                                        <dv-decoration-11 class="red mt-20" style="width:100%;height:6rem;">
+                                        <Decoration11 class="red mt-20" style="width:100%;height:6rem;">
                                                 火灾报警
-                                        </dv-decoration-11>
-                                        <!-- <dv-decoration-11 class="yellow mt-20" style="width:100%;height:6rem;">
+                                        </Decoration11>
+                                        <!-- <Decoration11 class="yellow mt-20" style="width:100%;height:6rem;">
                                         道路交通报警
-                                </dv-decoration-11>
-                                <dv-decoration-11 class="red mt-20" style="width:100%;height:6rem;">
+                                </Decoration11>
+                                <Decoration11 class="red mt-20" style="width:100%;height:6rem;">
                                         安防监控报警
-                                </dv-decoration-11>
-                                <dv-decoration-11 class="blue mt-20" style="width:100%;height:6rem;">
+                                </Decoration11>
+                                <Decoration11 class="blue mt-20" style="width:100%;height:6rem;">
                                         电力故障报警
-                                </dv-decoration-11> -->
+                                </Decoration11> -->
                                 </Title>
-                        </dv-border-box-6>
+                        </BorderBox6>
 
-                        <dv-border-box-6 class="item" id="map">
+                        <BorderBox6 class="item" id="map">
                                 <!-- 地图 -->
 
-                        </dv-border-box-6>
+                        </BorderBox6>
 
-                        <dv-border-box-6 class="item">
+                        <BorderBox6 class="item">
                                 <Title title="报警信息">
 
                                         <div class="park-status">
@@ -44,19 +44,17 @@
                                                 </div>
                                         </div>
 
-                                        <dv-decoration-11 class="blue mt-5"
-                                                style="width:100%;height:60px;">处理人：周永峰</dv-decoration-11>
-                                        <dv-decoration-11 class="blue mt-5" style="width:100%;height:60px;">处理时间：{{ date
-                                        }}</dv-decoration-11>
-                                        <dv-decoration-11 class="blue mt-5"
-                                                style="width:100%;height:60px;">处理结果：上报消防部门</dv-decoration-11>
-                                        <dv-decoration-11 class="blue mt-5"
-                                                style="width:100%;height:60px;">处理状态：处理中</dv-decoration-11>
+                                        <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理人：周永峰</Decoration11>
+                                        <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理时间：{{ date
+                                        }}</Decoration11>
+                                        <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理结果：上报消防部门
+                                        </Decoration11>
+                                        <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理状态：处理中</Decoration11>
 
                                 </Title>
-                        </dv-border-box-6>
+                        </BorderBox6>
 
-                        <dv-border-box-6 class="item">
+                        <BorderBox6 class="item">
                                 <!-- 盾牌 -->
                                 <div class="item-shied">
                                         <div>
@@ -72,7 +70,7 @@
                                                                         预警等级
                                                                 </div>
                                                         </div>
-                                                </div>  
+                                                </div>
                                         </div>
                                         <div><img class="shied" src="../../assets/images/shield.gif" alt=""></div>
                                         <div>
@@ -91,13 +89,14 @@
                                                 </div>
                                         </div>
                                 </div>
-                        </dv-border-box-6>
+                        </BorderBox6>
 
                 </div>
         </div>
 </template>
 <script setup lang="ts">
 import Title from '../../../../components/EnergyManagementView.vue'
+import { BorderBox6, Decoration11 } from '@kjgl77/datav-vue3';
 import { ref, onUnmounted, onMounted } from 'vue'
 import AMapLoader from '@amap/amap-jsapi-loader'
 const date = ref(new Date().toLocaleString())
@@ -122,7 +121,7 @@ const aMap = () => {
 
 async function mapInit() {
         await aMap().then((AMap) => {
-               const map = new AMap.Map("map", {
+                const map = new AMap.Map("map", {
                         center: [111.8478, 36.02333333333333],
                         zoom: 12.2,
                         pitch: 40,
@@ -133,7 +132,7 @@ async function mapInit() {
                         panToLocation: true,
                         zoomToAccuracy: true,
                 });
-               const markerContent = '' +
+                const markerContent = '' +
                         '<div class="custom-content-marker">' +
                         '   <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' +
                         '</div>';

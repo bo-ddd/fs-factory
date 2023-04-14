@@ -1,13 +1,11 @@
 <template>
     <div class="video_page">
-        <video-page :lxsData="sss" />
+        <video-page />
     </div>
 </template>
 
 <script setup lang="ts">
-let sss: any = {
-    type: 1,
-}
+
 </script>
 
 <style lang="scss" scoped>

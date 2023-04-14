@@ -58,13 +58,13 @@
         <!-- 园区车辆信息  开停车状态 -->
         <div class="car-info">
             <borderBox title="园区设备开停车">
-                <dv-scroll-board :config="carInfo" />
+                <scroll-board :config="carInfo" />
             </borderBox>
         </div>
         <!-- 园区物流情况 -->
         <div class="logistics-info">
             <borderBox title="园区物流情况">
-                <histogram></histogram>
+                <histograms></histograms>
                 <!-- <dv-scroll-board :config="logisticsInfo" /> -->
             </borderBox>
         </div>
@@ -72,11 +72,12 @@
 </template>
 
 <script lang="ts" setup>
+import { ScrollBoard } from '@kjgl77/datav-vue3'
 import borderBox from "../../../../components/EnergyManagementView.vue";
 import parkAreaInfo from "../../../../components/parkInfo/parkAreaInfo.vue";
 import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
 import enterpriseInfo from "../../../../components/parkInfo/enterpriseInfo.vue";
-import histogram from '../../../../components/parkInfo/histogram.vue';
+import histograms from '../../../../components/parkInfo/histogram.vue';
 import Button from "../../../../components/buttom-1View.vue";
 import button2View from "@mars/components/button-2View.vue";
 import iconPark from '../../assets/images/icon-park.png';
@@ -232,7 +233,7 @@ render()
 .main {
     font-size: 1.4rem;
     height: 100vh;
-    // background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bj-4.gif");
+    background-image: url("../../../../../public/img/parkInfo/bj-4.gif");
     background-size: cover;
     background-repeat: no-repeat;
     display: grid;
