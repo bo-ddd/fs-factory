@@ -24,51 +24,53 @@ let router : any = useRouter();
 
 const props = defineProps<{
   defaultTitle?: string
-}>()
-const { defaultTitle } = toRefs(props)
+}>();
+const { defaultTitle } = toRefs(props);
 
-const emits = defineEmits(["success"])
+
+const emits = defineEmits(['success']);
+
 
 const timechuo: Ref<string> = ref("")
 const tabledate: any = reactive([
   {
-    title: "园区信息管理",
+    title: '园区信息管理',
     id: 1,
     isActive: true,
     path: "/parkInfo",
   },
   {
-    title: "安防监控管理",
+    title: '风险分区隐患管理',
     id: 2,
     isActive: false,
     path: "/securityMonitoringManagement",
   },
   {
-    title: "风险分区隐患管理",
+    title: '重大危险源管理',
     id: 3,
     isActive: false,
     path: "/hiddenTrouble",
   },
   {
-    title: "重大危险源管理",
+    title: '报警管理',
     id: 4,
     isActive: false,
     path: "/MajorHazard",
   },
   {
-    title: "报警管理",
+    title: '特殊作业监管',
     id: 5,
     isActive: false,
     path: "/meetEarly",
   },
   {
-    title: "特殊作业监管",
+    title: '卡口管理',
     id: 6,
     isActive: false,
     path: "/jobSupervision",
   },
   {
-    title: "卡口管理",
+    title: '应急救援管理',
     id: 7,
     isActive: false,
     path: "/vehicleMonitoring",
@@ -83,14 +85,16 @@ const tabledate: any = reactive([
 
 setInterval(() => {
   const date: any = new Date()
-  const Y: any = date.getFullYear() + " - "
-  const M: any = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + " - "
-  const D: any = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " "
-  const h: any = date.getHours() + ":"
-  const m: any = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":"
-  const s: any = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+  const Y: any = date.getFullYear() + ' - '
+  const M: any = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ' - '
+  const D: any = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+  const h: any = date.getHours() + ':'
+  const m: any = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+  const s: any = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
   timechuo.value = Y + M + D + h + m + s
 }, 1000)
+
+
 
 const nav = (item: any) => {
   emits("success", item);
@@ -125,10 +129,10 @@ const nav = (item: any) => {
   }
 
   .nav-list {
-    height: 4rem;
+    height: 6rem;
     display: flex;
     align-items: center;
-    gap: 6rem;
+    gap: 71px;
     color: #fff;
     // width: 95rem;
 

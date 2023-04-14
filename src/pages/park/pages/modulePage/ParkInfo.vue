@@ -151,6 +151,8 @@ const parkInfo = [
 ]
 const open = () => {
   ElMessage('暂无权限');
+  console.log(ElMessage);
+  
 }
 
 const scene = new THREE.Scene()
