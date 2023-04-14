@@ -54,7 +54,7 @@ function addDemoGraphic3(graphicLayer) {
         name: "汽车",
         position: [111.8444, 36.02393333333333, 788],
         style: {
-            url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
+            url: "http://data.mars3d.cn/gltf/mars/qiche.gltf",
             heading: 101,
             scale: 0.4,
             minimumPixelSize: 10,
@@ -98,7 +98,7 @@ export function addRandomGraphicByCount(count) {
         const graphic = new mars3d.graphic.ModelEntity({
             position: position,
             style: {
-                url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
+                // url: "http://data.mars3d.cn/gltf/mars/qiche.gltf",
                 scale: 10
             },
             attr: { index: index }
@@ -115,7 +115,7 @@ export function startDrawGraphic() {
         type: "model",
         style: {
             scale: 10,
-            url: "//data.mars3d.cn/gltf/mars/firedrill/xiaofangche.gltf",
+            url: "http://data.mars3d.cn/gltf/mars/firedrill/xiaofangche.gltf",
             label: {
                 text: "可以同时支持文字",
                 font_size: 20,
