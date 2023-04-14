@@ -5,7 +5,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">人员出入记录</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">人员出入记录</dv-decoration-11>
                         <dv-scroll-board :config="config" style="width:100%;height:100%" />
                     </div>
                 </dv-border-box10>
@@ -13,7 +13,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">人员车辆分布</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">人员车辆分布</dv-decoration-11>
                         <main-view />
                     </div>
                 </dv-border-box10>
@@ -21,7 +21,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">车辆出入记录</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">车辆出入记录</dv-decoration-11>
                         <dv-scroll-board :config="config1" style="width:100%;height:100%" />
                     </div>
                 </dv-border-box10>
@@ -29,7 +29,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">人员车辆出入数量</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">人员车辆出入数量</dv-decoration-11>
                         <div id="main2" class="main"></div>
                     </div>
                 </dv-border-box10>
@@ -37,7 +37,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">物流信息记录</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">物流信息记录</dv-decoration-11>
                         <dv-scroll-board :config="config3" style="width:100%;height:100%" />
                     </div>
                 </dv-border-box10>
@@ -45,7 +45,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">卡口出入统计</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">卡口出入统计</dv-decoration-11>
                         <div id="main" class="main"></div>
                     </div>
                 </dv-border-box10>
@@ -53,7 +53,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-border-box11 class="title" style="width:200px;height:55px;">布控预警</dv-border-box11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">布控预警</dv-decoration-11>
                         <div class="text">暂无预警</div>
                     </div>
                 </dv-border-box10>
@@ -66,7 +66,7 @@
 import MainView from "@mars/components/mars-work/main-view.vue"
 import { reactive, onMounted } from 'vue';
 import * as echarts from 'echarts';
-import { BorderBox10 as DvBorderBox10, } from '@kjgl77/datav-vue3'
+import { BorderBox10 as DvBorderBox10, Decoration11 as DvDecoration11, ScrollBoard as DvScrollBoard } from '@kjgl77/datav-vue3'
 const config = reactive({
     header: ['<span style="color:#02e4f2">日期</span>', '<span style="color:#02e4f2">姓名</span>', '<span style="color:#02e4f2">职位</span>', '<span style="color:#02e4f2">联系方式</span>'],
     data: [
@@ -104,7 +104,7 @@ const config1 = reactive({
     headerBGC: 'none',
     oddRowBGC: 'none',
     evenRowBGC: 'none',
-    align: ['center', 'center', 'center', 'center', 'center', 'center', 'center']
+    align: ['center', 'center', 'center', 'center', 'center', 'center', 'center'],
 })
 const config3 = reactive({
     header: ['<span style="color:#02e4f2">日期</span>', '<span style="color:#02e4f2">物品ID</span>', '<span style="color:#02e4f2">数量</span>', '<span style="color:#02e4f2">重量(T)</span>'],
