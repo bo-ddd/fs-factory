@@ -10,20 +10,20 @@
 
                 <div class="height">
                     <Title title="危险源统计">
-                        <!-- <ClassifyChart></ClassifyChart> -->
+                        <ClassifyChart></ClassifyChart>
                     </Title>
                 </div>
 
                 <div class="height">
                     <Title title="每日危险源数量">
-                        <!-- <HazardContrast></HazardContrast> -->
+                        <HazardContrast></HazardContrast>
                     </Title>
                 </div>
 
                 <div class="height">
                     <Title class="compo-title" title="隐患详情">
 
-                        <dv-scroll-board :config="hiddenTrouble" style="width: 25vw; height: 26rem" />
+                        <dv-scroll-board :config="hiddenTrouble" style="width: 25vw; height: 100%" />
                     </Title>
                 </div>
 
@@ -33,7 +33,7 @@
 
 
             <dv-border-box-6 class="item">
-                <Title title="企业分类监管">
+                <Title title="企业信息">
                   <div class="aaa" >
                     <div>企业编号:001</div>
                     <div>企业名称:企业A</div>
@@ -52,7 +52,7 @@
 
                         <div class="center">
                             <div class="round warning-level">
-                                <!-- <img class="icon-unusual" src="@/assets/images/icon-unusual-blue.png" alt=""> -->
+                                <img class="icon-unusual" src="../../../park/assets/images/icon-unusual-blue.png" alt="">
                                 <div>低风险</div>
                             </div>
                             <div class="warning-level-title title">
@@ -62,7 +62,7 @@
 
                         <div class="center">
                             <div class="round commitment">
-                                <!-- <img class="icon-unusual" src="@/assets/images/icon-unusual-red.png" alt=""> -->
+                                <img class="icon-unusual" src="../../../park/assets/images/icon-unusual-red.png" alt="">
                                 <div>高风险</div>
                             </div>
                             <div class="commitment-title title">
@@ -79,13 +79,13 @@
                             </div>
                         </div>
                     </div>
-                    <dv-scroll-board :config="warning" style="width: 25vw; height: 36rem;" />
+                    <dv-scroll-board :config="warning" style="width: 25vw; height: calc(100% - 18rem);" />
                 </Title>
 
             </dv-border-box-6>
 
             <dv-border-box-6 class="item">
-                <Title title="企业名称">
+                <Title title="园区企业">
                     <div class="enterprise">
                         <div>
                             <dv-decoration-11 style="width:200px;height:60px;">浮山化工院A厂区</dv-decoration-11>
@@ -93,7 +93,7 @@
                         <div @click="to">
                             <dv-decoration-11 style="width:200px;height:60px;">浮山化工院F厂区</dv-decoration-11>
                         </div>
-                                         <div @click="to">
+                        <div @click="to">
                             <dv-decoration-11 style="width:200px;height:60px;">浮山化工院G厂区</dv-decoration-11>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
 
             <dv-border-box-6 class="item">
                 <Title title="事故记录">
-                    <dv-scroll-board :config="accidentRecords" style="width: 25vw; height: 24rem" />
+                    <dv-scroll-board :config="accidentRecords" style="width: 25vw; height: 100%" />
                 </Title>
             </dv-border-box-6>
 
@@ -114,22 +114,24 @@
 import { reactive } from "vue"
 import { ElMessage } from "element-plus"
 import Title from '../../../../components/EnergyManagementView.vue'
+import ClassifyChart from '../../../../components/ClassifyChart/ClassifyChart.vue'
+import HazardContrast from '../../../../components/HazardContrast/HazardContrast.vue'
 const accidentRecords = reactive({
-                header: ["危险源编号", "事故时间", "影响范围", "受伤人数", "死亡人数"],
+                header: ["事故时间", "影响范围", "受伤人数", "死亡人数"],
                 data: [
-                    ["no1", "2022-08-19 08:00:00", "河南郑州", "1", "0"],
-                    ["no8", "2022-12-19 07:00:00", "陕西西安", "2", "0"],
-                    ["no9", "2022-08-19 08:30:00", "北京", "2", "0"],
-                    ["no26", "2022-08-19 11:00:00", "安徽芜湖", "2", "0"],
-                    ["no73", "2022-02-19 16:00:00", "安徽芜湖", "2", "0"],
-                    ["no38", "2022-04-19 12:00:00", "河南郑州", "2", "0"],
-                    ["no73", "2022-12-19 21:00:00", "安徽芜湖", "2", "0"],
-                    ["no2", "2022-11-19 23:30:00", "山西太原", "2", "0"],
-                    ["no4", "2022-12-19 09:20:00", "河南郑州", "2", "0"],
-                    ["no6", "2022-06-19 10:00:00", "山西临汾", "2", "0"]
+                    ["2022-08-19 08:00:00", "浮山化工A厂区", "1", "0"],
+                    ["2022-12-19 07:00:00", "浮山化工B厂区", "0", "0"],
+                    ["2022-08-19 08:30:00", "浮山化工A厂区", "2", "0"],
+                    ["2022-08-19 11:00:00", "浮山化工B厂区", "2", "0"],
+                    ["2022-02-19 16:00:00", "浮山化工C厂区", "1", "0"],
+                    ["2022-04-19 12:00:00", "浮山化工A厂区", "2", "0"],
+                    ["2022-12-19 21:00:00", "浮山化工C厂区", "1", "0"],
+                    ["2022-11-19 23:30:00", "浮山化工B厂区", "1", "0"],
+                    ["2022-12-19 09:20:00", "浮山化工A厂区", "2", "0"],
+                    ["2022-06-19 10:00:00", "浮山化工C厂区", "0", "0"]
                 ],
                 columnWidth: [100, 200, 100, 100],
-                align: ["center", "center", "center", "center", "center"],
+                align: ["center", "center", "center", "center"],
                 headerBGC: "none",
                 oddRowBGC: "none",
                 evenRowBGC: "none"
@@ -178,7 +180,7 @@ const hiddenTrouble = reactive({
 
 const to = function() {
     ElMessage({
-        message : "暂无厂区！！！",
+        message : "暂未对接信息！！！",
         type : 'warning'
     })
 }
@@ -190,7 +192,7 @@ const to = function() {
 }
 
 .major {
-    background: url('@/assets/images/bg.gif') no-repeat;
+    background: url('../../../park/assets/images/bg.gif') no-repeat;
     background-size: cover;
     box-sizing: border-box;
     height: 100vh;
@@ -254,6 +256,7 @@ const to = function() {
 }
 
 .park-status {
+    height: 15rem;
     margin: 2rem 0;
     display: flex;
     align-items: center;
@@ -312,7 +315,6 @@ const to = function() {
 }
 
 .center .title {
-    width: 8rem;
     height: 3rem;
     margin: 1rem auto 0;
     line-height: 3rem;

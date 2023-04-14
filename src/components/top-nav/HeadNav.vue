@@ -17,12 +17,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, toRefs } from 'vue'
+import { Ref, ref, toRefs, defineEmits } from 'vue'
 
 const props = defineProps<{
   defaultTitle?: string
 }>();
 const { defaultTitle } = toRefs(props);
+
+
+const emits = defineEmits(['success']);
+
 
 const timechuo:Ref<string> = ref('');
 const tabledate: any = [
@@ -76,6 +80,7 @@ setInterval(() => {
 
 
 const nav = (item: any) => {
+  emits('success', item);
   tabledate.forEach((i: any) => {
     
       i.isActive = false;
@@ -94,6 +99,7 @@ if (defaultTitle.value != '') {
     }  
   })
 }
+
 </script>
 
 <style lang="scss">

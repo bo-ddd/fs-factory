@@ -5,7 +5,19 @@
         <!-- 园区基本信息 -->
         <div class="park-info">
             <borderBox title="园区基本信息">
-                北荣
+                <div class="info-box">
+                    <div v-for="item in parkInfo" :key="item.id">
+                        <div class="info-item">
+                            <div>
+                                <img :src="item.imgPath" alt="" class="item-img">
+                            </div>
+                            <div>
+                                <div class="item-title">{{ item.title }}</div>
+                                <div class="item-content">{{ item.content }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </borderBox>
         </div>
         <!-- 园区人数统计分析   用柱状图 -->
@@ -22,11 +34,17 @@
         </div>
 
         <!-- 企业设备管理 button  enterprise-equipment_Administration -->
-        <div class="enterprise-equipment">企业设备管理</div>
+        <div class="enterprise-equipment">
+            <Button title="企业设备管理"></Button>
+        </div>
         <!-- 企业装置信息 enterprise-installation-->
-        <div class="enterprise-installation">企业装置信息</div>
+        <div class="enterprise-installation">
+            <Button title="企业装置信息"></Button>
+        </div>
         <!-- 楼宇(企业)信息 具体看楼宇表-->
-        <div class="building-info">楼宇信息</div>
+        <div class="building-info">
+            <Button title="楼宇信息"></Button>
+        </div>
 
         <!-- mars3D -->
         <div class="map"></div>
@@ -46,7 +64,8 @@
         <!-- 园区物流情况 -->
         <div class="logistics-info">
             <borderBox title="园区物流情况">
-                <dv-scroll-board :config="logisticsInfo" />
+                <histogram></histogram>
+                <!-- <dv-scroll-board :config="logisticsInfo" /> -->
             </borderBox>
         </div>
     </div>
@@ -57,21 +76,27 @@ import borderBox from "../../../../components/EnergyManagementView.vue";
 import parkAreaInfo from "../../../../components/parkInfo/parkAreaInfo.vue";
 import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
 import enterpriseInfo from "../../../../components/parkInfo/enterpriseInfo.vue";
-
+import histogram from '../../../../components/parkInfo/histogram.vue'
+import Button from "../../../../components/buttom-1View.vue"
+import iconPark from '../../assets/images/icon-park.png'
+import iconAddress from '../../assets/images/icon-address.png'
+import iconOccupancy from '../../assets/images/icon-occupancy.png'
+import iconBuilding from '../../assets/images/icon-building.png'
 const carInfo = {
     header: ['时间', '车位', '停车状态', '所属企业'],
     data: [
-        ['2021-01-01 08:00', 'ABCD0001', '停止', '行1列3'],
-        ['2021-01-02 09:00', 'ABCD0002', '开启', '行2列3'],
-        ['2021-01-03 10:00', 'ABCD0003', '开启', '行3列3'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '行3列3'],
-        ['2021-01-03 10:00', 'ABCD0003', '停车', '行3列3'],
-        ['2021-01-03 10:00', 'ABCD0003', '开启', '行3列3'],
-        ['2021-01-03 10:00', 'ABCD0003', '停车', '行3列3'],
+        ['2021-01-01 08:00', 'ABCD0001', '停止', '企业A'],
+        ['2021-01-02 09:00', 'ABCD0002', '开启', '企业A'],
+        ['2021-01-03 10:00', 'ABCD0003', '开启', '企业B'],
+        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业A'],
+        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业B'],
+        ['2021-01-03 10:00', 'ABCD0003', '开启', '企业A'],
+        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业B'],
     ],
-    headerBGC:'none',
-    oddRowBGC:'none',
-    evenRowBGC:'none',
+    headerBGC: 'none',
+    oddRowBGC: 'none',
+    evenRowBGC: 'none',
+    align:['center', 'center', 'center', 'center']
 }
 const logisticsInfo = {
     header: ['物流ID', '物流企业', '物流状态', '记录'],
@@ -84,10 +109,38 @@ const logisticsInfo = {
         ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
         ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
     ],
-    headerBGC:'none',
-    oddRowBGC:'none',
-    evenRowBGC:'none',
+    headerBGC: 'none',
+    oddRowBGC: 'none',
+    evenRowBGC: 'none',
 }
+const parkInfo = [
+    {
+        id: 1,
+        imgPath: iconPark,
+        title: '园区名称',
+        content: '浮山化工园区'
+    },
+    {
+        id: 2,
+        imgPath: iconAddress,
+        title: '园区地址',
+        content: '山西省临汾市浮山县'
+    },
+    {
+        id: 3,
+        imgPath: iconOccupancy,
+        title: '占地面积',
+        content: '300亩'
+    },
+    {
+        id: 4,
+        imgPath: iconBuilding,
+        title: '建筑面积',
+        content: '100亩'
+    },
+
+
+]
 </script>
 
 <style scoped lang="less">
@@ -110,6 +163,40 @@ const logisticsInfo = {
     ;
     color: #fff;
 }
+.info-box{
+    display: flex;
+    flex-wrap: wrap;
+    // border: 1px solid red;
+    height: 100%;
+
+//    padding: ;
+}
+.info-box .item-img{
+    width: 5rem;
+    height: 5rem;
+    margin-right: 2rem;
+}
+.info-box .item-title{
+    color: #02e4f2;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: .5rem 0;
+}
+.info-box .item-content{
+    font-size: 1rem;
+    color:#66c9e4;
+    font-weight: bold;
+
+}
+.info-box .info-item {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    // border: 1px solid red;
+    width: 21rem;
+    height: 100%;
+}
+
 .main .title {
     grid-area: title;
     margin: 0 auto;
