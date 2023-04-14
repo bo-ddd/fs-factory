@@ -2,7 +2,7 @@
   <div>
     <div class="top-nav">
       <div class="LOGO">
-        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt="" />
+        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt />
         <div class="textshadow">浮山双新产业园区</div>
       </div>
       <div class="nav-list">
@@ -17,89 +17,86 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, toRefs, defineEmits } from 'vue'
+import { Ref, ref, toRefs, defineEmits } from "vue"
 
 const props = defineProps<{
   defaultTitle?: string
-}>();
-const { defaultTitle } = toRefs(props);
+}>()
+const { defaultTitle } = toRefs(props)
 
+const emits = defineEmits(["success"])
 
-const emits = defineEmits(['success']);
-
-
-const timechuo:Ref<string> = ref('');
+const timechuo: Ref<string> = ref("")
 const tabledate: any = [
   {
-    title: '园区信息管理',
+    title: "园区信息管理",
     id: 1,
     isActive: true
   },
   {
-    title: '风险分区隐患管理',
+    title: "安防监控管理",
     id: 2,
     isActive: false
   },
   {
-    title: '重大危险源管理',
+    title: "风险分区隐患管理",
     id: 3,
     isActive: false
   },
   {
-    title: '报警管理',
+    title: "重大危险源管理",
     id: 4,
     isActive: false
   },
   {
-    title: '特殊作业监管',
+    title: "报警管理",
     id: 5,
     isActive: false
   },
   {
-    title: '卡口管理',
+    title: "特殊作业监管",
     id: 6,
     isActive: false
   },
   {
-    title: '应急救援管理',
+    title: "卡口管理",
     id: 7,
     isActive: false
   },
+  {
+    title: "应急救援管理",
+    id: 8,
+    isActive: false
+  }
 ]
 setInterval(() => {
   const date: any = new Date()
-  const Y: any = date.getFullYear() + ' - '
-  const M: any = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ' - '
-  const D: any = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
-  const h: any = date.getHours() + ':'
-  const m: any = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
-  const s: any = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+  const Y: any = date.getFullYear() + " - "
+  const M: any = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + " - "
+  const D: any = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " "
+  const h: any = date.getHours() + ":"
+  const m: any = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":"
+  const s: any = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
   timechuo.value = Y + M + D + h + m + s
 }, 1000)
 
-
-
 const nav = (item: any) => {
-  emits('success', item);
+  emits("success", item)
   tabledate.forEach((i: any) => {
-    
-      i.isActive = false;
-    
+    i.isActive = false
   })
-  item.isActive = !item.isActive;
+  item.isActive = !item.isActive
 }
 // console.log(defaultTitle);
 // eslint-disable-next-line eqeqeq
-if (defaultTitle.value != '') {
+if (defaultTitle.value != "") {
   tabledate.forEach((i: any) => {
     // eslint-disable-next-line eqeqeq
     if (i.title == defaultTitle.value) {
-      nav(i);
-      
-    }  
+      nav(i)
+    }
   })
 }
-
 </script>
 
 <style lang="scss">
@@ -116,7 +113,7 @@ if (defaultTitle.value != '') {
     height: 3.5rem;
     display: flex;
     align-items: center;
-    gap: 13px;
+    // gap: 2rem;
     // margin-left: 4.4rem;
 
     .textshadow {
@@ -129,10 +126,10 @@ if (defaultTitle.value != '') {
   }
 
   .nav-list {
-    height: 6rem;
+    height: 4rem;
     display: flex;
     align-items: center;
-    gap: 71px;
+    gap: 6rem;
     color: #fff;
     // width: 95rem;
 
