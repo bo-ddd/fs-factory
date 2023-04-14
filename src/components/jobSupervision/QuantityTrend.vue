@@ -47,7 +47,7 @@ const typeComparison = function () {
   xAxis: [
     {
       type: 'category',
-      data:data,
+      data: data,
       axisPointer: {
         type: 'shadow'
       }
