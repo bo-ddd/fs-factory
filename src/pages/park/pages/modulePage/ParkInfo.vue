@@ -1,36 +1,57 @@
 <template>
     <div class="main">
-        <div class="nav">
-            
-        </div>
-        <div class="duty-personnel">
-            <borderBox title="hhh">
+        <!-- title -->
+        <div class="nav"></div>
+        <!-- 园区基本信息 -->
+        <div class="park-info">
+            <borderBox title="园区基本信息">
                 北荣
             </borderBox>
         </div>
-        <div class="meet-car_setout">
+        <!-- 园区人数统计分析   用柱状图 -->
+        <div class="park-bod_num">
+            <borderBox title="园区人数统计">
+                <parkBodNum></parkBodNum>
+            </borderBox>
         </div>
-        <div class="police-situation">
+        <!-- 园区面积 -->
+        <div class="park-area_info">
+            <borderBox title="园区面积信息统计"></borderBox>
         </div>
-        <div class="police-situation_num">4</div>
-        <div class="safe-state">5</div>
-        <div class="duty-police_strength">6</div>
+
+        <!-- 企业设备管理 button  enterprise-equipment_Administration -->
+        <div class="enterprise-equipment">企业设备管理</div>
+        <!-- 企业装置信息 enterprise-installation-->
+        <div class="enterprise-installation">企业装置信息</div>
+        <!-- 楼宇(企业)信息 具体看楼宇表-->
+        <div class="building-info">楼宇信息</div>
+
+        <!-- mars3D -->
         <div class="map"></div>
-        <div class="police-strength_into">
+
+        <!-- 园区企业信息 -->
+        <div class="enterprise-info">
+            <borderBox title="园区企业信息"></borderBox>
         </div>
-        <div class="handle-circumstances">
+        <!-- 园区车辆信息  开停车状态 -->
+        <div class="car-info">
+            <borderBox title="园区车辆信息"></borderBox>
         </div>
-        <div class="carry-out_trend">
+        <!-- 园区物流情况 -->
+        <div class="logistics-info">
+            <borderBox title="园区物流情况"></borderBox>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import borderBox from "../../../../components/EnergyManagementView.vue";
+import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
 </script>
 
 <style scoped lang="less">
 .main {
+    font-size: 1.4rem;
     height: 100vh;
     background-image: url("../../../../../public/img/parkInfo/bj-4.gif");
     background-size: cover;
@@ -39,12 +60,12 @@ import borderBox from "../../../../components/EnergyManagementView.vue";
     gap: 1rem;
     box-sizing: border-box;
     grid-template-columns: 3fr 2fr 2fr 2fr 3fr;
-    grid-template-rows: 1fr 4fr 4fr 4fr;
+    grid-template-rows: 6rem 4fr 4fr 4fr;
     grid-template-areas:
         'title title title title title'
-        'duty-personnel police-situation_num safe-state duty-police_strength police-strength_into'
-        'meet-car_setout map map map handle-circumstances'
-        'police-situation map map map carry-out_trend'
+        'park-info map map map enterprise-info'
+        'park-bod_num map map map car-info'
+        'park-area_info enterprise-equipment enterprise-installation building-info logistics-info'
     ;
     color: #fff;
 }
@@ -58,43 +79,43 @@ import borderBox from "../../../../components/EnergyManagementView.vue";
     font-weight: 550;
 }
 
-.main .duty-personnel {
+.main .park-info {
     background: rgba(18, 33, 64, .5);
     padding: 2rem;
     box-sizing: border-box;
-    grid-area: duty-personnel;
+    grid-area: park-info;
 }
 
-.main .police-situation_num {
-    grid-area: police-situation_num;
+.main .enterprise-equipment {
+    grid-area: enterprise-equipment;
 }
 
-.main .handle-circumstances {
+.main .car-info {
     padding: 2rem;
     box-sizing: border-box;
-    grid-area: handle-circumstances;
+    grid-area: car-info;
     background: rgba(18, 33, 64, .5);
 }
 
-.main .safe-state {
-    grid-area: safe-state;
+.main .enterprise-installation {
+    grid-area: enterprise-installation;
 }
 
-.main .duty-police_strength {
-    grid-area: duty-police_strength;
+.main .building-info {
+    grid-area: building-info;
 }
 
-.main .police-strength_into {
-    grid-area: police-strength_into;
+.main .enterprise-info {
+    grid-area: enterprise-info;
     background: rgba(18, 33, 64, .5);
     padding: 2rem;
     box-sizing: border-box;
 }
 
-.main .meet-car_setout {
+.main .park-bod_num {
     padding: 2rem;
     box-sizing: border-box;
-    grid-area: meet-car_setout;
+    grid-area: park-bod_num;
     background: rgba(18, 33, 64, .5);
 }
 
@@ -102,17 +123,17 @@ import borderBox from "../../../../components/EnergyManagementView.vue";
     grid-area: map;
 }
 
-.main .carry-out_trend {
-    grid-area: carry-out_trend;
+.main .logistics-info {
+    grid-area: logistics-info;
     padding: 2rem;
     box-sizing: border-box;
     background: rgba(18, 33, 64, .5);
 }
 
-.main .police-situation {
+.main .park-area_info {
     padding: 2rem;
     box-sizing: border-box;
-    grid-area: police-situation;
+    grid-area: park-area_info;
     background: rgba(18, 33, 64, .5);
 }
 </style>
