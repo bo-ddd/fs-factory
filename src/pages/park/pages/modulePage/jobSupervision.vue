@@ -132,7 +132,7 @@ const config2 = reactive({
 </script>
 <style scoped lang="scss">
 .job-supervision {
-        background: url("../../assets/images/bg.gif");
+        background: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif");
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
