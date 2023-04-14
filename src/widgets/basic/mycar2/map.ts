@@ -6,8 +6,10 @@ export let graphicLayer // 矢量图层对象
 // 需要覆盖config.json中地图属性参数（当前示例框架中自动处理合并）
 export const mapOptions = {
     scene: {
+        // fxaa: true,
+        // center: { lat: 30.851105, lng: 116.352067, alt: 1116, heading: 349, pitch: -27 }
         fxaa: true,
-        center: { lat: 30.851105, lng: 116.352067, alt: 1116, heading: 349, pitch: -27 }
+        center: { lat: 36.020720, lng: 111.843592, alt: 1000, heading: 13, pitch: -37 },
     }
 }
 
@@ -190,41 +192,44 @@ function addDemoGraphic2(graphicLayer) {
 function addDemoGraphic3(graphicLayer) {
     const graphic = new mars3d.graphic.ModelEntity({
         name: "汽车",
-        position: [111.84, 36.03333333333333, 10],
+        position: [111.8444, 36.02393333333333, 788],
+        // position: [116.349194, 30.864603, 376.58],
         style: {
             url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
-            heading: 30,
-            minimumPixelSize: 100,
+            heading: 10,
+            scale: 0.1,
+            minimumPixelSize: 10,
             silhouette: false,
-
+            distanceDisplayCondition:true,
+            clampToGround:true,
             label: {
-                text: "皖A12345",
+                text: "晋A12345",
                 font_size: 18,
-                color: "#ffffff",
-                pixelOffsetY: -50,
+                color: "#0000FF",
+                pixelOffsetY: -10,
                 distanceDisplayCondition: true,
                 distanceDisplayCondition_far: 10000,
                 distanceDisplayCondition_near: 0
             },
 
             // 高亮时的样式（默认为鼠标移入，也可以指定type:'click'单击高亮），构造后也可以openHighlight、closeHighlight方法来手动调用
-            highlight: {
-                label: {
-                    font_size: 30
-                },
-                silhouette: true,
-                silhouetteColor: "#ff0000",
-                silhouetteSize: 4
-            }
+            // highlight: {
+                // label: {
+                    // font_size: 30
+                // },
+                // silhouette: true,
+                // silhouetteColor: "#ff0000",
+                // silhouetteSize: 4
+            // }
         },
         attr: { remark: "示例3" }
     })
     graphicLayer.addGraphic(graphic)
     // 移动模型
-    graphic.moveTo({
-      position: [111.84, 36.08333333333333, 10],
-      time: 400 // 移动的时长(单位 秒)
-    })
+    // graphic.moveTo({
+    //     position: [111.84, 36.08333333333333, 10],
+    //     time: 400 // 移动的时长(单位 秒)
+    // })
 }
 
 function addDemoGraphic4(graphicLayer) {

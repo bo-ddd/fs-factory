@@ -4,17 +4,7 @@
                 <div class="item">
                         <dv-border-box-12 class="datav">
                                 <div class="datav-head">
-                                        厂区特殊作业类型对比
-                                </div>
-                                <div class="datav-content">
-                                        <TypeComparison></TypeComparison>
-                                </div>
-                        </dv-border-box-12>
-                </div>
-                <div class="item">
-                        <dv-border-box-12 class="datav">
-                                <div class="datav-head">
-                                        厂区特殊作业监管
+                                        厂区特殊作业管理
                                 </div>
                                 <div class="table  datav-content">
                                         <dv-scroll-board :config="config" style="width:100%;height:100%; " />
@@ -24,9 +14,29 @@
                 <div class="item">
                         <dv-border-box-12 class="datav">
                                 <div class="datav-head">
-                                        厂区特殊作业数量趋势
+                                        厂区特殊作业环境监测
                                 </div>
-                                <div class=" datav-content">
+                                <div class="table  datav-content">
+                                        <dv-scroll-board :config="config1" style="width:100%;height:100%; " />
+                                </div>
+                        </dv-border-box-12>
+                </div>
+                <div class="item">
+                        <dv-border-box-12 class="datav">
+                                <div class="datav-head">
+                                        厂区特殊作业智能告警
+                                </div>
+                                <div class="table  datav-content">
+                                        <dv-scroll-board :config="config2" style="width:100%;height:100%; " />
+                                </div>
+                        </dv-border-box-12>
+                </div>
+                <div class="item">
+                        <dv-border-box-12 class="datav">
+                                <div class="datav-head">
+                                        厂区特殊作业数据趋势
+                                </div>
+                                <div class="table  datav-content">
                                         <QuantityTrend></QuantityTrend>
                                 </div>
                         </dv-border-box-12>
@@ -34,90 +44,81 @@
                 <div class="item">
                         <dv-border-box-12 class="datav">
                                 <div class="datav-head">
-                                        厂区特殊作业环境参数
+                                        厂区特殊作业数据存储和备份
                                 </div>
-                                <div class="job-parameter datav-content">
-                                        <div class="parameter">
-                                                <div class="parameter-head">
-                                                        高空作业
-                                                </div>
-                                                <div class=" parameter-content">
-                                                        <JobHeights></JobHeights>
-                                                </div>
-                                        </div>
-                                        <div class="parameter">
-                                                <div class="parameter-head">
-                                                        有毒物质接触
-                                                </div>
-                                                <div class=" parameter-content">
-                                                        <ContactToxic></ContactToxic>
-                                                </div>
-
-                                        </div>
-                                        <div class="parameter">
-                                                <div class="parameter-head">
-                                                        危险材料包装
-                                                </div>
-                                                <div class=" parameter-content">
-                                                        <Hazardous></Hazardous>
-                                                </div>
-
-
-                                        </div>
-                                        <div class="parameter">
-                                                <div class="parameter-head">
-                                                        火工品装卸
-                                                </div>
-                                                <div class=" parameter-content">
-                                                        <Initiating></Initiating>
-                                                </div>
-
-
-                                        </div>
-                                        <div class="parameter">
-                                                <div class="parameter-head">
-                                                        射线处理
-                                                </div>
-                                                <div class=" parameter-content">
-                                                        <!-- <Radiatio></Radiatio> -->
-                                                </div>
-
-
-                                        </div>
-                                        <div class="parameter">
-                                                <div class="parameter-head">
-                                                        水上作业
-                                                </div>
-                                                <div class=" parameter-content">
-                                                        <!-- <WaterOperations></WaterOperations> -->
-                                                </div>
-
-
-                                        </div>
+                                <div class="table  datav-content">
+                                        <dv-scroll-board :config="config3" style="width:100%;height:100%; " />
                                 </div>
                         </dv-border-box-12>
+
                 </div>
+
         </div>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue'
-import TypeComparison from "../../../../components/jobSupervision/TypeComparison.vue"
 import QuantityTrend from "../../../../components/jobSupervision/QuantityTrend.vue"
-import ContactToxic from "../../../../components/jobSupervision/ContactToxicSubstances.vue"
-import Hazardous from "../../../../components/jobSupervision/HazardousMaterialPackaging.vue"
-import Radiatio from "../../../../components/jobSupervision/RadiationProcessing.vue"
-import WaterOperations from "../../../../components/jobSupervision/WaterOperations.vue"
-import Initiating from "../../../../components/jobSupervision/InitiatingExplosiveDevice.vue"
-import JobHeights from "../../../../components/jobSupervision/JobHeights.vue"
-
 const config = reactive({
-        header: ['作业类型', '作业时长', '操作人员'],
+        header: ['作业名称', '特殊作业描述', '作业人员', '作业设备ID'],
         data: [
-                ['危化品装卸', 180, '张三'],
-                ['挖掘机作业', 360, '李四'],
-                ['高空作业', 120, '王五'],
-                ['塔吊安装', 480, '赵六'],
-                ['脚手架搭建', 240, '钱七'],
+                ['高空作业', '需使用护具和防护绳', '张三', '吊车'],
+                ['引爆化学品', '需要专业技能和设备配合', '李四', '防护服'],
+                ['雷区作业', '需在雷区内进行施工', '王五', '防护服'],
+                ['雷区作业', '需在雷区内进行施工', '赵六', '防护服'],
+                ['高空作业', '需使用护具和防护绳', '马七', '吊车'],
+        ],
+        waitTime: 1000,
+        rowNum: 4,
+        headerBGC: 'none',
+        oddRowBGC: 'none',
+        evenRowBGC: 'none',
+        align: ['center', 'center', 'center', 'center']
+})
+const config1 = reactive({
+        header: ['作业场所ID', '温度', '湿度', '噪声', '监测时间'],
+        data: [
+                [1, 25.6, 60.2, 68.5, '2021-06-01 12:30:00'],
+                [1, 26.5, 65.4, 70.2, '2021-06-01 14:30:00'],
+                [2, 24.8, 57.3, 65.8, '2021-06-02 15:00:00'],
+                [3, 25.8, 57.3, 60.0, '2021-06-03 11:00:00'],
+                [4, 24.8, 57.3, 85.0, '2021-06-05 09:00:00']
+        ],
+        waitTime: 1000,
+        rowNum: 4,
+        headerBGC: 'none',
+        oddRowBGC: 'none',
+        evenRowBGC: 'none',
+        align: ['center', 'center', 'center', 'center', 'center']
+})
+const config2 = reactive({
+        header: ['告警类型', '告警级别', '告警描述', '告警时间'],
+        data: [
+                ['车辆超速', '高', '物流公司粤B12345车辆超速', '2021-06-01 12:30:00'],
+                ['设备停机', '中', '生产车间设备停机', '2021-06-01 14:30:00'],
+                ['人员违规', '低', '员工张三违规操作', '2021-06-02 10:00:00'],
+                ['人员违规', '低', '员工李四违规操作', '2021-06-03 10:00:00'],
+                ['车辆超速', '高', '物流公司粤B15625车辆超速', '2021-06-01 12:30:00'],
+
+        ],
+        waitTime: 1000,
+        rowNum: 4,
+        headerBGC: 'none',
+        oddRowBGC: 'none',
+        evenRowBGC: 'none',
+        align: ['center', 'center', 'center', 'center']
+})
+const config3 = reactive({
+        header: ['备份类型', '备份位置', '备份时间'],
+        data: [
+                ['日常备份', '/data/backup', '2021-03-04'],
+                ['日常备份', '/data/backup', '2021-03-14'],
+                ['日常备份', '/data/backup', '2021-04-01'],
+                ['月度备份', '/data/backup', '2021-05-01'],
+                ['日常备份', '/data/backup', '2021-05-04'],
+                ['日常备份', '/data/backup', '2021-06-04'],
+                ['月度备份', '/data/backup', '2021-07-01'],
+                ['年度备份', '/data/backup', '2021-12-01'],
+
         ],
         waitTime: 1000,
         rowNum: 4,
@@ -130,21 +131,26 @@ const config = reactive({
 </script>
 <style scoped lang="scss">
 .job-supervision {
+        background: url("../../assets/images/bg.gif");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
         height: 100vh;
         display: grid;
         background-color: black;
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: 6rem 4fr 4fr 4fr;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 6rem 4fr 4fr;
         grid-template-areas:
-                'title title'
-                'a d'
-                'b d'
-                'c d'
+                'title title title'
+                'a e c'
+                'b e d'
+
         ;
 
         .item {
                 .datav {
                         height: 100%;
+                        width: 100%;
                         padding: 0 2rem 2rem 2rem;
                         box-sizing: border-box;
 
@@ -159,6 +165,8 @@ const config = reactive({
 
                         .datav-content {
                                 height: calc(100% - 5rem);
+
+                                width: 100%;
                         }
 
 
@@ -185,57 +193,11 @@ const config = reactive({
 
         .item:nth-of-type(5) {
                 grid-area: d;
-
-                .job-parameter {
-
-                        display: grid;
-                        gap: 1rem;
-                        grid-template-columns: 1fr 1fr 1fr;
-                        grid-template-rows: 1fr 1fr;
-                        grid-template-areas:
-                                'parameter-a parameter-b parameter-c'
-                                'parameter-d parameter-e parameter-f'
-                        ;
-
-                        .parameter {
-                                .parameter-head {
-                                        height: 5rem;
-                                        color: #fff;
-                                        line-height: 5rem;
-                                        box-sizing: border-box;
-                                        font-size: 1.5rem;
-                                        font-weight: bold;
-                                }
-
-                                .parameter-content {
-                                        height: calc(100% - 5rem);
-                                }
-                        }
-
-                        .parameter:nth-of-type(1) {
-                                grid-area: parameter-a;
-                        }
-
-                        .parameter:nth-of-type(2) {
-                                grid-area: parameter-b;
-                        }
-
-                        .parameter:nth-of-type(3) {
-                                grid-area: parameter-c;
-                        }
-
-                        .parameter:nth-of-type(4) {
-                                grid-area: parameter-d;
-                        }
-
-                        .parameter:nth-of-type(5) {
-                                grid-area: parameter-e;
-                        }
-
-                        .parameter:nth-of-type(6) {
-                                grid-area: parameter-f;
-                        }
-                }
         }
 
-}</style>
+        .item:nth-of-type(5) {
+                grid-area: e;
+        }
+
+}
+</style>
