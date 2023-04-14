@@ -23,12 +23,20 @@ const typeComparison = function () {
     trigger: 'axis',
   },
   toolbox: {
-    feature: {
-      magicType: { show: true, type: ['line', 'bar'] },
-      restore: { show: true },
-      saveAsImage: { show: true }
-    }
+    // feature: {
+    //   magicType: { show: true, type: ['line', 'bar'] },
+    //   restore: { show: true },
+    //   saveAsImage: { show: true }
+    // },
+
   },
+  grid: {
+            left: '5%',
+            right: '5%',
+            bottom: '10%',
+            top: '10%',
+            containLabel: true
+        },
   legend: {
     data: ['特殊作业数量', '监测数据数量', '告警数量'],
     top:'top',
@@ -48,9 +56,7 @@ const typeComparison = function () {
   yAxis: [
     {
       type: 'value',
-      min: 0,
-      max: 25,
-      interval: 5,
+      interval: 2,
     },
   ],
   series: [
@@ -65,13 +71,13 @@ const typeComparison = function () {
       name: '监测数据数量',
       type: 'line',
       data: [
-        2, 5, 9, 2, 2, 7, 1
+        2, 5, 9, 3, 2, 6, 1
       ]
     },
     {
       name: '告警数量',
       type: 'line',
-      data: [2, 2, 3, 4, 6, 1, 2]
+      data: [1, 2, 3, 4, 6, 1, 2]
     }
   ]
 };
