@@ -30,11 +30,11 @@ module.exports = {
     curly: ["off", "all"], // 强制所有控制语句使用一致的括号风格  @fixable if 后面必须要有 {，除非是单行 if
 
     "space-infix-ops": "off", //=前后需要空格
-    'semi':"off", //多余的分号
-    "space-before-blocks":"off", //方法前加空格
-    "key-spacing":"off", //key前需要空格
-    "comma-dangle":"off",//最后一项不能加逗号
-    "semi-spacing":"off",
+    'semi': "off", //多余的分号
+    "space-before-blocks": "off", //方法前加空格
+    "key-spacing": "off", //key前需要空格
+    "comma-dangle": "off",//最后一项不能加逗号
+    "semi-spacing": "off",
 
     "padded-blocks": "off", // 块内行首行尾是否空行
     "global-require": "off", // require 必须在全局作用域下
@@ -80,6 +80,7 @@ module.exports = {
     "no-func-assign": "error", // 禁止对 function 声明重新赋值
     "no-nested-ternary": "error", // 禁用嵌套的三元表达式
     "no-multiple-empty-lines": ["off", { max: 3 }], // 空行最多不能超过两行
-    "new-cap": "off" // 关闭eslint fromDegrees方法报错
+    "new-cap": "off", // 关闭eslint fromDegrees方法报错
+    'prefer-const': 'off'
   }
 }
