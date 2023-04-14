@@ -1,7 +1,9 @@
 <template>
     <div :class="[lxsBoxData.isOpenCartoon ? 'openCartoon' : '', 'box']">
         <div class="header" v-if="lxsBoxData.title">
-            <div :style="{ fontSize: lxsBoxData.headerFS, textAlign: lxsBoxData.isCenter }">{{ lxsBoxData.title }}</div>
+            <div :style="{ fontSize: lxsBoxData.headerFS, textAlign: lxsBoxData.isCenter }">
+                {{ lxsBoxData.title }}
+            </div>
         </div>
         <div class="container" :style="[lxsBoxData.title ? { height: '90%' } : { height: '100%' }]">
             <slot></slot>
@@ -10,8 +12,14 @@
 </template>
 
 <script setup lang="ts">
+interface lxsBoxType {
+    title?: string,
+    headerFS?: string,
+    isCenter?: string
+    isOpenCartoon: boolean,
+}
 defineProps<{
-    lxsBoxData
+    lxsBoxData: lxsBoxType | any
 }>()
 </script>
 
