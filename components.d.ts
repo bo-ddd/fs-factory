@@ -5,6 +5,8 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Buttom1View: typeof import('./src/components/buttom-1View.vue')['default']
+    Button2View: typeof import('./src/components/button-2View.vue')['default']
+    Button3View: typeof import('./src/components/button-3View.vue')['default']
     ClassifyChart: typeof import('./src/components/ClassifyChart/ClassifyChart.vue')['default']
     DataBackup: typeof import('./src/components/jobSupervision/DataBackup.vue')['default']
     EnergyManagementView: typeof import('./src/components/EnergyManagementView.vue')['default']
