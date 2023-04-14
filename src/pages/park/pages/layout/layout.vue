@@ -2,7 +2,7 @@
   <div class="main">
     <!-- 这是layout -->
     <div class="head">
-      <HeadNav defaultTitle="卡口管理" @success="hh"></HeadNav>
+      <HeadNav defaultTitle="园区信息管理" @success="hh"></HeadNav>
     </div>
     <div class="router">
       <router-view></router-view>
