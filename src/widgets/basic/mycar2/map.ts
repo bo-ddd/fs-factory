@@ -29,7 +29,7 @@ export function onMounted(mapInstance) {
 
     // 在layer上绑定监听事件
     graphicLayer.on(mars3d.EventType.click, function (event) {
-        console.log("监听layer，单击了矢量对象", event)
+        // console.log("监听layer，单击了矢量对象", event)
     })
 
     bindLayerPopup() // 在图层上绑定popup,对所有加到这个图层的矢量数据都生效
@@ -56,7 +56,7 @@ function addDemoGraphic3(graphicLayer) {
         style: {
             url: "//data.mars3d.cn/gltf/mars/qiche.gltf",
             heading: 101,
-            scale: 0.25,
+            scale: 0.4,
             minimumPixelSize: 10,
             silhouette: false,
             distanceDisplayCondition: true,
@@ -72,11 +72,14 @@ function addDemoGraphic3(graphicLayer) {
             }
         }
     })
+
     graphicLayer.addGraphic(graphic)
-    graphic.moveTo({
-        position: [111.8418, 36.01393333333333, 788],
-        time: 300
-    })
+    setTimeout(() => {
+        graphic.moveTo({
+            position: [111.8418, 36.01393333333333, 788],
+            time: 300
+        })
+    }, 3000)
 }
 
 
@@ -103,7 +106,7 @@ export function addRandomGraphicByCount(count) {
         graphicLayer.addGraphic(graphic)
     }
 
-    graphicLayer.enabledEvent = true 
+    graphicLayer.enabledEvent = true
     return result.points.length
 }
 

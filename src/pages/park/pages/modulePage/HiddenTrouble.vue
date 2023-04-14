@@ -3,23 +3,21 @@
     <div class="box">
       <div class="title"></div>
       <div class="security-risk">
-        <BorderBox11 title="安全系数评估">
+        <BorderBox11 title="安全系数评估" class="datav">
           <div class="box-item flex-column">
-            <dv-capsule-chart :config="config" class="safeRate" />
+            <CapsuleChart :config="config" class="safeRate" />
           </div>
         </BorderBox11>
       </div>
       <div class="operation-process">
-        <BorderBox11 title="安全运行天数">
+        <BorderBox11 title="安全运行天数" class="datav">
           <div class="box-item">
-            <div class="flex left-bottom">
-              <LineChart></LineChart>
-            </div>
+              <LineChart></LineChart>          
           </div>
         </BorderBox11>
       </div>
       <div class="middle">
-        <BorderBox11 title="风险分布" class="flex-col">
+        <BorderBox11 title="风险分布" class="datav" >
           <div class="box-item flex-column">
             <!-- <div class="top">
               <p class="lable">风险<span class="num">0</span>处</p>
@@ -32,19 +30,21 @@
         </BorderBox11>
       </div>
       <div class="hidden-treatment">
-        <BorderBox11 title="隐患排查治理">
-          <div class="box-item flex-center">
-            <div>
-              <dv-scroll-board :config="row" style="width: 55rem; height: 90%" />
-            </div>
+        <BorderBox11 title="隐患排查治理" class="datav">
+          <div class=" flex-center" style="width: 100%; height: 100%; padding: 0 2rem; box-sizing: border-box;">
+
+            <ScrollBoard :config="row" style="width: 100%; height: 100%" />
+
           </div>
         </BorderBox11>
       </div>
       <div class="hidden-type">
-        <BorderBox11 title="隐患类型">
-          <div class="right flex right-bottom">
-            <dv-conical-column-chart :config="column" style="width: 50rem; height: 30rem" />
+        <BorderBox11 title="隐患类型" class="datav">   
+          <div style="width: 100%; height: 100%; padding: 2rem; box-sizing: border-box;">
+
+            <ConicalColumnChart :config="column" style="width: 100%; height: 100%; " />
           </div>
+
         </BorderBox11>
       </div>
     </div>
@@ -52,8 +52,9 @@
 </template>
 <script setup lang="ts">
 import { reactive } from "vue"
-import { BorderBox11 } from '@kjgl77/datav-vue3'
-
+import { BorderBox11, ConicalColumnChart, ScrollBoard, CapsuleChart } from '@kjgl77/datav-vue3'
+import LineChart from '../../../../components/HiddenTrouble/HiddenLineChart/HiddenLineChart.vue'
+import Histogram from '../../../../components/HiddenTrouble/HiddenHistogram/HiddenHistogram.vue'
 const config = reactive({
   //   radius: "50%",
   //   activeRadius: "60%",
@@ -163,8 +164,8 @@ const row = reactive({
   index: true,
   columnWidth: [50],
   align: ["center", "center", "center", "center"],
-  oddRowBGC:'none',
-  evenRowBGC:'none'
+  oddRowBGC: 'none',
+  evenRowBGC: 'none'
 })
 const enviroment = reactive({
   value: 66,
@@ -207,13 +208,20 @@ const enviroment = reactive({
   margin-top: 6rem;
 }
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-}
+// .flex-center {
+//   display: flex;
+//   justify-content: center;
+// }
 
 .mb-2 {
   margin-bottom: 2rem;
+}
+
+.datav {
+  width: 100%;
+  height: 100%;
+  padding-top: 7rem;
+  box-sizing: border-box;
 }
 
 .security-risk {
@@ -231,7 +239,7 @@ const enviroment = reactive({
 
 .box-item {
   height: 100%;
-  padding: 7rem 1rem 0 1rem;
+  // padding: 7rem 1rem 0 1rem;
   box-sizing: border-box;
 }
 
@@ -311,11 +319,11 @@ const enviroment = reactive({
   justify-content: center;
 }
 
-.flex {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+// .flex {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+// }
 
 .border {
   background-color: black;
@@ -336,7 +344,9 @@ const enviroment = reactive({
   height: 100vh;
   overflow: hidden;
 }
-
+:deep(.dv-conical-column-chart){
+  margin: 0 !important;
+}
 :deep(.dv-border-box-9) {
   width: 100%;
   height: 100vh;
