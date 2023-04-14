@@ -163,7 +163,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(-40, 50, 30);
+camera.position.set(-10, 35, 60);
 camera.updateProjectionMatrix();
 const renderer = new THREE.WebGLRenderer({
   antialias: true
