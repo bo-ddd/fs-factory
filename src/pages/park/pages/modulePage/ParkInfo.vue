@@ -112,13 +112,13 @@ const carInfo = {
 const logisticsInfo = {
     header: ['物流ID', '物流企业', '物流状态', '记录'],
     data: [
-        ['ABCD0001', '企业A', '进货', '2021-01-01 08:00'],
-        ['ABCD0002', '企业A', '出货', '2021-01-02 09:00'],
-        ['ABCD0003', '企业B', '出货', '2021-01-03 10:00'],
-        ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
-        ['ABCD0003', '企业B', '进货', '2021-01-03 10:00'],
-        ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
-        ['ABCD0003', '企业A', '出货', '2021-01-03 10:00'],
+        ['ABCD0001', '华辉捷', '进货', '2021-01-01 08:00'],
+        ['ABCD0002', '恒锦盛', '出货', '2021-01-02 09:00'],
+        ['ABCD0003', '恒锦盛', '出货', '2021-01-03 10:00'],
+        ['ABCD0003', '华辉捷', '出货', '2021-01-03 10:00'],
+        ['ABCD0003', '华辉捷', '进货', '2021-01-03 10:00'],
+        ['ABCD0003', '恒锦盛', '出货', '2021-01-03 10:00'],
+        ['ABCD0003', '华辉捷', '出货', '2021-01-03 10:00'],
     ],
     headerBGC: 'none',
     oddRowBGC: 'none',
@@ -233,7 +233,7 @@ render();
 .main {
     font-size: 1.4rem;
     height: 100vh;
-    background-image: url("../../../../../public/img/parkInfo/bj-4.gif");
+    background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bj-4.gif");
     background-size: cover;
     background-repeat: no-repeat;
     display: grid;
@@ -288,8 +288,6 @@ render();
     margin: 0 auto;
     text-align: center;
     font-size: 2rem;
-    /* -webkit-text-stroke: .1rem rgb(94, 94, 218); */
-    /* color: transparent; */
     font-weight: 550;
 }
 
