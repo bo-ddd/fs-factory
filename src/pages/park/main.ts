@@ -27,7 +27,7 @@ Video.addLanguage("en", video_en)
 
 const app = createApp(Application)
 
-// MarsUIInstall(app)
+MarsUIInstall(app)
 
 app.use(injectState(store), key)
 app.use(components)
