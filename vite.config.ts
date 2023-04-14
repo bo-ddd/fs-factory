@@ -4,6 +4,9 @@ import { defineConfig, loadEnv } from "vite"
 import vue from "@vitejs/plugin-vue"
 import eslintPlugin from "vite-plugin-eslint"
 import mars3dCesium from "vite-plugin-mars3d"
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import { createStyleImportPlugin, AndDesignVueResolve } from "vite-plugin-style-import"
 
@@ -14,7 +17,7 @@ export default ({ mode }: ConfigEnv) => {
 
   console.log(`当前环境信息：`, mode)
   console.log(`ENV：`, ENV)
-
+  
   return defineConfig({
     base: ENV.VITE_BASE_URL,
     server: {
@@ -84,6 +87,12 @@ export default ({ mode }: ConfigEnv) => {
       emptyOutDir: true
     },
     plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
       vue(),
       eslintPlugin({ cache: false }),
       mars3dCesium(),

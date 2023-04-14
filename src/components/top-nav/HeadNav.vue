@@ -2,12 +2,12 @@
   <div>
     <div class="top-nav">
       <div class="LOGO">
-        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt />
+        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt="" />
         <div class="textshadow">浮山双新产业园区</div>
       </div>
       <div class="nav-list">
         <div class="nav-font" @click="nav(item)" v-for="(item, i) in tabledate" :key="i">
-          <div :class="[item.isActive ? 'box' : '']"></div>
+          <div :class="[ router.currentRoute.value.href==item.path ? 'box' : '']"></div>
           <div class="nav-get">{{ item.title }}</div>
           <div class="nav-border"></div>
         </div>
@@ -17,86 +17,89 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, toRefs, defineEmits } from "vue"
+import { Ref, ref, toRefs, defineEmits, reactive } from "vue"
+import { useRouter } from "vue-router";
+
+let router : any = useRouter();
 
 const props = defineProps<{
   defaultTitle?: string
-}>()
-const { defaultTitle } = toRefs(props)
+}>();
+const { defaultTitle } = toRefs(props);
 
-const emits = defineEmits(["success"])
+
+const emits = defineEmits(['success']);
+
 
 const timechuo: Ref<string> = ref("")
-const tabledate: any = [
+const tabledate: any = reactive([
   {
-    title: "园区信息管理",
+    title: '园区信息管理',
     id: 1,
-    isActive: true
+    isActive: true,
+    path: "/parkInfo",
   },
   {
-    title: "安防监控管理",
+    title: '风险分区隐患管理',
     id: 2,
-    isActive: false
+    isActive: false,
+    path: "/securityMonitoringManagement",
   },
   {
-    title: "风险分区隐患管理",
+    title: '重大危险源管理',
     id: 3,
-    isActive: false
+    isActive: false,
+    path: "/hiddenTrouble",
   },
   {
-    title: "重大危险源管理",
+    title: '报警管理',
     id: 4,
-    isActive: false
+    isActive: false,
+    path: "/MajorHazard",
   },
   {
-    title: "报警管理",
+    title: '特殊作业监管',
     id: 5,
-    isActive: false
+    isActive: false,
+    path: "/meetEarly",
   },
   {
-    title: "特殊作业监管",
+    title: '卡口管理',
     id: 6,
-    isActive: false
+    isActive: false,
+    path: "/jobSupervision",
   },
   {
-    title: "卡口管理",
+    title: '应急救援管理',
     id: 7,
-    isActive: false
+    isActive: false,
+    path: "/vehicleMonitoring",
   },
   {
     title: "应急救援管理",
     id: 8,
-    isActive: false
+    isActive: false,
+    path: "/EmergencyManage",
   }
-]
+]);
+
 setInterval(() => {
   const date: any = new Date()
-  const Y: any = date.getFullYear() + " - "
-  const M: any = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + " - "
-  const D: any = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " "
-  const h: any = date.getHours() + ":"
-  const m: any = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":"
-  const s: any = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+  const Y: any = date.getFullYear() + ' - '
+  const M: any = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ' - '
+  const D: any = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+  const h: any = date.getHours() + ':'
+  const m: any = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+  const s: any = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
   timechuo.value = Y + M + D + h + m + s
 }, 1000)
 
+
+
 const nav = (item: any) => {
-  emits("success", item)
-  tabledate.forEach((i: any) => {
-    i.isActive = false
-  })
-  item.isActive = !item.isActive
+  emits("success", item);
 }
-// console.log(defaultTitle);
-// eslint-disable-next-line eqeqeq
-if (defaultTitle.value != "") {
-  tabledate.forEach((i: any) => {
-    // eslint-disable-next-line eqeqeq
-    if (i.title == defaultTitle.value) {
-      nav(i)
-    }
-  })
-}
+
 </script>
 
 <style lang="scss">
@@ -113,7 +116,7 @@ if (defaultTitle.value != "") {
     height: 3.5rem;
     display: flex;
     align-items: center;
-    // gap: 2rem;
+    gap:0 2rem;
     // margin-left: 4.4rem;
 
     .textshadow {
@@ -126,10 +129,10 @@ if (defaultTitle.value != "") {
   }
 
   .nav-list {
-    height: 4rem;
+    height: 6rem;
     display: flex;
     align-items: center;
-    gap: 6rem;
+    gap: 71px;
     color: #fff;
     // width: 95rem;
 

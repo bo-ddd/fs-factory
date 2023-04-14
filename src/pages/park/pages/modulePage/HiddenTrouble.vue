@@ -3,23 +3,23 @@
     <div class="box">
       <div class="title"></div>
       <div class="security-risk">
-        <dv-border-box-11 title="安全系数评估">
+        <BorderBox11 title="安全系数评估">
           <div class="box-item flex-column">
             <dv-capsule-chart :config="config" class="safeRate" />
           </div>
-        </dv-border-box-11>
+        </BorderBox11>
       </div>
       <div class="operation-process">
-        <dv-border-box-11 title="安全运行天数">
+        <BorderBox11 title="安全运行天数">
           <div class="box-item">
             <div class="flex left-bottom">
               <LineChart></LineChart>
             </div>
           </div>
-        </dv-border-box-11>
+        </BorderBox11>
       </div>
       <div class="middle">
-        <dv-border-box-11 title="风险分布" class="flex-col">
+        <BorderBox11 title="风险分布" class="flex-col">
           <div class="box-item flex-column">
             <!-- <div class="top">
               <p class="lable">风险<span class="num">0</span>处</p>
@@ -29,29 +29,31 @@
               <Histogram></Histogram>
             </div>
           </div>
-        </dv-border-box-11>
+        </BorderBox11>
       </div>
       <div class="hidden-treatment">
-        <dv-border-box-11 title="隐患排查治理">
+        <BorderBox11 title="隐患排查治理">
           <div class="box-item flex-center">
             <div>
               <dv-scroll-board :config="row" style="width: 55rem; height: 90%" />
             </div>
           </div>
-        </dv-border-box-11>
+        </BorderBox11>
       </div>
       <div class="hidden-type">
-        <dv-border-box-11 title="隐患类型">
+        <BorderBox11 title="隐患类型">
           <div class="right flex right-bottom">
             <dv-conical-column-chart :config="column" style="width: 50rem; height: 30rem" />
           </div>
-        </dv-border-box-11>
+        </BorderBox11>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive } from "vue"
+import { BorderBox11 } from '@kjgl77/datav-vue3'
+
 const config = reactive({
   //   radius: "50%",
   //   activeRadius: "60%",
