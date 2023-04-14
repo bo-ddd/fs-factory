@@ -36,9 +36,9 @@
                 <Title title="企业信息">
                     <div class="aaa">
                         <div>企业编号:001</div>
-                        <div>企业名称:企业A</div>
-                        <div>企业地址:北京市海淀区</div>
-                        <div>联系人:周永峰</div>
+                        <div>企业名称:山西恒锦盛科技有限公司</div>
+                        <div>企业地址:山西省临汾市浮山县</div>
+                        <div>联系人:李金平</div>
                         <div>联系电话:15267389275</div>
                         <div>企业邮箱:d@example.com</div>
                         <div>企业类型:建筑业</div>
@@ -88,13 +88,13 @@
                 <Title title="园区企业">
                     <div class="enterprise">
                         <div>
-                            <Decoration11 style="width:20rem;height:6rem;">浮山化工院A厂区</Decoration11>
+                            <Decoration11 style="width:25rem;height:6rem;">山西恒锦盛科技有限公司</Decoration11>
                         </div>
                         <div @click="to">
-                            <Decoration11 style="width:20rem;height:6rem;">浮山化工院F厂区</Decoration11>
+                            <Decoration11 style="width:25rem;height:6rem;">浮山化工园F厂区</Decoration11>
                         </div>
                         <div @click="to">
-                            <Decoration11 style="width:20rem;height:6rem;">浮山化工院G厂区</Decoration11>
+                            <Decoration11 style="width:25rem;height:6rem;">浮山化工园G厂区</Decoration11>
                         </div>
                     </div>
                 </Title>
@@ -193,7 +193,8 @@ const to = function () {
 }
 
 .major {
-    background: url('../../../park/assets/images/bg.gif') no-repeat;
+    /* https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif */
+    background: url('https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif') no-repeat;
     background-size: cover;
     box-sizing: border-box;
     height: 100vh;

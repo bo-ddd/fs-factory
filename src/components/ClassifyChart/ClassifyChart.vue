@@ -25,12 +25,9 @@ const typeComparison = function () {
                 radius: ['20%', '47%'],
                 center: ['50%', '50%'],
                 data: [
-                    { value: 1048, name: '高空作业' },
-                    { value: 735, name: '火工品装卸作业' },
-                    { value: 580, name: '危险品包装作业' },
-                    { value: 484, name: '有毒物质接触作业' },
-                    { value: 300, name: '射线处理作业' },
-                    { value: 300, name: '水上作业' }],
+                    { value: 1, name: '山西恒锦盛科技有限公司' },
+                    { value: 3, name: '浮山化工园A厂区' },
+                    { value: 3, name: '浮山化工园B厂区' }],
                 label: {
                     color: '#fff'
 

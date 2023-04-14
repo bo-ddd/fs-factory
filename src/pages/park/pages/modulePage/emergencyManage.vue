@@ -24,7 +24,7 @@ async function mapInit() {
     .then((AMap) => {
       const map = new AMap.Map("map", {
         center: [111.8478, 36.02333333333333],
-        zoom: 12.2,
+        zoom: 15,
         pitch: 40,
         mapStyle: "amap://styles/blue",
         viewMode: "3D",
@@ -190,10 +190,10 @@ const proruptionInit = function () {
           show: false
         },
         data: [
-          { value: 20, name: "罢工" },
-          { value: 14, name: "自然灾害" },
+          { value: 3, name: "罢工" },
+          { value: 1, name: "自然灾害" },
           { value: 8, name: "化学药品泄露" },
-          { value: 6, name: "设备故障" }
+          { value: 15, name: "设备故障" }
         ]
       }
     ]
@@ -264,7 +264,7 @@ onMounted(() => {
   background-size: cover;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 2fr 3fr 2fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
     "left1 main right1"

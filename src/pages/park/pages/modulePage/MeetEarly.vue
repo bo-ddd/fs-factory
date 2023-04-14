@@ -10,15 +10,21 @@
                                         <Decoration11 class="red mt-20" style="width:100%;height:6rem;">
                                                 火灾报警
                                         </Decoration11>
-                                        <!-- <Decoration11 class="yellow mt-20" style="width:100%;height:6rem;">
-                                        道路交通报警
-                                </Decoration11>
-                                <Decoration11 class="red mt-20" style="width:100%;height:6rem;">
-                                        安防监控报警
-                                </Decoration11>
-                                <Decoration11 class="blue mt-20" style="width:100%;height:6rem;">
-                                        电力故障报警
-                                </Decoration11> -->
+                                        <Decoration11 @click="to" class="yellow mt-20" style="width:100%;height:6rem;">
+                                                道路交通报警
+                                        </Decoration11>
+                                        <Decoration11 @click="to" class="red mt-20" style="width:100%;height:6rem;">
+                                                安防监控报警
+                                        </Decoration11>
+                                        <Decoration11 @click="to" class="blue mt-20" style="width:100%;height:6rem;">
+                                                电力故障报警
+                                        </Decoration11>
+                                        <Decoration11 @click="to" class="blue mt-20" style="width:100%;height:6rem;">
+                                                停车场系统报警
+                                        </Decoration11>
+                                        <Decoration11 @click="to" class="yellow mt-20" style="width:100%;height:6rem;">
+                                                环境监测报警
+                                        </Decoration11>
                                 </Title>
                         </BorderBox6>
 
@@ -44,7 +50,7 @@
                                                 </div>
                                         </div>
 
-                                        <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理人：周永峰</Decoration11>
+                                        <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理人：范力明</Decoration11>
                                         <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理时间：{{ date
                                         }}</Decoration11>
                                         <Decoration11 class="blue mt-5" style="width:100%;height:60px;">处理结果：上报消防部门
@@ -98,9 +104,13 @@
 import Title from '../../../../components/EnergyManagementView.vue'
 import { BorderBox6, Decoration11 } from '@kjgl77/datav-vue3';
 import { ref, onUnmounted, onMounted } from 'vue'
+import { ElMessage } from 'element-plus'
 import AMapLoader from '@amap/amap-jsapi-loader'
 const date = ref(new Date().toLocaleString())
 
+const to = function () {
+        ElMessage.warning('暂无报警！！！')
+}
 
 const aMap = () => {
         return AMapLoader.load({
@@ -123,7 +133,7 @@ async function mapInit() {
         await aMap().then((AMap) => {
                 const map = new AMap.Map("map", {
                         center: [111.8478, 36.02333333333333],
-                        zoom: 12.2,
+                        zoom: 15,
                         pitch: 40,
                         mapStyle: "amap://styles/blue",
                         viewMode: "3D",
@@ -171,13 +181,16 @@ onMounted(() => {
 
 .red {
         color: red;
+        cursor: pointer;
 }
 
 .yellow {
+        cursor: pointer;
         color: yellow;
 }
 
 .blue {
+        cursor: pointer;
         color: #02a8bb;
 }
 
@@ -230,7 +243,7 @@ body,
 
 
 .major {
-        background: url('../../../park/assets/images/bg.gif') no-repeat;
+        background: url('https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif') no-repeat;
         background-size: cover;
         box-sizing: border-box;
         height: 100vh;
