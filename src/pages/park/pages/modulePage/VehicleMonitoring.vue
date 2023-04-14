@@ -66,6 +66,7 @@
 import MainView from "@mars/components/mars-work/main-view.vue"
 import { reactive, onMounted } from 'vue';
 import * as echarts from 'echarts';
+import { right } from "@popperjs/core";
 const config = reactive({
     header: ['<span style="color:#02e4f2">日期</span>', '<span style="color:#02e4f2">姓名</span>', '<span style="color:#02e4f2">职位</span>', '<span style="color:#02e4f2">联系方式</span>'],
     data: [
@@ -229,6 +230,13 @@ const barChart = function () {
             axisPointer: {
                 type: 'shadow'
             }
+        },
+        grid:{
+            left:'5%',
+            right:'5%',
+            top:'20%',
+            bottom:'5%',
+            containLabel:true
         },
         legend: {
             data: ['人员', '车辆', '物品', '事件', '预警'],
