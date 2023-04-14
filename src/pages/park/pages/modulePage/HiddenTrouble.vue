@@ -1,72 +1,188 @@
 <template>
-  <dv-border-box-9 class="border">
+  <div class="border">
     <div class="box">
+      <div class="title"></div>
       <div class="security-risk">
         <dv-border-box-11 title="安全风险监管">
-          <div class="flex left-top">
-            <!-- <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" /> -->
-            <!-- <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" /> -->
-            <!-- <dv-active-ring-chart :config="cake" style="width:15rem;height:15rem;" /> -->
+          <div class="box-item flex-column">
+            <div class="left-top">
+              <dv-active-ring-chart :config="cake" class="cake" />
+              <dv-active-ring-chart :config="cake" class="cake" />
+              <dv-active-ring-chart :config="cake" class="cake" />
+            </div>
+            <dv-capsule-chart :config="config" style="width: 50rem; height: 20rem" />
           </div>
-          <!-- <dv-capsule-chart :config="config" style="width:50rem;height:20rem" /> -->
         </dv-border-box-11>
       </div>
       <div class="operation-process">
         <dv-border-box-11 title="安全走势图">
-          <div class="flex left-bottom">
-            <Line-chart></Line-chart>
+          <div class="box-item">
+            <div class="flex left-bottom">
+              <LineChart></LineChart>
+            </div>
           </div>
         </dv-border-box-11>
       </div>
       <div class="middle">
-        <dv-border-box-12 class="flex-col">
-          <p class="title">风险分布</p>
-          <div class="top">
-            <!-- <p class="lable">风险<span class="num">10</span>处</p> -->
-            <p class="lable">隐患<span class="num">10</span>处</p>
+        <dv-border-box-11 title="风险分布" class="flex-col">
+          <div class="box-item flex-column">
+            <div class="top">
+              <p class="lable">风险<span class="num">10</span>处</p>
+              <p class="lable">隐患<span class="num">10</span>处</p>
+            </div>
+            <div class="bottom">
+              <Histogram></Histogram>
+            </div>
           </div>
-          <Histogram></Histogram>
-          <div class="img">
-            <img class="icon-map" src="https://unier.oss-cn-beijing.aliyuncs.com/industry/images/map.png" alt="" />
-          </div>
-        </dv-border-box-12>
+        </dv-border-box-11>
       </div>
       <div class="hidden-treatment">
         <dv-border-box-11 title="隐患排查治理">
-          <div class="right right-top">
-            <!-- <dv-scroll-board :config="row" style="width:55rem;height:28rem" /> -->
+          <div class="box-item flex-center">
+            <div>
+              <dv-scroll-board :config="row" style="width: 55rem; height: 28rem" />
+            </div>
           </div>
         </dv-border-box-11>
       </div>
       <div class="hidden-type">
         <dv-border-box-11 title="隐患类型">
           <div class="right flex right-bottom">
-            <!-- <dv-conical-column-chart :config="column" style="width:50rem;height:30rem;" /> -->
+            <dv-conical-column-chart :config="column" style="width: 50rem; height: 30rem" />
           </div>
         </dv-border-box-11>
       </div>
     </div>
-  </dv-border-box-9>
+  </div>
 </template>
 <script setup lang="ts">
+import { reactive } from "vue"
+const config = reactive({
+  radius: "50%",
+  activeRadius: "60%",
+  data: [
+    {
+      name: "生产",
+      value: 55
+    },
+    {
+      name: "出售",
+      value: 120
+    },
+    {
+      name: "买进",
+      value: 78
+    },
+    {
+      name: "税务",
+      value: 66
+    }
+  ],
+  digitalFlopStyle: {
+    fontSize: 20
+  },
+  showOriginValue: true,
+  lineWidth: 10
+})
+const cake = reactive({
+  data: [
+    {
+      name: "火灾",
+      value: 1
+    },
+    {
+      name: "气体泄露",
+      value: 10
+    },
+    {
+      name: "辐射",
+      value: 0
+    },
+    {
+      name: "行人安全",
+      value: 3
+    },
+    {
+      name: "失窃",
+      value: 0
+    }
+  ],
+  showValue: true,
+  activeTimeGap: 5000
+})
+const column = reactive({
+  data: [
+    {
+      name: "火灾",
+      value: 1
+    },
+    {
+      name: "气体泄露",
+      value: 10
+    },
+    {
+      name: "辐射",
+      value: 5
+    },
+    {
+      name: "行人安全",
+      value: 3
+    },
+    {
+      name: "失窃",
+      value: 8
+    }
+  ],
+  showValue: true
+})
+const row = reactive({
+  header: ["隐患", "是否处理", "负责人"],
+  data: [
+    ["火灾", "已处理", "安全部马格烜"],
+    ["气体泄露", "已处理", "安全部侯鑫茹"],
+    ["液体泄漏", "已处理", "安全部卫正阳"],
+    ["工程车", "已处理", "安全部朱鑫鹏"],
+    ["辐射物质", "已处理", "安全部许鹏璞"],
+    ["设施设备", "已处理", "安全部周永峰"],
+    ["储存区", "已处理", "安全部刘芳建"],
+    ["静电", "已处理", "安全部李展鹏"],
+    ["现场安全", "已处理", "安全部杨豪杰"],
+    ["生产", "已处理", "安全部张震"]
+  ],
+  index: true,
+  columnWidth: [50],
+  align: ["center"]
+})
+const enviroment = reactive({
+  value: 66,
+  borderWidth: 5,
+  borderRadius: 10,
+  borderGap: 5
+})
 </script>
-<style scoped>
+<style scoped lang="scss">
 .box {
   background: url("../../assets/images/bg.gif");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  display: grid;
   height: 100vh;
+  display: grid;
   box-sizing: border-box;
   padding: 3rem 1rem;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 6rem 1fr 1fr;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
+    "title title title"
     "security-risk  middle  hidden-treatment"
     "operation-process  middle  hidden-type";
 }
-
+.title {
+  grid-area: title;
+}
+.bottom {
+  height: 70%;
+}
 .mt-2 {
   margin-top: 2rem;
 }
@@ -74,35 +190,59 @@
 .mt-6 {
   margin-top: 6rem;
 }
+.flex-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
 .mb-2 {
   margin-bottom: 2rem;
 }
 
 .security-risk {
   grid-area: security-risk;
-  padding: 1rem 2rem 2rem;
 }
 
 .operation-process {
   grid-area: operation-process;
-  padding: 0 2rem;
+  box-sizing: border-box;
+  .left-bottom {
+    height: 100%;
+  }
 }
-
+.box-item {
+  height: 100%;
+  padding: 7rem 0rem 0 0rem;
+  box-sizing: border-box;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.left-top {
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.cake {
+  width: 100%;
+  height: 100%;
+}
 .hidden-treatment {
   grid-area: hidden-treatment;
-  padding: 1rem 2rem 2rem;
+  box-sizing: border-box;
 }
 
 .hidden-type {
   grid-area: hidden-type;
-  padding: 0 2rem;
 }
 
 .middle {
   grid-area: middle;
   text-align: center;
-  margin-top: 1rem;
-  height: calc(100vh - 10rem);
+  height: 100%;
 }
 
 .middle .lable {
@@ -132,11 +272,13 @@
   text-align: right;
   margin-bottom: 2rem;
   border-left: 0.6rem solid red;
+  height: 3rem;
 }
 
 .middle .top {
   display: flex;
   justify-content: space-around;
+  height: 5rem;
 }
 
 .right-top {

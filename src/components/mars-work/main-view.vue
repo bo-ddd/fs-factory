@@ -6,7 +6,11 @@
       </div>
       <template v-if="loaded">
         <template v-for="comp in widgets" :key="comp.key">
-          <mars-widget v-if="openAtStart.includes(comp.name) && comp.visible" v-model:visible="comp.visible" :widget="comp" />
+          <mars-widget
+            v-if="openAtStart.includes(comp.name) && comp.visible"
+            v-model:visible="comp.visible"
+            :widget="comp"
+          />
         </template>
       </template>
     </div>
@@ -54,7 +58,7 @@ const emit = defineEmits(["mapLoaded"])
 const loaded = ref(false)
 
 const marsOnload = (map: any) => {
-  // console.log("map构造完成", map)
+  console.log("map构造完成", map)
   mapInstance = map
   emit("mapLoaded", mapInstance)
   loaded.value = true

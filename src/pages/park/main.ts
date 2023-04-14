@@ -14,12 +14,23 @@ import { router } from "./router/index"
 import ElementPlus from "element-plus"
 import "element-plus/dist/index.css"
 import DataVVue3 from "@kjgl77/datav-vue3"
+import "video.js/dist/video-js.css"
+import Video from "video.js"
+import video_zhCN from "video.js/dist/lang/zh-CN.json"
+import video_en from "video.js/dist/lang/en.json"
+import components from "@mars/components"
+
+
+
+Video.addLanguage("zh-CN", video_zhCN)
+Video.addLanguage("en", video_en)
 
 const app = createApp(Application)
 
 // MarsUIInstall(app)
 
 app.use(injectState(store), key)
+app.use(components)
 app.use(DataVVue3)
 app.use(router)
 app.use(ElementPlus)
