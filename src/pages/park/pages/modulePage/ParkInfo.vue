@@ -156,7 +156,7 @@ const open = () => {
   
 }
 
-const scene = new THREE.Scene()
+const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -179,8 +179,8 @@ const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader)
 gltfLoader.load('../../../../../public/gltf/20221010170924_parent_directory_住宅楼21.gltf', function (gltf) {
   const model = gltf.scene;
-  scene.add(model)
-})
+  scene.add(model);
+});
 
 
 const light1 = new THREE.DirectionalLight(0xffffff, 1)
@@ -221,7 +221,7 @@ function render() {
   renderer.render(scene, camera)
   controls.update();
 }
-render()
+render();
 
 </script>
 
