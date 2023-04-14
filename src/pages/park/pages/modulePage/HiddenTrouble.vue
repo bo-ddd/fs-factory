@@ -26,7 +26,7 @@
               <p class="lable">隐患<span class="num">0</span>处</p>
             </div> -->
             <div class="bottom">
-              <Histogram></Histogram>
+              <Histogram class="abc" />
             </div>
           </div>
         </BorderBox11>
