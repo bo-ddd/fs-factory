@@ -181,10 +181,10 @@ gltfLoader.load('/api/avatar/20221010170924_parent_directory_%E4%BD%8F%E5%AE%85%
   const model = gltf.scene;
   scene.add(model);
 });
-gltfLoader.load('https://unier.oss-cn-beijing.aliyuncs.com/avatar/20221107103635_parent_directory_%E5%8E%82%E6%88%BF02.gltf', function (gltf) {
-  const model = gltf.scene;
-  scene.add(model);
-});
+// gltfLoader.load('https://unier.oss-cn-beijing.aliyuncs.com/avatar/20221107103635_parent_directory_%E5%8E%82%E6%88%BF02.gltf', function (gltf) {
+//   const model = gltf.scene;
+//   scene.add(model);
+// });
 
 
 
