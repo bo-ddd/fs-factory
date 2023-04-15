@@ -23,7 +23,14 @@ export default ({ mode }: ConfigEnv) => {
     server: {
       host: "localhost",
       https: false,
-      port: 3002
+      port: 3002,
+      proxy:{
+        '/api':{
+          target: 'https://unier.oss-cn-beijing.aliyuncs.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        }
+      }
     },
     define: {
       "process.env": {
