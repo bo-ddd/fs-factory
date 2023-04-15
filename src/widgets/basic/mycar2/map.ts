@@ -98,7 +98,7 @@ export function addRandomGraphicByCount(count) {
         const graphic = new mars3d.graphic.ModelEntity({
             position: position,
             style: {
-                // url: "http://data.mars3d.cn/gltf/mars/qiche.gltf",
+                url: "http://data.mars3d.cn/gltf/mars/qiche.gltf",
                 scale: 10
             },
             attr: { index: index }
