@@ -5,7 +5,7 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">人员出入记录</dv-decoration-11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">人员出入记录</dv-decoration-11>
                         <dv-scroll-board :config="config" style="width:100%;height:100%" />
                     </div>
                 </dv-border-box10>
@@ -13,9 +13,10 @@
             <div class="item">
                 <dv-border-box10>
                     <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">人员车辆分布</dv-decoration-11>
+                        <dv-decoration-11 class="title" style="width:200px;height:55px;">人员车辆分布</dv-decoration-11>
                         <div class="min">
-                            <main-view @mapLoaded="load" />
+                            <!-- <main-view @mapLoaded="load" /> -->
+
                             <div class="load" v-if="flag">
                                 <div class="loaderbg">
                                     <div class="spinner">
@@ -27,48 +28,78 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="item">
+                                <dv-border-box10>
+                                    <div class="box-item">
+                                        <dv-decoration-11 class="title"
+                                            style="width:250px;height:55px;">人员车辆分布</dv-decoration-11>
+                                        <div class="min">
+                                            <main-view @mapLoaded="load" />
+                                            <div class="load" v-if="flag">
+                                                <div class="loaderbg">
+                                                    <div class="spinner">
+                                                        <div class="double rect1"></div>
+                                                        <div class="double rect2"></div>
+                                                        <div class="double rect3"></div>
+                                                        <div class="double rect4"></div>
+                                                        <div class="double rect5"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dv-border-box10>
+                            </div>
+                            <div class="item">
+                                <dv-border-box10>
+                                    <div class="box-item">
+                                        <dv-decoration-11 class="title"
+                                            style="width:250px;height:55px;">有害物质统计</dv-decoration-11>
+                                        <div id="main2" class="main"></div>
+                                    </div>
+                                </dv-border-box10>
+                            </div>
+                            <div class="item">
+                                <dv-border-box10>
+                                    <div class="box-item">
+                                        <dv-decoration-11 class="title"
+                                            style="width:250px;height:55px;">车辆出入记录</dv-decoration-11>
+                                        <dv-scroll-board :config="config2" style="width:100%;height:100%" />
+                                    </div>
+                                </dv-border-box10>
+                            </div>
+                            <div class="item">
+                                <dv-border-box10>
+                                    <div class="box-item">
+                                        <dv-decoration-11 class="title" style="width:250px;height:55px;">
+                                            厂区外泄事故表
+                                        </dv-decoration-11>
+                                        <dv-scroll-board :config="config3" style="width:100%;height:100%" />
+
+                                    </div>
+                                </dv-border-box10>
+                            </div>
+                            <div class="item">
+                                <dv-border-box10>
+                                    <div class="box-item">
+                                        <dv-decoration-11 class="title"
+                                            style="width:250px;height:55px;">卡口出入统计</dv-decoration-11>
+                                        <div id="main" class="main"></div>
+                                    </div>
+                                </dv-border-box10>
+                            </div>
+                            <div class="item">
+                                <dv-border-box10>
+                                    <div class="box-item">
+                                        <dv-decoration-11 class="title"
+                                            style="width:250px;height:55px;">视频监控</dv-decoration-11>
+                                        <el-button class="btn border" type="primary"
+                                            @click="toBayonetMonitor()">卡口监控</el-button>
+                                        <el-button class="btn disable" type="primary" @click="open1">华辉捷厂区监控</el-button>
+                                    </div>
+                                </dv-border-box10>
+                            </div>
                         </div>
-                    </div>
-                </dv-border-box10>
-            </div>
-            <div class="item">
-                <dv-border-box10>
-                    <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">有害物质统计</dv-decoration-11>
-                        <div id="main2" class="main"></div>
-                    </div>
-                </dv-border-box10>
-            </div>
-            <div class="item">
-                <dv-border-box10>
-                    <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">车辆出入记录</dv-decoration-11>
-                        <dv-scroll-board :config="config2" style="width:100%;height:100%" />
-                    </div>
-                </dv-border-box10>
-            </div>
-            <div class="item">
-                <dv-border-box10>
-                    <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">厂区外泄事故表</dv-decoration-11>
-                        <dv-scroll-board :config="config3" style="width:100%;height:100%" />
-                    </div>
-                </dv-border-box10>
-            </div>
-            <div class="item">
-                <dv-border-box10>
-                    <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">卡口出入统计</dv-decoration-11>
-                        <div id="main" class="main"></div>
-                    </div>
-                </dv-border-box10>
-            </div>
-            <div class="item">
-                <dv-border-box10>
-                    <div class="box-item">
-                        <dv-decoration-11 class="title" style="width:250px;height:55px;">视频监控</dv-decoration-11>
-                        <el-button class="btn border" type="primary" @click="toBayonetMonitor()">卡口监控</el-button>
-                        <el-button class="btn disable" type="primary" @click="open1">华辉捷厂区监控</el-button>
                     </div>
                 </dv-border-box10>
             </div>
@@ -132,7 +163,7 @@ const config2 = reactive({
     headerBGC: "none",
     oddRowBGC: "none",
     evenRowBGC: "none",
-    columnWidth:["150","100","100","150"],
+    columnWidth: ["150", "100", "100", "150"],
     align: ["center", "center", "center", "center", "center", "center", "center"]
 })
 const config3 = reactive({
@@ -157,7 +188,7 @@ const config3 = reactive({
     align: ["center", "center", "center", "center", "center"]
 })
 const open1 = () => {
-  ElMessage('该摄像头暂未接入！')
+    ElMessage('该摄像头暂未接入！')
 }
 onMounted(() => {
     barChart()
@@ -352,7 +383,7 @@ const pieChart = function () {
         },
         legend: {
             orient: "vertical",
-            left:'right',
+            left: 'right',
             textStyle: {
                 color: "#fff"
             }
@@ -387,10 +418,11 @@ const pieChart = function () {
 </script>
 
 <style lang="scss" scoped>
-.disable{
+.disable {
     background: #ccc;
     border: none;
 }
+
 .min {
     width: 100%;
     height: 100%;
@@ -571,28 +603,31 @@ const pieChart = function () {
         }
     }
 }
-.border{
+
+.border {
     animation: border 5s infinite linear;
 
 }
+
 :deep(.btn) {
     height: 4rem;
 }
+
 @keyframes border {
-  0% {
-    border: .3rem solid #7700ff;
-  }
+    0% {
+        border: .3rem solid #7700ff;
+    }
 
-  40% {
-    border: .3rem solid #874ed1;
-  }
+    40% {
+        border: .3rem solid #874ed1;
+    }
 
-  60% {
-    border: .3rem solid #003380;
-  }
+    60% {
+        border: .3rem solid #003380;
+    }
 
-  100% {
-    border: .3rem solid #031cff;
-  }
+    100% {
+        border: .3rem solid #031cff;
+    }
 }
 </style>

@@ -5,49 +5,49 @@ import * as echarts from "echarts"
 import history from "../../../../components/table/history.vue"
 import shape from "../../../../components/table/shape.vue"
 import duty from "../../../../components/table/duty.vue"
-import AMapLoader from "@amap/amap-jsapi-loader"
+// import AMapLoader from "@amap/amap-jsapi-loader"
 
-const aMap = () => {
-  return AMapLoader.load({
-    key: "9a08b1085292817f6ca0f8aede5e1e44", // 申请好的Web端开发者Key，首次调用 load 时必填
-    version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-    plugins: ["AMap.DistrictSearch", "AMap.Weather", "AMap.Geocoder", "AMap.Marker"],
-    Loca: {
-      // 是否加载 Loca， 缺省不加载
-      version: "2.0.0" // Loca 版本，缺省 1.3.2
-    }
-  })
-}
+// const aMap = () => {
+//   return AMapLoader.load({
+//     key: "9a08b1085292817f6ca0f8aede5e1e44", // 申请好的Web端开发者Key，首次调用 load 时必填
+//     version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+//     plugins: ["AMap.DistrictSearch", "AMap.Weather", "AMap.Geocoder", "AMap.Marker"],
+//     Loca: {
+//       // 是否加载 Loca， 缺省不加载
+//       version: "2.0.0" // Loca 版本，缺省 1.3.2
+//     }
+//   })
+// }
 
-async function mapInit() {
-  await aMap()
-    .then((AMap) => {
-      const map = new AMap.Map("map", {
-        center: [111.8478, 36.02333333333333],
-        zoom: 15,
-        pitch: 40,
-        mapStyle: "amap://styles/blue",
-        viewMode: "3D",
-        showMarker: true,
-        showCircle: true,
-        panToLocation: true,
-        zoomToAccuracy: true
-      })
-      const markerContent =
-        "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
-      const marker = new AMap.Marker({
-        position: [111.8478, 36.02333333333333],
-        // 将 html 传给 content
-        content: markerContent,
-        // 以 icon 的 [center bottom] 为原点
-        offset: new AMap.Pixel(-13, -30)
-      })
-      map.add(marker)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
-}
+// async function mapInit() {
+//   await aMap()
+//     .then((AMap) => {
+//       const map = new AMap.Map("map", {
+//         center: [111.8478, 36.02333333333333],
+//         zoom: 15,
+//         pitch: 40,
+//         mapStyle: "amap://styles/blue",
+//         viewMode: "3D",
+//         showMarker: true,
+//         showCircle: true,
+//         panToLocation: true,
+//         zoomToAccuracy: true
+//       })
+//       const markerContent =
+//         "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
+//       const marker = new AMap.Marker({
+//         position: [111.8478, 36.02333333333333],
+//         // 将 html 传给 content
+//         content: markerContent,
+//         // 以 icon 的 [center bottom] 为原点
+//         offset: new AMap.Pixel(-13, -30)
+//       })
+//       map.add(marker)
+//     })
+//     .catch((e) => {
+//       console.log(e)
+//     })
+// }
 
 const init = function () {
   const charDom = document.getElementsByClassName("troops")[0] as HTMLElement
@@ -58,7 +58,7 @@ const init = function () {
       trigger: "item"
     },
     legend: {
-       left: "center",
+      left: "center",
       textStyle: {
         color: "#fff",
         fontSize: "12"
@@ -122,10 +122,10 @@ const articleInit = function () {
         fontSize: "12"
       }
     },
-    grid:{
-      top:'3%',
-      bottom:'3%',
-      containLabel:true
+    grid: {
+      top: '3%',
+      bottom: '3%',
+      containLabel: true
     },
     xAxis: {
       type: "category",
@@ -203,12 +203,61 @@ const proruptionInit = function () {
     myChart3.resize()
   })
 }
+const maps = function () {
+  const charDom4 = document.getElementsByClassName("map")[0] as HTMLElement
+  const myChart4 = echarts.init(charDom4);
+  let option4;
 
+  option4 = {
+    title: {
+      text: '应急事件处理',
+      left: 'center',
+      textStyle:{
+        color:'#fff'
+      }
+    },
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      orient: 'vertical',
+      left: 'left',
+      textStyle:{
+        color:'#fff'
+      }
+    },
+    series: [
+      {
+        name: '类型',
+        type: 'pie',
+        radius: '50%',
+        data: [
+          { value: 20, name: '火灾应急演练' },
+          { value: 10, name: '网络攻击演练' },
+          { value: 15, name: '公共卫生事件演练' },
+          { value: 25, name: '停电演练' },
+          { value: 10, name: '事故演练' },
+          { value: 5, name: '地震演练' }
+        ],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  };
+
+  option4 && myChart4.setOption(option4);
+}
 onMounted(() => {
   init()
   articleInit()
   proruptionInit()
-  mapInit()
+  // mapInit()
+  maps()
 })
 </script>
 
@@ -232,7 +281,10 @@ onMounted(() => {
         <history></history>
       </BorderBox10>
     </div>
-    <div class="map" id="map"></div>
+    <div class="map" id="map">
+      <BorderBox10>
+      </BorderBox10>
+    </div>
     <div class="history">
       <BorderBox10>
         <div class="grid-title">应急事件处理情况</div>
@@ -241,7 +293,7 @@ onMounted(() => {
     </div>
     <div class="proruption-box">
       <BorderBox10>
-        <div class="grid-title">突发事件占比统计</div> 
+        <div class="grid-title">突发事件占比统计</div>
         <div class="proruption" style="width: 100%;height:  calc(100% - 4rem);"></div>
       </BorderBox10>
     </div>
@@ -255,7 +307,6 @@ onMounted(() => {
 </template>
 
 <style scoped lang="less">
-
 .home-view {
   height: 100vh;
   padding: 6rem 1rem 1rem 1rem;
@@ -302,9 +353,22 @@ onMounted(() => {
     grid-area: right3;
   }
 }
-.grid-title{
+
+.grid-title {
   font-size: 2rem;
   height: 4rem;
   line-height: 4rem;
+}
+:deep(.dv-scroll-board .rows .ceil) {
+    padding: 0;
+    background-color: #01c0d500 !important;
+    white-space: normal !important;
+    color: #01c0d5;
+}
+
+:deep(.dv-scroll-board .header) {
+    background-color: #01c0d500 !important;
+    font-weight: 600;
+    color: #01c0d5;
 }
 </style>

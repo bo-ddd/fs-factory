@@ -99,6 +99,9 @@ const nav = (item: any) => {
 </script>
 
 <style lang="scss">
+.nav-get{
+  line-height: initial;
+}
 .top-nav {
   width: 100%;
   height: 6rem;
@@ -116,6 +119,7 @@ const nav = (item: any) => {
     // margin-left: 4.4rem;
 
     .textshadow {
+      line-height: initial;
       font-size: 2.4rem;
       font-weight: 700;
       color: #9ad1f6;
@@ -153,6 +157,7 @@ const nav = (item: any) => {
       width: 2.6rem;
       height: 1rem;
       border-bottom: 3px solid #fff;
+      box-sizing: content-box;
     }
   }
 
