@@ -37,12 +37,13 @@ const tabledate: any = reactive([
     isActive: true,
     path: "/parkInfo",
   },
-  // {
-  //   title: "卡口监控",
-  //   id: 2,
-  //   isActive: false,
-  //   path: "/securityMonitoringManagement",
-  // },
+  {
+    title: "卡口监控",
+    id: 2,
+    isActive: false,
+    // path: "/securityMonitoringManagement",
+    path: "/vehicleMonitoring",
+  },
   {
     title: "双重预防机制",
     id: 2,
@@ -101,6 +102,8 @@ const nav = (item: any) => {
 <style lang="scss">
 .nav-get{
   line-height: initial;
+  // font-size: 1.9rem;
+  font-weight: bold;
 }
 .top-nav {
   width: 100%;
@@ -111,12 +114,10 @@ const nav = (item: any) => {
   align-items: center;
 
   .LOGO {
-    // width: 35rem;
     height: 3.5rem;
     display: flex;
     align-items: center;
     gap:0 2rem;
-    // margin-left: 4.4rem;
 
     .textshadow {
       line-height: initial;
@@ -134,7 +135,6 @@ const nav = (item: any) => {
     align-items: center;
     gap: 6rem;
     color: #fff;
-    // width: 95rem;
 
     .nav-font {
       font-size: 1.1rem;
