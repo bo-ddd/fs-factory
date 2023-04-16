@@ -132,7 +132,7 @@ export function bindLayerPopup() {
     graphicLayer.bindPopup(function (event) {
         const attr = event.graphic.attr || {}
         attr["类型"] = "宝马"
-        attr["驾驶人"] = "周永峰"
+        attr["驾驶人"] = "杨婷婷"
         attr["车牌"] = "晋L10X79"
 
         return mars3d.Util.getTemplateHtml({ title: "车辆信息", template: "all", attr: attr })

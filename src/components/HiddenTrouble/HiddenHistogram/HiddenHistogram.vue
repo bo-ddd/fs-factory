@@ -30,7 +30,7 @@ const init = function () {
           borderRadius: 8
         },
         data: [
-          { value: 40, name: "山西恒锦盛科技有限公司" },
+          { value: 40, name: "山西华辉捷科技有限公司" },
           { value: 38, name: "厂区B" },
           { value: 32, name: "厂区C" },
           { value: 30, name: "脱硫塔" },

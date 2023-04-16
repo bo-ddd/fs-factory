@@ -25,7 +25,7 @@ const typeComparison = function () {
                 radius: ['20%', '47%'],
                 center: ['50%', '50%'],
                 data: [
-                    { value: 1, name: '山西恒锦盛科技有限公司' },
+                    { value: 1, name: '山西华辉捷科技有限公司' },
                     { value: 3, name: '浮山化工园A厂区' },
                     { value: 3, name: '浮山化工园B厂区' }],
                 label: {
