@@ -15,7 +15,7 @@
           <div class="box-item">
             <dv-decoration-11 class="title" style="width:200px;height:55px;">人员车辆分布</dv-decoration-11>
             <div class="min">
-            <main-view @mapLoaded="load" />
+            <!-- <main-view @mapLoaded="load" /> -->
             
             <div class="load" v-if="flag">
               <div class="loaderbg">

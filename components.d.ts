@@ -44,6 +44,7 @@ declare module 'vue' {
     ParkAreaInfo: typeof import('./src/components/parkInfo/parkAreaInfo.vue')['default']
     ParkBodNum: typeof import('./src/components/parkInfo/parkBodNum.vue')['default']
     QuantityTrend: typeof import('./src/components/jobSupervision/QuantityTrend.vue')['default']
+    SafetyDay: typeof import('./src/components/HiddenTrouble/SafetyDay/SafetyDay.vue')['default']
     Shape: typeof import('./src/components/table/shape.vue')['default']
     Step: typeof import('./src/components/mars-ui/mars-steps/step.vue')['default']
     StepGroup: typeof import('./src/components/mars-ui/mars-steps/step-group.vue')['default']
