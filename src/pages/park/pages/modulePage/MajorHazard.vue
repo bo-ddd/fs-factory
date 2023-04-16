@@ -33,20 +33,7 @@
 
 
             <BorderBox6 class="item">
-                <Title title="企业信息">
-                    <div class="aaa">
-                        <div>企业编号:001</div>
-                        <div>企业名称:山西华辉捷有限公司</div>
-                        <div>企业地址:山西省临汾市浮山县天坛镇平里村西部</div>
-                        <div>联系人:杨瑞强</div>
-                        <div>联系电话:0357-5711155</div>
-                        <div>企业邮箱:422216802@qq.com</div>
-                        <div>企业类型:环保科技公司</div>
-                    </div>
-                </Title>
-            </BorderBox6>
 
-            <BorderBox6 class="item">
                 <Title title="监测预警">
                     <div class="park-status">
 
@@ -79,24 +66,29 @@
                             </div>
                         </div>
                     </div>
-                    <ScrollBoard :config="warning" style="width: 25vw; height: calc(100% - 18rem);" />
+                    <ScrollBoard :config="warning" style="width: 100%; height: calc(100% - 18rem);" />
                 </Title>
-
             </BorderBox6>
-
+            
             <BorderBox6 class="item">
-                <Title title="园区企业">
-                    <div class="enterprise">
-                        <div>
-                            <Decoration11 style="width:25rem;height:6rem;">山西华辉捷有限公司</Decoration11>
-                        </div>
-                        <div @click="to">
-                            <Decoration11 style="width:25rem;height:6rem;">浮山化工园F厂区</Decoration11>
-                        </div>
-                        <div @click="to">
-                            <Decoration11 style="width:25rem;height:6rem;">浮山化工园G厂区</Decoration11>
-                        </div>
+                <Title title="企业信息">
+                    <div class="aaa">
+                        <div>统一社会信用代码:91141027MA0LFTG339</div>
+                        <div>企业名称:浮山县华辉捷环保科技有限公司</div>
+                        <div>企业地址:山西省临汾市浮山县天坛镇平里村西部</div>
+                        <div>联系人:杨瑞强</div>
+                        <div>联系电话:0357-5711155</div>
+                        <div>企业邮箱:422216802@qq.com</div>
+                        <div>企业类型:有限责任公司(非自然人投资或控股的法人独资)</div>
                     </div>
+                </Title>
+                
+            </BorderBox6>
+            
+            <BorderBox6 class="item">
+                <Title title="预防措施">
+                    <ScrollBoard :config="measure" style="width: 100%; height: 100% ;" />
+                    
                 </Title>
             </BorderBox6>
 
@@ -113,27 +105,28 @@
 <script setup lang="ts">
 import { reactive } from "vue"
 import { ElMessage } from "element-plus"
-import { BorderBox6, Decoration11, ScrollBoard } from '@kjgl77/datav-vue3';
+import { BorderBox6, ScrollBoard } from '@kjgl77/datav-vue3';
 import Title from '../../../../components/EnergyManagementView.vue'
 import ClassifyChart from '../../../../components/ClassifyChart/ClassifyChart.vue'
 import HazardContrast from '../../../../components/HazardContrast/HazardContrast.vue'
 const accidentRecords = reactive({
     header: ["事故时间", "影响范围", "受伤人数", "死亡人数"],
     data: [
-        ["2022-08-19 08:00:00", "浮山化工A厂区", "1", "0"],
-        ["2022-12-19 07:00:00", "浮山化工B厂区", "0", "0"],
-        ["2022-08-19 08:30:00", "浮山化工A厂区", "2", "0"],
-        ["2022-08-19 11:00:00", "浮山化工B厂区", "2", "0"],
-        ["2022-02-19 16:00:00", "浮山化工C厂区", "1", "0"],
-        ["2022-04-19 12:00:00", "浮山化工A厂区", "2", "0"],
-        ["2022-12-19 21:00:00", "浮山化工C厂区", "1", "0"],
-        ["2022-11-19 23:30:00", "浮山化工B厂区", "1", "0"],
-        ["2022-12-19 09:20:00", "浮山化工A厂区", "2", "0"],
-        ["2022-06-19 10:00:00", "浮山化工C厂区", "0", "0"]
+        ["2022-08-19 08:00:00", "活化车间", "1", "0"],
+        ["2022-12-19 07:00:00", "炭化车间", "0", "0"],
+        ["2022-08-19 08:30:00", "成型车间", "2", "0"],
+        ["2022-08-19 11:00:00", "活化车间", "2", "0"],
+        ["2022-02-19 16:00:00", "炭化车间", "1", "0"],
+        ["2022-04-19 12:00:00", "活化车间", "2", "0"],
+        ["2022-12-19 21:00:00", "炭化车间", "1", "0"],
+        ["2022-11-19 23:30:00", "成型车间", "1", "0"],
+        ["2022-12-19 09:20:00", "活化车间", "2", "0"],
+        ["2022-06-19 10:00:00", "炭化车间", "0", "0"]
     ],
     columnWidth: [100, 200, 100, 100],
     align: ["center", "center", "center", "center"],
     headerBGC: "none",
+    rowNum: 4,
     oddRowBGC: "none",
     evenRowBGC: "none"
 })
@@ -152,15 +145,32 @@ const warning = reactive({
         ["no4", "2022-12-19 09:20:00", "962", "低级", "超过预警值"],
         ["no6", "2022-06-19 10:00:00", "162", "低级", "数据异常"]
     ],
-    columnWidth: [100, 100, 100, 100, 100],
+    columnWidth: [200, 200, 200, 200, 200],
     align: ["center", "center", "center", "center", "center"],
     headerBGC: "none",
     oddRowBGC: "none",
     evenRowBGC: "none"
 })
+const measure = reactive({
+    header: ["应急预案名称", "紧急联系人", "联系电话", "应急响应措施"],
+    data: [
+        ["活性碳泄漏应急预案", "陈甩甩", "13552346162", "立即启动紧急处理预案"],
+        ["火灾应急预案", "魏庆晨", "17752439352", "开展现场火场灭火战斗"],
+        ["中毒应急预案", "许军平", "15981833938", "通知应急救援队伍前往现场"],
+        ["活性碳泄漏应急预案", "杨瑞强", "13071000001", "及时通知环保、安监部门"],
+        ["火灾应急预案", "杨婷婷", "15523700737", "当班值班人员向本单位控制中心报告火场情况"],
+        ["中毒应急预案", "王浩强", "13714566727", "负责组织应对措施，开展排查和救护工作"],
+    ],
+    columnWidth: [200, 200, 200, 200, 200],
+    align: ["center", "center", "center", "center", "center"],
+    headerBGC: "none",
+    rowNum: 4,
+    oddRowBGC: "none",
+    evenRowBGC: "none"
+})
 
 const hiddenTrouble = reactive({
-    header: ["隐患编号", "隐患类型", "隐患描述"],
+    header: ["危险源编号", "监测时间", "监测数值"],
     data: [
         ["no1", "火灾隐患", "触电火灾隐患"],
         ["no8", "环境隐患", "噪音超标"],
@@ -230,7 +240,6 @@ const to = function () {
 
 .item:nth-of-type(2) {
     grid-area: center;
-    color: #01c0d5;
     font-size: 2rem;
 
 }
@@ -244,6 +253,7 @@ const to = function () {
 
 .item:nth-of-type(3) {
     grid-area: right-aside_1;
+    color: #01c0d5;
 }
 
 .item:nth-of-type(4) {
@@ -325,6 +335,7 @@ const to = function () {
     margin: 1rem auto 0;
     line-height: 3rem;
     text-align: center;
+    font-size: 1.4rem;
 }
 
 :deep(.dv-scroll-board .rows .ceil) {
@@ -339,18 +350,4 @@ const to = function () {
     font-weight: 600;
     color: #01c0d5;
 }
-
-.enterprise {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    color: #01c0d5;
-    font-size: 1.4rem;
-}
-
-.enterprise div {
-    cursor: pointer;
-}</style>
+</style>

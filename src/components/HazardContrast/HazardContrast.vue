@@ -15,7 +15,7 @@ const typeComparison = function () {
     },
     legend: {
       textStyle: { color: "#fff" },
-      data: ["浮山A厂区", "浮山B厂区", "浮山C厂区"]
+      data: ["成型车间","炭化车间", "活化车间"]
     },
     grid: {
       top: "10%",
@@ -39,19 +39,19 @@ const typeComparison = function () {
     },
     series: [
       {
-        name: "浮山A厂区",
+        name: "成型车间",
         type: "line",
         stack: "Total",
         data: [1, 1, 2, 2, 0, 3, 1]
       },
       {
-        name: "浮山B厂区",
+        name: "炭化车间",
         type: "line",
         stack: "Total",
         data: [1, 0, 0, 2, 1, 0, 1]
       },
       {
-        name: "浮山C厂区",
+        name: "活化车间",
         type: "line",
         stack: "Total",
         data: [1, 2, 1, 0, 0, 1, 1]

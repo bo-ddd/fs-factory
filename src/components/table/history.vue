@@ -17,7 +17,11 @@ const config = reactive({
     ['2023-01-08', '地震演练', '厂区A', '应急预案办公室'],
     ['2023-03-29', '事故演练', '山西华辉捷科技有限公司', '公路管理部门'],
   ],
-  columnWidth: [],
+    columnWidth: [100, 100, 110, 100],
+  align: ["center", "center", "center", "center"],
+  headerBGC: "none",
+  oddRowBGC: "none",
+  evenRowBGC: "none"
   // align: ["center", "center", "center", "center"]
 })
 </script>

@@ -16,44 +16,76 @@ const backup = function () {
         data.unshift((date.getMonth() + 1) + '月' + day + '日')
     }
     const optionBackup: EChartsOption = {
-        xAxis: {
-            type: 'category',
-            data: data
-        },
-        tooltip: {
-            trigger: 'axis',
-        },
-        textStyle: {
-            color: '#fff'
-        },
-        grid: {
+    textStyle:{
+      color:'#fff'
+    },
+  tooltip: {
+    trigger: 'axis',
+  },
+  toolbox: {
+    // feature: {
+    //   magicType: { show: true, type: ['line', 'bar'] },
+    //   restore: { show: true },
+    //   saveAsImage: { show: true }
+    // },
+
+  },
+  grid: {
             left: '5%',
             right: '5%',
             bottom: '10%',
             top: '10%',
             containLabel: true
         },
-        yAxis: {
-            type: 'value',
-            min: 0,
-            max: 24,
-            interval: 5,
-            axisLabel: {
-                formatter: '{value} 时'
-            }
-        },
-        series: [
-            {
-                data: [15, 9, 13, 15, 11, 18, 17],
-                type: 'line',
-                tooltip: {
-                    valueFormatter: function (value) {
-                        return value + ' 时';
-                    }
-                },
-            }
-        ]
-    };
+//   legend: {
+//     data: ['反应釜', '管道', '蒸汽炉','橡胶加工设备','氮气发生器','蒸汽轮机','泵','空调设备','车间照明设备'],
+//     top:'top',
+//     textStyle:{
+//       color:'#fff'
+//     }
+//   },
+  xAxis: [
+    {
+      type: 'category',
+      data: ['反应釜', '管道', '蒸汽炉','橡胶加工设备','氮气发生器','蒸汽轮机','泵','空调设备'],
+      axisPointer: {
+        type: 'shadow'
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      interval: 2,
+    },
+  ],
+  series: [
+    {
+      name: '温度',
+      type: 'bar',
+      data: [
+        2, 4, 7, 2, 2, 7, 1
+      ]
+    },
+    {
+      name: '压力',
+      type: 'bar',
+      data: [
+        2, 5, 9, 3, 2, 6, 1
+      ]
+    },
+    {
+      name: '水流量',
+      type: 'bar',
+      data: [1, 2, 3, 4, 6, 1, 2]
+    },
+    {
+      name: '转速',
+      type: 'bar',
+      data: [1, 2, 3, 4, 6, 1, 2]
+    }
+  ]
+};
     optionBackup && myChartBackup.setOption(optionBackup);
     window.addEventListener('resize', function () {
         myChartBackup.resize()
