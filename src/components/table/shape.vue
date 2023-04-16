@@ -17,13 +17,17 @@ const config1 = reactive({
     ["地震演练", "厂区C", "2023-03-12", "处理中"],
     ["事故演练", "厂区B", "2023-03-26", "待处理"],
   ],
+  align: ["center", "center", "center", "center"],
+  headerBGC: "none",
+  oddRowBGC: "none",
+  evenRowBGC: "none"
 })
 </script>
   
 <style lang="scss" scoped>
 .shape {
   height: calc(100% - 4rem);
-  padding:0 2rem 2rem ; 
+  padding: 0 2rem 2rem;
   box-sizing: border-box;
 }
 </style>

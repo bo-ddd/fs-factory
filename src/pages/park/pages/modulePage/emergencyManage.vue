@@ -359,4 +359,16 @@ onMounted(() => {
   height: 4rem;
   line-height: 4rem;
 }
+:deep(.dv-scroll-board .rows .ceil) {
+    padding: 0;
+    background-color: #01c0d500 !important;
+    white-space: normal !important;
+    color: #01c0d5;
+}
+
+:deep(.dv-scroll-board .header) {
+    background-color: #01c0d500 !important;
+    font-weight: 600;
+    color: #01c0d5;
+}
 </style>
