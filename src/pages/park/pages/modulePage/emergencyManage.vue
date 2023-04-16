@@ -224,7 +224,8 @@ const maps = function () {
       left: 'left',
       textStyle:{
         color:'#fff'
-      }
+      },
+      top:'5%'
     },
     series: [
       {
@@ -279,6 +280,7 @@ onMounted(() => {
       <BorderBox10>
         <div class="grid-title">历史应急演练记录表</div>
         <history></history>
+
       </BorderBox10>
     </div>
     <div class="map" id="map">
