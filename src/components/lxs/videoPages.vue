@@ -11,7 +11,7 @@
             style="width: 100%; height: 100%"
           >
             <video id="lxs_myvideo1" class="video-js vjs-fluid vjs-big-play-centered">
-              <source :src="video.url" type="application/x-mpegURL" />
+              <source src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ1C0AF/0/1/20220330T143454/5e7ed935e38989a507d1bfcf0d6016ee.m3u8?proto=https" type="application/x-mpegURL" />
             </video>
           </lxsBox>
         </div>
@@ -71,12 +71,19 @@
               </div>
             </div>
             <div class="item mb-05">
+              
+          <lxsBox
+            :lxs-box-data="{ isOpenCartoon: true }"
+            class="dom"
+            style="width: 100%; height: 100%"
+          >
               <video id="lxs_myvideo2" class="video-js vjs-fluid vjs-big-play-centered">
                 <source
                   src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https"
                   type="application/x-mpegURL"
                 />
               </video>
+          </lxsBox>
             </div>
             <div class="item mb-05">
               <video id="lxs_myvideo3" class="video-js vjs-fluid vjs-big-play-centered">
@@ -133,6 +140,7 @@ export default {
     })
   },
   beforeUnmount() {
+    console.log('离开');
     this.videoInstance1.dispose()
     this.videoInstance2.dispose()
     this.videoInstance3.dispose()
