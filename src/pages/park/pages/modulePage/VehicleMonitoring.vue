@@ -108,6 +108,7 @@ const config = reactive({
     headerBGC: "none",
     oddRowBGC: "none",
     evenRowBGC: "none",
+    // columnWidth:["130","100","100","150"],
     align: ["center", "center", "center", "center"]
 })
 const config2 = reactive({
@@ -132,7 +133,7 @@ const config2 = reactive({
     headerBGC: "none",
     oddRowBGC: "none",
     evenRowBGC: "none",
-    columnWidth:["150","100","100","150"],
+    // columnWidth:["140","100","100","130"],
     align: ["center", "center", "center", "center", "center", "center", "center"]
 })
 const config3 = reactive({
@@ -154,6 +155,7 @@ const config3 = reactive({
     headerBGC: "none",
     oddRowBGC: "none",
     evenRowBGC: "none",
+    // columnWidth:["100","100","100","100","90"],
     align: ["center", "center", "center", "center", "center"]
 })
 const open1 = () => {
@@ -497,6 +499,7 @@ const pieChart = function () {
         box-sizing: border-box;
         grid-template-rows: 6rem 1fr 1fr 1fr;
         gap: 3rem;
+        padding: 1rem;
         grid-template-columns: 2fr 3fr 2fr;
         grid-template-areas:
             "title title title"

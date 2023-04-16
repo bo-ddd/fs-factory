@@ -2,15 +2,17 @@
   <div>
     <div class="top-nav">
       <div class="LOGO">
-        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt="" />
+        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt />
         <div class="textshadow">浮山双新产业园区</div>
       </div>
       <div class="nav-list">
-        <div class="nav-font" @click="nav(item)" v-for="(item, i) in tabledate" :key="i">
-          <div :class="[ router.currentRoute.value.href==item.path ? 'box' : '']"></div>
-          <div class="nav-get">{{ item.title }}</div>
-          <div class="nav-border"></div>
-        </div>
+        <template v-for="(item, i) in tabledate" :key="i">
+          <div class="nav-font" @click="nav(item)">
+            <div :class="[ (router.currentRoute.value.href==item.path||(item.path=='/vehicleMonitoring'&&router.currentRoute.value.href=='/securityMonitoringManagement') )? 'box' : '']"></div>
+            <div class="nav-get">{{ item.title }}</div>
+            <div class="nav-border"></div>
+          </div>
+        </template>
       </div>
       <div class="time-stamp">{{ timechuo || '2023 - 04 - 17 17:06:08' }}</div>
     </div>
@@ -18,16 +20,16 @@
 </template>
 <script setup lang="ts">
 import { Ref, ref, toRefs, defineEmits, reactive } from "vue"
-import { useRouter } from "vue-router";
+import { useRouter } from "vue-router"
 
-let router : any = useRouter();
+let router: any = useRouter()
 
 const props = defineProps<{
   defaultTitle?: string
 }>()
-const { defaultTitle } = toRefs(props);
+const { defaultTitle } = toRefs(props)
 
-const emits = defineEmits(["success"]);
+const emits = defineEmits(["success"])
 
 const timechuo: Ref<string> = ref("")
 const tabledate: any = reactive([
@@ -35,25 +37,26 @@ const tabledate: any = reactive([
     title: "安全基础管理",
     id: 1,
     isActive: true,
-    path: "/parkInfo",
+    path: "/parkInfo"
   },
   // {
   //   title: "卡口监控",
-  //   id: 2,
+  //   id: 11,
   //   isActive: false,
-  //   path: "/securityMonitoringManagement",
+  //   // path: "/securityMonitoringManagement",
+  //   path: "/vehicleMonitoring"
   // },
   {
     title: "双重预防机制",
     id: 2,
     isActive: false,
-    path: "/hiddenTrouble",
+    path: "/hiddenTrouble"
   },
   {
     title: "重大危险源安全管理",
     id: 3,
     isActive: false,
-    path: "/MajorHazard",
+    path: "/MajorHazard"
   },
   // {
   //   title: "报警管理",
@@ -65,21 +68,21 @@ const tabledate: any = reactive([
     title: "特殊作业管理",
     id: 4,
     isActive: false,
-    path: "/jobSupervision",
+    path: "/jobSupervision"
   },
   {
     title: "封闭化管理",
     id: 5,
     isActive: false,
-    path: "/vehicleMonitoring",
+    path: "/vehicleMonitoring"
   },
   {
     title: "敏捷应急",
     id: 6,
     isActive: false,
-    path: "/EmergencyManage",
+    path: "/EmergencyManage"
   }
-]);
+])
 
 setInterval(() => {
   const date: any = new Date()
@@ -93,14 +96,15 @@ setInterval(() => {
 }, 1000)
 
 const nav = (item: any) => {
-  emits("success", item);
+  emits("success", item)
 }
-
 </script>
 
 <style lang="scss">
-.nav-get{
+.nav-get {
   line-height: initial;
+  // font-size: 1.9rem;
+  font-weight: bold;
 }
 .top-nav {
   width: 100%;
@@ -111,12 +115,10 @@ const nav = (item: any) => {
   align-items: center;
 
   .LOGO {
-    // width: 35rem;
     height: 3.5rem;
     display: flex;
     align-items: center;
-    gap:0 2rem;
-    // margin-left: 4.4rem;
+    gap: 0 2rem;
 
     .textshadow {
       line-height: initial;
@@ -134,7 +136,6 @@ const nav = (item: any) => {
     align-items: center;
     gap: 6rem;
     color: #fff;
-    // width: 95rem;
 
     .nav-font {
       font-size: 1.1rem;

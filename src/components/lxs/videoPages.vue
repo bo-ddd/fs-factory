@@ -1,5 +1,5 @@
 <template>
-  <div class="view" v-show="isView">
+  <div class="views">
     <div class="lxs-fs-webcam" v-show="showView">
       <!-- 摄像头页面 -->
       <div class="left">
@@ -70,13 +70,20 @@
                 </div>
               </div>
             </div>
-            <div class="item mb-05" v-for="(item, index) in rightVideo" :key="index">
-              <video
-                :id="item.idName"
-                class="video-js vjs-fluid vjs-big-play-centered"
-                autoplay="true"
-              >
-                <source :src="item.url" />
+            <div class="item mb-05">
+              <video id="lxs_myvideo2" class="video-js vjs-fluid vjs-big-play-centered">
+                <source
+                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https"
+                  type="application/x-mpegURL"
+                />
+              </video>
+            </div>
+            <div class="item mb-05">
+              <video id="lxs_myvideo3" class="video-js vjs-fluid vjs-big-play-centered">
+                <source
+                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https"
+                  type="application/x-mpegURL"
+                />
               </video>
             </div>
           </div>
@@ -84,7 +91,6 @@
       </div>
     </div>
   </div>
-  <div class="loader">loading...</div>
 </template>
 
 <script>
@@ -121,15 +127,10 @@ export default {
       videoInstance3: null
     }
   },
-  created() {
-    // this.video.idName = "lxs_major"
-    // setTimeout(() => {
-    //   this.flesh()
-    // }, 500)
-  },
   mounted() {
-    this.isView = true
-    this.initVideoDom()
+    this.$nextTick(() => {
+      this.initVideoDom()
+    })
   },
   beforeUnmount() {
     this.videoInstance1.dispose()
@@ -172,13 +173,6 @@ export default {
           ]
         }
       }
-      // } else {
-      //   init = {
-      //     controls: false, // 是否显示控制条
-      //     preload: "auto",
-      //     muted: true // 是否静音
-      //   }
-      // }
       this.videoInstance1 = videojs(arr[0], init)
       this.videoInstance1.play()
       this.videoInstance2 = videojs(arr[1], init)
@@ -191,8 +185,6 @@ export default {
       setTimeout(() => {
         this.$nextTick(() => {
           this.initVideo(["lxs_myvideo1", "lxs_myvideo2", "lxs_myvideo3"])
-          // this.initVideo("lxs_myvideo2")
-          // this.initVideo("lxs_myvideo3")
         })
       }, 200)
     },
@@ -212,6 +204,8 @@ export default {
 
 <style scoped lang="scss">
 .loader {
+  position: absolute;
+  top: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -220,6 +214,7 @@ export default {
   font-family: "ZCODL Kuaile", cursive;
   font-size: 10rem;
   color: palevioletred;
+  z-index: 1;
 }
 
 .loader::after {
@@ -241,10 +236,9 @@ export default {
   margin-bottom: 1rem !important;
 }
 
-.view {
+.views {
   width: 100%;
-  height: 100%;
-  padding-top: 6rem;
+  height: calc(100% - 7rem);
   box-sizing: border-box;
   background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif");
   background-repeat: no-repeat;
@@ -253,11 +247,9 @@ export default {
 
 .lxs-fs-webcam {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  z-index: 111;
   width: 100vw;
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 13rem);
   color: #fff;
   display: flex;
   box-sizing: border-box;
@@ -272,7 +264,6 @@ export default {
 .lxs-fs-webcam .left .lxs-main_body {
   height: 100%;
   box-sizing: border-box;
-  padding: 0.5rem;
 }
 
 .lxs-fs-webcam .left .lxs-main_body .video-js {
