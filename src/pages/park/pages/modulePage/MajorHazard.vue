@@ -36,11 +36,11 @@
                 <Title title="企业信息">
                     <div class="aaa">
                         <div>企业编号:001</div>
-                        <div>企业名称:山西恒锦盛科技有限公司</div>
-                        <div>企业地址:山西省临汾市浮山县</div>
-                        <div>联系人:李金平</div>
-                        <div>联系电话:15267389275</div>
-                        <div>企业邮箱:d@example.com</div>
+                        <div>企业名称:山西华辉捷科技有限公司</div>
+                        <div>企业地址:山西省临汾市浮山县天坛镇平里村西部</div>
+                        <div>联系人:李帅汶</div>
+                        <div>联系电话:13453796886</div>
+                        <div>企业邮箱:</div>
                         <div>企业类型:建筑业</div>
                     </div>
                 </Title>
@@ -88,7 +88,7 @@
                 <Title title="园区企业">
                     <div class="enterprise">
                         <div>
-                            <Decoration11 style="width:25rem;height:6rem;">山西恒锦盛科技有限公司</Decoration11>
+                            <Decoration11 style="width:25rem;height:6rem;">山西华辉捷科技有限公司</Decoration11>
                         </div>
                         <div @click="to">
                             <Decoration11 style="width:25rem;height:6rem;">浮山化工园F厂区</Decoration11>

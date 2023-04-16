@@ -32,50 +32,50 @@ const emits = defineEmits(["success"]);
 const timechuo: Ref<string> = ref("")
 const tabledate: any = reactive([
   {
-    title: "园区信息管理",
+    title: "安全基础管理",
     id: 1,
     isActive: true,
     path: "/parkInfo",
   },
   {
-    title: "安防监控管理",
+    title: "卡口监控",
     id: 2,
     isActive: false,
     path: "/securityMonitoringManagement",
   },
   {
-    title: "风险分区隐患管理",
-    id: 3,
+    title: "双重预防机制",
+    id: 2,
     isActive: false,
     path: "/hiddenTrouble",
   },
   {
-    title: "重大危险源管理",
-    id: 4,
+    title: "重大危险源安全管理",
+    id: 3,
     isActive: false,
     path: "/MajorHazard",
   },
+  // {
+  //   title: "报警管理",
+  //   id: 5,
+  //   isActive: false,
+  //   path: "/meetEarly",
+  // },
   {
-    title: "报警管理",
-    id: 5,
-    isActive: false,
-    path: "/meetEarly",
-  },
-  {
-    title: "特殊作业监管",
-    id: 6,
+    title: "特殊作业管理",
+    id: 4,
     isActive: false,
     path: "/jobSupervision",
   },
   {
-    title: "卡口管理",
-    id: 7,
+    title: "封闭化管理",
+    id: 5,
     isActive: false,
     path: "/vehicleMonitoring",
   },
   {
-    title: "应急救援管理",
-    id: 8,
+    title: "敏捷应急",
+    id: 6,
     isActive: false,
     path: "/EmergencyManage",
   }

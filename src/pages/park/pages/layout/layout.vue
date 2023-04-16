@@ -20,56 +20,56 @@ const routeInfo = [
     name: "parkInfo",
     path: "/parkInfo",
     label: {
-      name: "园区信息管理"
+      name: "安全基础管理"
     }
   },
   {
     name: "securityMonitoringManagement",
     path: "/securityMonitoringManagement",
     label: {
-      name: "安防监控管理"
+      name: "卡口监控"
     }
   },
   {
     name: "hiddenTrouble",
     path: "/hiddenTrouble",
     label: {
-      name: "风险分区隐患管理"
+      name: "双重预防机制"
     }
   },
   {
     name: "MajorHazard",
     path: "/majorHazard",
     label: {
-      name: "重大危险源管理"
+      name: "重大危险源安全管理"
     }
   },
-  {
-    name: "meetEarly",
-    path: "/meetEarly",
-    label: {
-      name: "报警管理"
-    }
-  },
+  // {
+  //   name: "meetEarly",
+  //   path: "/meetEarly",
+  //   label: {
+  //     name: "报警管理"
+  //   }
+  // },
   {
     name: "jobSupervision",
     path: "/jobSupervision",
     label: {
-      name: "特殊作业监管"
+      name: "特殊作业管理"
     }
   },
   {
     name: "vehicleMonitoring",
     path: "/vehicleMonitoring",
     label: {
-      name: "卡口管理"
+      name: "封闭化管理"
     }
   },
   {
     name: "EmergencyManage",
     path: "/emergencyManage",
     label: {
-      name: "应急救援管理"
+      name: "敏捷应急"
     }
   }
 ]

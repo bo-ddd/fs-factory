@@ -15,30 +15,35 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         // 重大危险源监管
+        // 重大危险源安全管理
         name: "MajorHazard",
         path: "/majorHazard",
         component: () => import("../pages/modulePage/MajorHazard.vue")
       },
       {
         // 应急管理模块
+        // 敏捷应急
         name: "EmergencyManage",
         path: "/emergencyManage",
         component: () => import("../pages/modulePage/emergencyManage.vue")
       },
       {
         // 特殊作业监管
+        // 特殊作业管理
         name: "jobSupervision",
         path: "/jobSupervision",
         component: () => import("../pages/modulePage/jobSupervision.vue")
       },
       {
         // 人/车/物流监控
+        // 封闭化管理
         name: "vehicleMonitoring",
         path: "/vehicleMonitoring",
         component: () => import("../pages/modulePage/VehicleMonitoring.vue")
       },
       {
         // 园区信息管理
+        // 安全基础管理
         name: "parkInfo",
         path: "/parkInfo",
         component: () => import("../pages/modulePage/ParkInfo.vue")
@@ -57,6 +62,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         // 隐患管理
+        // 双重预防机制
         name: "hiddenTrouble",
         path: "/hiddenTrouble",
         component: () => import("../pages/modulePage/HiddenTrouble.vue")
