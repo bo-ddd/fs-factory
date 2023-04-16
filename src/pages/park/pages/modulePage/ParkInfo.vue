@@ -172,10 +172,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 let controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true;
-
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco');
 const gltfLoader = new GLTFLoader();
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('https://threejs.org/examples/jsm/libs/draco/');
+dracoLoader.preload()
+gltfLoader.setDRACOLoader(dracoLoader)
+
 gltfLoader.setDRACOLoader(dracoLoader)
 gltfLoader.load('/api/avatar/20221010170924_parent_directory_%E4%BD%8F%E5%AE%85%E6%A5%BC21.gltf', function (gltf) {
   const model = gltf.scene;
