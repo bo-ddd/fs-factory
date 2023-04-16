@@ -224,7 +224,8 @@ const maps = function () {
       left: 'left',
       textStyle:{
         color:'#fff'
-      }
+      },
+      top:'5%'
     },
     series: [
       {
@@ -279,6 +280,7 @@ onMounted(() => {
       <BorderBox10>
         <div class="grid-title">历史应急演练记录表</div>
         <history></history>
+
       </BorderBox10>
     </div>
     <div class="map" id="map">
@@ -358,5 +360,17 @@ onMounted(() => {
   font-size: 2rem;
   height: 4rem;
   line-height: 4rem;
+}
+:deep(.dv-scroll-board .rows .ceil) {
+    padding: 0;
+    background-color: #01c0d500 !important;
+    white-space: normal !important;
+    color: #01c0d5;
+}
+
+:deep(.dv-scroll-board .header) {
+    background-color: #01c0d500 !important;
+    font-weight: 600;
+    color: #01c0d5;
 }
 </style>

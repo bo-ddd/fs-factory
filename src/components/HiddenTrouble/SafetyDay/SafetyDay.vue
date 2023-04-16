@@ -30,7 +30,7 @@
       type: 'value'
     },
     grid:{
-        left:'15%',
+        left:'20%',
         right:'5%'
     },
     series: [

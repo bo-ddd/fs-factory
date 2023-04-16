@@ -1,6 +1,6 @@
 <template>
-  <!-- <ConfigProvider :locale="locale"> -->
-    <!-- <div class="mars-main-view" id="mars-main-view">
+  <ConfigProvider :locale="locale">
+    <div class="mars-main-view" id="mars-main-view">
       <div id="centerDiv" class="centerDiv-container">
         <mars-map :url="configUrl" :options="mapOptions" @onload="marsOnload" />
       </div>
@@ -13,11 +13,8 @@
           />
         </template>
       </template>
-    </div> -->
-  <!-- </ConfigProvider> -->
-  <div>
-    
-  </div>
+    </div>
+  </ConfigProvider>
 </template>
 
 <script setup lang="ts">
@@ -61,7 +58,6 @@ const emit = defineEmits(["mapLoaded"])
 const loaded = ref(false)
 
 const marsOnload = (map: any) => {
-  console.log("map构造完成", map)
   mapInstance = map
   loaded.value = true
   emit("mapLoaded", mapInstance)
