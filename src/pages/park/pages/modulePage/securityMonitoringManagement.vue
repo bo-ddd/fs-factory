@@ -1,5 +1,7 @@
 <template>
   <div class="view" v-show="isView">
+    <el-page-header class="pb-2 jump" @back="goBack" title="返回" content="卡口监控">
+    </el-page-header>
     <div class="lxs-fs-webcam" v-show="showView">
       <!-- 摄像头页面 -->
       <div class="left">
@@ -26,7 +28,8 @@
                       <img src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png" alt="" />
                     </div>
                     <div style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem">·</div>
-                    <div style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
+                    <div
+                      style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
                       <div>
                         <div class="over_scroll_item-title mb-05">设备下线</div>
                         <div class="text">C5HC(F22376921)北头</div>
@@ -39,7 +42,8 @@
                       <img src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png" alt="" />
                     </div>
                     <div style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem">·</div>
-                    <div style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
+                    <div
+                      style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
                       <div>
                         <div class="over_scroll_item-title mb-05">设备下线</div>
                         <div class="text">C5HC(F22376921)北头</div>
@@ -55,16 +59,14 @@
             <div class="item mb-05">
               <video id="lxs_myvideo2" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
                 <source
-                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https"
-                />
+                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https" />
               </video>
             </div>
 
             <div class="item mb-05">
               <video id="lxs_myvideo3" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
                 <source
-                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https"
-                />
+                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https" />
               </video>
             </div>
           </div>
@@ -117,6 +119,9 @@ export default {
     this.initVideoDom()
   },
   methods: {
+    goBack() {
+      this.$router.push("vehicleMonitoring")
+    },
     flesh() {
       let isok = window.localStorage.getItem("isFirst")
       if (isok === "abcdefg") {
@@ -167,9 +172,9 @@ export default {
     initVideoDom() {
       setTimeout(() => {
         this.$nextTick(() => {
-        this.initVideo("lxs_major")
-        this.initVideo("lxs_myvideo2")
-        this.initVideo("lxs_myvideo3")
+          this.initVideo("lxs_major")
+          this.initVideo("lxs_myvideo2")
+          this.initVideo("lxs_myvideo3")
         })
       }, 300)
     },
@@ -237,7 +242,7 @@ export default {
 
 .lxs-fs-webcam {
   width: 100vw;
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 13rem);
   color: #fff;
   display: flex;
   box-sizing: border-box;
@@ -252,7 +257,6 @@ export default {
 .lxs-fs-webcam .left .lxs-main_body {
   height: 100%;
   box-sizing: border-box;
-  padding: 0.5rem;
 }
 
 .lxs-fs-webcam .left .lxs-main_body .video-js {
@@ -419,5 +423,17 @@ export default {
 .view2 .view2-box .item .video-js {
   width: 100%;
   height: 100%;
+}
+
+.jump{
+  color:#fff;
+  padding:2rem 0 2rem 0.5rem;
+  box-sizing: border-box;
+}
+:deep(.el-page-header__content){
+  color: #fff !important;
+}
+:deep(.el-page-header__back):hover{
+  color: #02e4f2;
 }
 </style>
