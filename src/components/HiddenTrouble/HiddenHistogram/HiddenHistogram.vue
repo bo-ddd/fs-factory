@@ -13,32 +13,49 @@ const init = function () {
     legend: {
       textStyle: {
         color: "#fff",
-      }
-      
+      },
+      top:'10%'
+    },
+    tooltip: {
+      trigger: 'item',
     },
     toolbox: {
       show: true
     },
     series: [
       {
-        name: "Nightingale Chart",
+        name: "风险分布",
         type: "pie",
-        radius: [50, 150],
-        center: ["50%", "50%"],
+        radius: [50, 80],
+        center: ["50%", "60%"],
         roseType: "area",
         itemStyle: {
           borderRadius: 8
+
         },
         data: [
-          { value: 40, name: "山西华辉捷科技有限公司" },
-          { value: 38, name: "厂区B" },
-          { value: 32, name: "厂区C" },
-          { value: 30, name: "脱硫塔" },
-          { value: 23, name: "罐区" }
+          { value: 10, name: "厂区A" },
+          { value: 4, name: "厂区B" },
+          { value: 6, name: "厂区C" },
         ],
         label: {
           color: "#fff",
-          fontSize:15
+          fontSize: 15,
+          position: "outside",
+          formatter: function (params:any) {
+            let res: any = "";
+            res = params.data.name;
+            if (params.data.name === '厂区A') {
+              return `${res}温度偏高`
+            }
+            if (params.data.name === '厂区B') {
+              return `${res}天然气使用占比高`
+            }
+            if (params.data.name === '厂区C') {
+              return `${res}辐射风险`
+            }
+
+          },
         }
       }
     ]

@@ -22,13 +22,15 @@
 ## 项目介绍
 
 Mars3D 基础项目 是基于[Mars3D 平台](http://mars3d.cn)做的一个应用系统，提供的一个基础项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。方便快速搭建三维地图产品，敏捷开发，可复用，支持各种配置，适合各种场景使用。
- 
- 
+
+
+
+
 ## 项目特性 
 - **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发
 - **TypeScript**: 应用程序级 JavaScript 的语言
 - **适用于地图场景的widget模块化**: 继续沿用了原生 JS 版本 widget 架构的一些思想，使用 vue 方式实现了各 widget 功能
- 
+
 
  > 如果您不熟悉Vue，也可以阅读：[基础项目原生JS版](http://mars3d.cn/dev/guide/project/jcxm-es5.html)  、[基础项目React版](http://mars3d.cn/dev/guide/project/jcxm-react.html)
 
@@ -115,7 +117,7 @@ npm run serve:dist  //测试dist运行状态
 ## 运行效果
 
 访问[基础项目 Vue 版](http://mars3d.cn/project/vue/index.html) 在线体验效果和功能
- 
+
  ![image](http://marsgis.cn/img/project/mars3d-vue-project-jcxm/1.jpg)
 
 
@@ -690,7 +692,7 @@ app.use(injectState(widgetStore), key)
 - 将 npm 安装后的`node_modules/mars3d/`下的所有文件拷贝一份放在`packages/mars3d/`目录。
 - 将`mars3d-sdk.rar`离线包内文件 覆盖至`packages/mars3d/dist/`目录下。
 - 修改`package.json`中mars3d包配置为：` "mars3d": "file:packages/mars3d",`
- 
+
 ![image](http://mars3d.cn/dev/img/guide/basics-download-import.jpg)
 
 

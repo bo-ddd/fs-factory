@@ -39,7 +39,7 @@ const histogram = function () {
         },
         yAxis: {
             type: 'category',
-            data: ['物流企业A', '物流企业B', '物流企业C', '物流企业D', '物流企业E']
+            data: ['达发物流', '壹米滴答', '宇鑫物流', '创新物流', '次晨达物流']
         },
         series: [
             {
