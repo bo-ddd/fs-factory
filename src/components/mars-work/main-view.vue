@@ -58,7 +58,6 @@ const emit = defineEmits(["mapLoaded"])
 const loaded = ref(false)
 
 const marsOnload = (map: any) => {
-  console.log("map构造完成", map)
   mapInstance = map
   loaded.value = true
   emit("mapLoaded", mapInstance)
