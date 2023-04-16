@@ -25,9 +25,6 @@ const typeComparison = function () {
       containLabel: true
     },
     toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
     },
     xAxis: {
       type: "category",
