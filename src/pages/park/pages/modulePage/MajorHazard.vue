@@ -36,7 +36,7 @@
                 <Title title="企业信息">
                     <div class="aaa">
                         <div>企业编号:001</div>
-                        <div>企业名称:山西华辉捷科技有限公司</div>
+                        <div>企业名称:山西华辉捷有限公司</div>
                         <div>企业地址:山西省临汾市浮山县天坛镇平里村西部</div>
                         <div>联系人:杨瑞强</div>
                         <div>联系电话:0357-5711155</div>
@@ -88,7 +88,7 @@
                 <Title title="园区企业">
                     <div class="enterprise">
                         <div>
-                            <Decoration11 style="width:25rem;height:6rem;">山西华辉捷科技有限公司</Decoration11>
+                            <Decoration11 style="width:25rem;height:6rem;">山西华辉捷有限公司</Decoration11>
                         </div>
                         <div @click="to">
                             <Decoration11 style="width:25rem;height:6rem;">浮山化工园F厂区</Decoration11>
@@ -160,7 +160,7 @@ const warning = reactive({
 })
 
 const hiddenTrouble = reactive({
-    header: ["危险源编号", "监测时间", "监测数值"],
+    header: ["隐患编号", "隐患类型", "隐患描述"],
     data: [
         ["no1", "火灾隐患", "触电火灾隐患"],
         ["no8", "环境隐患", "噪音超标"],

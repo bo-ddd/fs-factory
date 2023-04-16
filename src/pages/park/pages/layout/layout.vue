@@ -77,16 +77,21 @@ const routeInfo = [
 const hh = function (res) {
   const jj = routeInfo.filter((el) => {
     // eslint-disable-next-line eqeqeq
-    return el.label.name == res.title;
+    return el.label.name == res.title
   })
-  
-  router.push({ path: jj[0].name });
+
+  router.push({ path: jj[0].name })
 }
 </script>
 
 <style scoped>
+.main {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
 .router {
-  height: calc(100vh - 6rem);
+  height: 100vh;
 }
 .head {
   position: absolute;

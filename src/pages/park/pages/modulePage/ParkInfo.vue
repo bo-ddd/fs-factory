@@ -47,18 +47,38 @@
         </div>
 
         <!-- mars3D -->
-        <div class="map"></div>
+        <div class="map" id="map">
+            <Loading :class="isActivity ? 'none' : ''">
+                <div color-white>
+                    Loading...
+                </div>
+            </Loading>
+        </div>
 
         <!-- 园区企业信息 -->
         <div class="enterprise-info">
-            <borderBox title="园区企业信息">
-                <enterpriseInfo></enterpriseInfo>
+            <borderBox title="消防设备列表">
+                <el-tooltip
+                    :disabled="disabled"
+                    :content="alContent"
+                    placement="left"
+                    effect="light"
+                >
+                    <scroll-board :config="fireFightingInfo" @mouseover="tabInfo" />
+                </el-tooltip>
             </borderBox>
         </div>
         <!-- 园区车辆信息  开停车状态 -->
         <div class="car-info">
             <borderBox title="园区设备开停车">
-                <scroll-board :config="carInfo" />
+                <el-tooltip
+                    :disabled="disabled"
+                    :content="alContent"
+                    placement="left"
+                    effect="light"
+                >
+                    <scroll-board :config="carInfo" @mouseover="tabInfo" />
+                </el-tooltip>
             </borderBox>
         </div>
         <!-- 园区物流情况 -->
@@ -72,7 +92,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ScrollBoard } from '@kjgl77/datav-vue3'
+import { ScrollBoard, Loading } from '@kjgl77/datav-vue3'
 import borderBox from "../../../../components/EnergyManagementView.vue";
 import parkAreaInfo from "../../../../components/parkInfo/parkAreaInfo.vue";
 import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
@@ -86,28 +106,45 @@ import iconOccupancy from '../../assets/images/icon-occupancy.png';
 import iconBuilding from '../../assets/images/icon-building.png';
 import { ElMessage } from 'element-plus';
 
+import AMapLoader from "@amap/amap-jsapi-loader"
+import { onMounted, ref, onUnmounted } from 'vue';
 
-import * as THREE from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
-import { onMounted, ref } from 'vue';
-
-const carInfo = {
-    header: ['时间', '车位', '停车状态', '所属企业'],
+const isActivity = ref(false);
+const disabled = ref(false);
+let alContent = ref('暂无数据哦');
+let map = null;
+const fireFightingInfo = {
+    header: ['设备名称', '种类', '数量', '位置', '使用寿命', '检查周期'],
     data: [
-        ['2021-01-01 08:00', 'ABCD0001', '停止', '企业A'],
-        ['2021-01-02 09:00', 'ABCD0002', '开启', '企业A'],
-        ['2021-01-03 10:00', 'ABCD0003', '开启', '企业B'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业A'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业B'],
-        ['2021-01-03 10:00', 'ABCD0003', '开启', '企业A'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业B'],
+        ['灭火器1', '粉末灭火器', '2', 'A厂房1楼北侧', '5年', '每月检查'],
+        ['灭火器2', '二氧化碳灭火器', '1', 'C厂房2楼南侧', '5年', '每月检查'],
+        ['灭火器3', '泡沫灭火器', '3', 'D厂房3楼东侧', '3年', '每月检查'],
+        ['消火栓1', '室外消火栓', '5', '化工园区南侧', '10年', '每3个月检查'],
+        ['消火栓2', '室内消火栓', '2', 'B厂房1楼东侧', '10年', '每3个月检查'],
+        ['喷洒系统1', '七氟丙烷气体灭火系统', '1', '仓库2楼北侧', '15年', '每6个月检查'],
+        ['喷洒系统2', '自动喷水灭火系统', '1', 'E厂房1楼西侧', '15年', '每6个月检查'],
+        ['喷洒系统3', '二氧化碳气体灭火系统', '1', 'C厂房3楼南侧', '15年', '每6个月检查'],
+        ['排烟系统1', '机械排烟系统', '2', '化工园区中心广场', '15年', '每年检查'],
+        ['排烟系统2', '负压排烟系统', '3', 'A厂房4楼南侧', '15年', '每年检查']
     ],
-    headerBGC: 'none',
-    oddRowBGC: 'none',
-    evenRowBGC: 'none',
-    align: ['center', 'center', 'center', 'center']
+    headerBGC:'none',
+    oddRowBGC:'none',
+    evenRowBGC:'none',
+}
+const carInfo = {
+    header: ['时间', '关停原因', '关停时间', '检修内容', '检修时间', '重启时间', '责任人'],
+    data: [
+        ['2022-01-01', '排放', '08:00', '更换阀门', '10', '2022-01-02 18:00', '张三'],
+        ['2022-01-02', '自查', '10:00', '维护设备', '5', '2022-01-02 15:00', '李四'],
+        ['2022-01-03', '检查', '12:00', '检修管道', '7', '2022-01-03 19:00', '王五'],
+        ['2022-01-05', '防爆', '09:00', '更换电缆', '8', '2022-01-05 17:00', '赵六'],
+        ['2022-01-06', '安检', '13:00', '维修变压器', '6', '2022-01-06 19:00', '艳七'],
+        ['2022-01-07', '改造', '11:00', '升级泵站', '12', '2022-01-08 11:00', '钱八'],
+        ['2022-01-08', '维修', '14:00', '更换仪表', '3', '2022-01-08 17:00', '孙九']
+    ],
+    headerBGC:'none',
+    oddRowBGC:'none',
+    evenRowBGC:'none',
 }
 const logisticsInfo = {
     header: ['物流ID', '物流企业', '物流状态', '记录'],
@@ -141,100 +178,87 @@ const parkInfo = [
         id: 3,
         imgPath: iconOccupancy,
         title: '占地面积',
-        content: '300亩'
+        content: '2.27平方公里'
     },
     {
         id: 4,
         imgPath: iconBuilding,
         title: '建筑面积',
-        content: '100亩'
+        content: '2.1平方公里'
     },
 ]
 const open = () => {
-  ElMessage('暂无权限');
-  console.log(ElMessage);
-  
+    ElMessage('暂无权限');
+    console.log(ElMessage);
+
 }
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-camera.position.set(-10, 35, 60);
-camera.updateProjectionMatrix();
-const renderer = new THREE.WebGLRenderer({
-  antialias: true
-});
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-let controls = new OrbitControls(camera, renderer.domElement)
-controls.enableDamping = true;
-
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/draco');
-const gltfLoader = new GLTFLoader();
-gltfLoader.setDRACOLoader(dracoLoader)
-gltfLoader.load('/api/avatar/20221010170924_parent_directory_%E4%BD%8F%E5%AE%85%E6%A5%BC21.gltf', function (gltf) {
-  const model = gltf.scene;
-  scene.add(model);
-});
-// gltfLoader.load('https://unier.oss-cn-beijing.aliyuncs.com/avatar/20221107103635_parent_directory_%E5%8E%82%E6%88%BF02.gltf', function (gltf) {
-//   const model = gltf.scene;
-//   scene.add(model);
-// });
-
-
-
-const light1 = new THREE.DirectionalLight(0xffffff, 1)
-light1.position.set(0, 0, 10)
-scene.add(light1)
-const light2 = new THREE.DirectionalLight(0xffffff, 1)
-light2.position.set(0, 0, -10)
-scene.add(light2)
-const light3 = new THREE.DirectionalLight(0xffffff, 1)
-light3.position.set(10, 0, 0)
-scene.add(light3)
-const light4 = new THREE.DirectionalLight(0xffffff, 1)
-light4.position.set(-10, 0, 0)
-scene.add(light4)
-const light5 = new THREE.DirectionalLight(0xffffff, 1)
-light5.position.set(5, 10, 0)
-scene.add(light5)
-const light6 = new THREE.DirectionalLight(0xffffff, 1)
-light6.position.set(0, 10, 0)
-scene.add(light6)
-const light7 = new THREE.DirectionalLight(0xffffff, 1)
-light7.position.set(0, 10, 5)
-scene.add(light7)
-const light8 = new THREE.DirectionalLight(0xffffff, 1)
-light8.position.set(0, 10, 0)
-scene.add(light8)
-
+const aMap = () => {
+    return AMapLoader.load({
+        key: "9a08b1085292817f6ca0f8aede5e1e44", // 申请好的Web端开发者Key，首次调用 load 时必填
+        version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+        plugins: ["AMap.DistrictSearch", "AMap.Weather", "AMap.Geocoder", "AMap.Marker"],
+        Loca: {
+            // 是否加载 Loca， 缺省不加载
+            version: "2.0.0" // Loca 版本，缺省 1.3.2
+        }
+    })
+}
+async function mapInit() {
+    await aMap()
+        .then((AMap) => {
+            map = new AMap.Map("map", {
+                resizeEnable: true,
+                rotateEnable: true,
+                pitchEnable: true,
+                zoom: 15,
+                pitch: 70,
+                rotation: -15,
+                viewMode: '3D',
+                buildingAnimation: true,
+                expandZoomRange: true,
+                zooms: [3, 20],
+                center: [111.8478, 36.02333333333333]
+            })
+            const markerContent =
+                "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
+            const marker = new AMap.Marker({
+                position: [111.8478, 36.02333333333333],
+                // 将 html 传给 content
+                content: markerContent,
+                // 以 icon 的 [center bottom] 为原点
+                offset: new AMap.Pixel(-13, -30)
+            })
+            map.add(marker);
+            map.on("complete", function(){
+                isActivity.value = true;
+            });
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+}
+const tabInfo = function(e){
+    console.log(e);
+    alContent.value = e.ceil;
+}
 onMounted(() => {
-  renderer.setClearColor("#000")
-  scene.background = new THREE.Color('black');
-  let gf:any=document.querySelector('.map');
-    gf.appendChild(renderer.domElement);
+    mapInit();
+});
+onUnmounted(() => {
+    map && map.destroy();
 })
-
-
-function render() {
-  requestAnimationFrame(render)
-  renderer.render(scene, camera)
-  controls.update();
-}
-render();
-
 </script>
 
 <style scoped lang="less">
-::v-deep(canvas){
+.none{
+    display: none;
+}
+::v-deep(canvas) {
     width: 100% !important;
     height: 100% !important;
 }
+
 .main {
     font-size: 1.4rem;
     height: 100vh;
@@ -354,9 +378,16 @@ render();
     background: rgba(18, 33, 64, .5);
 }
 
-.enterprise-equipment, .enterprise-installation, .building-info {  
+.enterprise-equipment,
+.enterprise-installation,
+.building-info {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
 }
 </style>
