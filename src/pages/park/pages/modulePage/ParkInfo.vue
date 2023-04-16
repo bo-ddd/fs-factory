@@ -47,7 +47,13 @@
         </div>
 
         <!-- mars3D -->
-        <div class="map" id="map"></div>
+        <div class="map" id="map">
+            <Loading :class="isActivity ? 'none' : ''">
+                <div color-white>
+                    Loading...
+                </div>
+            </Loading>
+        </div>
 
         <!-- 园区企业信息 -->
         <div class="enterprise-info">
@@ -72,7 +78,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ScrollBoard } from '@kjgl77/datav-vue3'
+import { ScrollBoard, Loading } from '@kjgl77/datav-vue3'
 import borderBox from "../../../../components/EnergyManagementView.vue";
 import parkAreaInfo from "../../../../components/parkInfo/parkAreaInfo.vue";
 import parkBodNum from "../../../../components/parkInfo/parkBodNum.vue";
@@ -87,24 +93,24 @@ import iconBuilding from '../../assets/images/icon-building.png';
 import { ElMessage } from 'element-plus';
 
 import AMapLoader from "@amap/amap-jsapi-loader"
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 
+const isActivity = ref(false);
 
 const carInfo = {
-    header: ['时间', '车位', '停车状态', '所属企业'],
+    header: ['时间', '关停原因', '关停时间', '检修内容', '检修时间', '重启时间', '责任人'],
     data: [
-        ['2021-01-01 08:00', 'ABCD0001', '停止', '企业A'],
-        ['2021-01-02 09:00', 'ABCD0002', '开启', '企业A'],
-        ['2021-01-03 10:00', 'ABCD0003', '开启', '企业B'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业A'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业B'],
-        ['2021-01-03 10:00', 'ABCD0003', '开启', '企业A'],
-        ['2021-01-03 10:00', 'ABCD0003', '停止', '企业B'],
+        ['2022-01-01', '排放', '08:00', '更换阀门', '10', '2022-01-02 18:00', '张三'],
+        ['2022-01-02', '自查', '10:00', '维护设备', '5', '2022-01-02 15:00', '李四'],
+        ['2022-01-03', '检查', '12:00', '检修管道', '7', '2022-01-03 19:00', '王五'],
+        ['2022-01-05', '防爆', '09:00', '更换电缆', '8', '2022-01-05 17:00', '赵六'],
+        ['2022-01-06', '安检', '13:00', '维修变压器', '6', '2022-01-06 19:00', '艳七'],
+        ['2022-01-07', '改造', '11:00', '升级泵站', '12', '2022-01-08 11:00', '钱八'],
+        ['2022-01-08', '维修', '14:00', '更换仪表', '3', '2022-01-08 17:00', '孙九']
     ],
-    headerBGC: 'none',
-    oddRowBGC: 'none',
-    evenRowBGC: 'none',
-    align: ['center', 'center', 'center', 'center']
+    headerBGC:'none',
+    oddRowBGC:'none',
+    evenRowBGC:'none',
 }
 const logisticsInfo = {
     header: ['物流ID', '物流企业', '物流状态', '记录'],
@@ -148,62 +154,80 @@ const parkInfo = [
     },
 ]
 const open = () => {
-  ElMessage('暂无权限');
-  console.log(ElMessage);
-  
+    ElMessage('暂无权限');
+    console.log(ElMessage);
+
 }
 
 const aMap = () => {
-  return AMapLoader.load({
-    key: "9a08b1085292817f6ca0f8aede5e1e44", // 申请好的Web端开发者Key，首次调用 load 时必填
-    version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-    plugins: ["AMap.DistrictSearch", "AMap.Weather", "AMap.Geocoder", "AMap.Marker"],
-    Loca: {
-      // 是否加载 Loca， 缺省不加载
-      version: "2.0.0" // Loca 版本，缺省 1.3.2
-    }
-  })
+    return AMapLoader.load({
+        key: "9a08b1085292817f6ca0f8aede5e1e44", // 申请好的Web端开发者Key，首次调用 load 时必填
+        version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+        plugins: ["AMap.DistrictSearch", "AMap.Weather", "AMap.Geocoder", "AMap.Marker"],
+        Loca: {
+            // 是否加载 Loca， 缺省不加载
+            version: "2.0.0" // Loca 版本，缺省 1.3.2
+        }
+    })
 }
-
 async function mapInit() {
-  await aMap()
-    .then((AMap) => {
-      const map = new AMap.Map("map", {
-        center: [111.8478, 36.02333333333333],
-        zoom: 15,
-        pitch: 40,
-        mapStyle: "amap://styles/blue",
-        viewMode: "3D",
-        showMarker: true,
-        showCircle: true,
-        panToLocation: true,
-        zoomToAccuracy: true
-      })
-      const markerContent =
-        "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
-      const marker = new AMap.Marker({
-        position: [111.8478, 36.02333333333333],
-        // 将 html 传给 content
-        content: markerContent,
-        // 以 icon 的 [center bottom] 为原点
-        offset: new AMap.Pixel(-13, -30)
-      })
-      map.add(marker)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+    await aMap()
+        .then((AMap) => {
+            const map = new AMap.Map("map", {
+                // center: [111.8478, 36.02333333333333],
+                // zoom: 15,
+                // pitch: 40,
+                // mapStyle: "amap://styles/blue",
+                // viewMode: "3D",
+                // showMarker: true,
+                // showCircle: true,
+                // panToLocation: true,
+                // zoomToAccuracy: true
+
+                resizeEnable: true,
+                rotateEnable: true,
+                pitchEnable: true,
+                zoom: 15,
+                pitch: 70,
+                rotation: -15,
+                viewMode: '3D',
+                buildingAnimation: true,
+                expandZoomRange: true,
+                zooms: [3, 20],
+                center: [111.8478, 36.02333333333333]
+            })
+            const markerContent =
+                "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
+            const marker = new AMap.Marker({
+                position: [111.8478, 36.02333333333333],
+                // 将 html 传给 content
+                content: markerContent,
+                // 以 icon 的 [center bottom] 为原点
+                offset: new AMap.Pixel(-13, -30)
+            })
+            map.add(marker);
+            map.on("complete", function(){
+                isActivity.value = true;
+            });
+        })
+        .catch((e) => {
+            console.log(e)
+        })
 }
 onMounted(() => {
-  mapInit()
+    mapInit();
 })
 </script>
 
 <style scoped lang="less">
-::v-deep(canvas){
+.none{
+    display: none;
+}
+::v-deep(canvas) {
     width: 100% !important;
     height: 100% !important;
 }
+
 .main {
     font-size: 1.4rem;
     height: 100vh;
@@ -323,12 +347,15 @@ onMounted(() => {
     background: rgba(18, 33, 64, .5);
 }
 
-.enterprise-equipment, .enterprise-installation, .building-info {  
+.enterprise-equipment,
+.enterprise-installation,
+.building-info {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.map{
+
+.map {
     width: 100%;
     height: 100%;
 }
