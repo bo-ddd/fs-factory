@@ -4,8 +4,9 @@
       <div class="title"></div>
       <div class="security-risk">
         <BorderBox11 title="安全系数评估" class="datav">
-          <div class="box-item flex-column">
-            <CapsuleChart :config="config" class="safeRate" />
+          <div class="box-item" style="width: 100%; height: 100%; padding: 0 2rem; box-sizing: border-box;">
+            <SafeChart class="safe-rate"></SafeChart>
+         
           </div>
         </BorderBox11>
       </div>
@@ -17,12 +18,8 @@
         </BorderBox11>
       </div>
       <div class="middle">
-        <BorderBox11 title="风险分布" class="datav" >
+        <BorderBox11 title="风险分布" >
           <div class="box-item flex-column">
-            <!-- <div class="top">
-              <p class="lable">风险<span class="num">0</span>处</p>
-              <p class="lable">隐患<span class="num">0</span>处</p>
-            </div> -->
             <div class="bottom">
               <Histogram class="abc" />
             </div>
@@ -39,10 +36,10 @@
         </BorderBox11>
       </div>
       <div class="hidden-type">
-        <BorderBox11 title="隐患类型" class="datav">   
-          <div style="width: 100%; height: 100%; padding: 2rem; box-sizing: border-box;">
-
-            <ConicalColumnChart :config="column" style="width: 100%; height: 100%; " />
+        <BorderBox11 title="安全教育培训" class="datav">   
+          <div class=" flex-center" style="width: 100%; height: 100%; padding:0 2rem; box-sizing: border-box;">
+            <ScrollBoard :config="train" style="width: 100%; height: 100%" />
+            <!-- <ConicalColumnChart :config="column" style="width: 100%; height: 100%; " /> -->
           </div>
 
         </BorderBox11>
@@ -55,98 +52,73 @@ import { reactive } from "vue"
 import { BorderBox11, ConicalColumnChart, ScrollBoard, CapsuleChart } from '@kjgl77/datav-vue3'
 import LineChart from '../../../../components/HiddenTrouble/HiddenLineChart/HiddenLineChart.vue'
 import Histogram from '../../../../components/HiddenTrouble/HiddenHistogram/HiddenHistogram.vue'
-const config = reactive({
-  //   radius: "50%",
-  //   activeRadius: "60%",
-  data: [
-    {
-      name: "生产设备",
-      value: 80
-    },
-    {
-      name: "生产状况",
-      value: 88
-    },
-    {
-      name: "经济状况",
-      value: 99
-    },
-    {
-      name: "应急资源",
-      value: 80
-    },
-    {
-      name: "公共设施",
-      value: 89
-    },
-    {
-      name: "环境质量",
-      value: 87
-    },
-    {
-      name: "运输状况",
-      value: 100
-    },
-  ],
-  colors: ['#e062ae', '#fb7293', '#e690d1', '#58a6a8', '#99d9c9', '#32c5e5', '#96bfff'],
-  showValue: true
-  //   digitalFlopStyle: {
-  //     fontSize: 20
-  //   },
-  //   showOriginValue: true,
-  //   lineWidth: 10
-})
-const cake = reactive({
-  data: [
-    {
-      name: "火灾",
-      value: 1
-    },
-    {
-      name: "气体泄露",
-      value: 10
-    },
-    {
-      name: "辐射",
-      value: 0
-    },
-    {
-      name: "行人安全",
-      value: 3
-    },
-    {
-      name: "失窃",
-      value: 0
-    }
-  ],
-  showValue: true,
-  activeTimeGap: 5000
-})
-const column = reactive({
-  data: [
-    {
-      name: "火灾",
-      value: 2
-    },
-    {
-      name: "气体泄露",
-      value: 1
-    },
-    {
-      name: "辐射",
-      value: 0
-    },
-    {
-      name: "行人安全",
-      value: 3
-    },
-    {
-      name: "失窃",
-      value: 2
-    }
-  ],
-  showValue: true
-})
+import SafeChart from '../../../../components/HiddenTrouble/SafetyDay/SafetyDay.vue'
+// const config = reactive({
+//   //   radius: "50%",
+//   //   activeRadius: "60%",
+//   data: [
+//     {
+//       name: "生产设备",
+//       value: 80
+//     },
+//     {
+//       name: "生产状况",
+//       value: 88
+//     },
+//     {
+//       name: "经济状况",
+//       value: 99
+//     },
+//     {
+//       name: "应急资源",
+//       value: 80
+//     },
+//     {
+//       name: "公共设施",
+//       value: 89
+//     },
+//     {
+//       name: "环境质量",
+//       value: 87
+//     },
+//     {
+//       name: "运输状况",
+//       value: 100
+//     },
+//   ],
+//   colors: ['#e062ae', '#fb7293', '#e690d1', '#58a6a8', '#99d9c9', '#32c5e5', '#96bfff'],
+//   showValue: true
+//   //   digitalFlopStyle: {
+//   //     fontSize: 20
+//   //   },
+//   //   showOriginValue: true,
+//   //   lineWidth: 10
+// })
+// const column = reactive({
+//   data: [
+//     {
+//       name: "火灾",
+//       value: 30
+//     },
+//     {
+//       name: "气体泄露",
+//       value: 40
+//     },
+//     {
+//       name: "辐射",
+//       value: 10
+//     },
+//     {
+//       name: "行人安全",
+//       value: 10
+//     },
+//     {
+//       name: "失窃",
+//       value: 10
+//     }
+//   ],
+//   showValue: true
+// })
 const row = reactive({
   header: ["隐患", "是否处理", "安全负责人"],
   data: [
@@ -162,16 +134,30 @@ const row = reactive({
     ["生产", "已处理", "马术"]
   ],
   index: true,
-  columnWidth: [50],
+
   align: ["center", "center", "center", "center"],
   oddRowBGC: 'none',
   evenRowBGC: 'none'
 })
-const enviroment = reactive({
-  value: 66,
-  borderWidth: 5,
-  borderRadius: 10,
-  borderGap: 5
+const train = reactive({
+  header: ['培训名称', '培训对象', '培训时间', '培训地点', '培训内容', '培训讲师', '培训备注'],
+  data: [
+    ['化学品安全', '全体员工', '2022-02-28', '化工园区会议室1', '危险化学品分类、标识、管理和应急处置', '高春雷', '无'],
+    ['灭火器操作', '消防街道', '2021-11-22', '消防街道', '灭火器使用方法、注意事项、现场演练', '李帅汶', '无'],
+    ['应急处置演练', 'D厂房员工', '2021-09-15', 'D厂房1楼办公室', '火灾、瓦斯泄露、化学品泄漏等应急情况的处置方法与流程', '刘义东', '无'],
+    ['安全生产法律', '全体员工', '2021-07-23', '化工园区会议室2', '安全生产法律法规、责任、安全文明生产要求等', '任聪聪', '无'],
+    ['火灾隐患排查', 'A厂房员工', '2021-06-10', 'A厂房2楼', '火灾隐患排查及预防、消防设备使用和检查、灭火器和消火栓使用方法', '王浩强', '无'],
+    ['车间操作安全', 'B厂房员工', '2021-05-06', 'B厂房1楼', '机械设备操作、设备维护保养、操作安全、交通安全', '王洁', '无'],
+    ['消防器材讲解', '消防街道', '2021-04-02', '消防街道', '各类消防器材使用以及消防车、喷水、排烟、灭火器的使用方法', '魏庆臣', '无'],
+    ['化学品储存', '全体员工', '2021-02-23', '化工园区会议室3', '化学品储存、安全操作、事故预防和应急措施', '许军平', '无'],
+    ['安全设施检查', 'C厂房员工', '2020-12-28', 'C厂房3楼', '安全设施的检查、控制阀门的使用、泄漏源的处理方法、低温液体使用以及防护服的佩戴等安全措施', '杨瑞强', '无'],
+    ['电气安全操作', '全体员工', '2020-10-15', '化工园区会议室4', '电力安全、电火灾预防措施、电气设备保护和运行、电线电缆使用和安全维护等', '张海康', '无'],
+    
+  ],
+  index: true,
+  align: ['center', 'center', 'center', 'center', 'center', 'center', 'center', 'center'],
+  oddRowBGC: 'none',
+  evenRowBGC: 'none'
 })
 </script>
 <style scoped lang="scss">
@@ -185,11 +171,15 @@ const enviroment = reactive({
   box-sizing: border-box;
   padding: 3rem 1rem;
   grid-template-rows: 6rem 1fr 1fr;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1.5fr 1.5fr;
   grid-template-areas:
     "title title title"
-    "security-risk  middle  hidden-treatment"
-    "operation-process  middle  hidden-type";
+    "security-risk   middle  hidden-treatment"
+    "operation-process hidden-type hidden-type";
+}
+.safe-rate {
+  width: 90%;
+  height: 80%;
 }
 
 .title {
@@ -200,6 +190,7 @@ const enviroment = reactive({
   height: 80%;
 }
 
+
 .mt-2 {
   margin-top: 2rem;
 }
@@ -208,10 +199,6 @@ const enviroment = reactive({
   margin-top: 6rem;
 }
 
-// .flex-center {
-//   display: flex;
-//   justify-content: center;
-// }
 
 .mb-2 {
   margin-bottom: 2rem;
@@ -220,7 +207,7 @@ const enviroment = reactive({
 .datav {
   width: 100%;
   height: 100%;
-  padding-top: 7rem;
+  padding-top: 6rem ;
   box-sizing: border-box;
 }
 
@@ -249,10 +236,6 @@ const enviroment = reactive({
   justify-content: space-around;
 }
 
-.safeRate {
-  width: 90%;
-  height: 80%;
-}
 
 .left-top {
   height: 30%;
