@@ -1,113 +1,26 @@
 <template>
-  <div class="view" v-show="isView">
+  <div class="view">
     <el-page-header class="pb-2 jump" @back="goBack" title="返回" content="卡口监控"></el-page-header>
     <video-pages></video-pages>
   </div>
-  <div class="loader" v-if="!isView">loading</div>
 </template>
   
 <script>
-import videojs from "video.js"
 import videoPages from "@mars/components/lxs/videoPages.vue"
 export default {
-  // components: { videoPages },
+  components: { videoPages },
   name: "lxsFsFormwork1",
   data() {
     return {
       isView: false,
       showView: true,
-      video: {
-        id: 1,
-        isActive: true,
-        idName: "lxs_myvideo1",
-        url: "https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ1C0AF/0/1/20220330T143454/5e7ed935e38989a507d1bfcf0d6016ee.m3u8?proto=https"
-      },
-      rightVideo: [
-        {
-          id: 2,
-          isActive: false,
-          idName: "lxs_myvideo2",
-          url: "https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https"
-        },
-        {
-          id: 3,
-          isActive: false,
-          idName: "lxs_myvideo3",
-          url: "https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https"
-        }
-      ],
       videoList: [],
       videoInstance: null
     }
   },
-  created() {
-    this.video.idName = "lxs_major"
-    setTimeout(() => {
-      this.flesh()
-    }, 1000)
-  },
-  mounted() {
-    this.initVideoDom()
-  },
   methods: {
     goBack() {
       this.$router.push("vehicleMonitoring")
-    },
-    flesh() {
-      let isok = window.localStorage.getItem("isFirst")
-      if (isok === "abcdefg") {
-        this.$router.go(0)
-        window.localStorage.setItem("isFirst", "1111")
-      } else {
-        localStorage.setItem("isFirst", null)
-        this.isView = true
-      }
-    },
-    // 初始化video的配置
-    initVideo(id) {
-      let init
-      if (id === "lxs_major") {
-        init = {
-          controls: true, // 是否显示控制条
-          preload: "auto",
-          autoplay: true,
-          fluid: true, // 自适应宽高
-          language: "zh-CN", // 设置语言
-          muted: true, // 是否静音
-          inactivityTimeout: false,
-          controlBar: {
-            // 设置控制条组件
-            /* 使用children的形式可以控制每一个控件的位置，以及显示与否 */
-            children: [
-              { name: "playToggle" }, // 播放按钮
-              {
-                name: "volumePanel", // 音量控制
-                inline: true // 不使用水平方式
-              },
-              { name: "FullscreenToggle" } // 全屏
-            ]
-          }
-        }
-      } else {
-        init = {
-          controls: false, // 是否显示控制条
-          preload: "auto",
-          muted: true // 是否静音
-        }
-      }
-      this.videoInstance = videojs(id, init, () => {
-        this.videoInstance.play()
-      })
-    },
-    // 初始化渲染video的dom
-    initVideoDom() {
-      setTimeout(() => {
-        this.$nextTick(() => {
-          this.initVideo("lxs_major")
-          this.initVideo("lxs_myvideo2")
-          this.initVideo("lxs_myvideo3")
-        })
-      }, 300)
     },
     // 添加选中状态
     cheage(id, data) {
@@ -360,7 +273,6 @@ export default {
   color: #fff;
   padding: 2rem 0 2rem 0.5rem;
   box-sizing: border-box;
-
 }
 :deep(.el-page-header__content) {
   color: #fff !important;

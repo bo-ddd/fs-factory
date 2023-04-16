@@ -1,5 +1,5 @@
 <template>
-  <div class="views" v-if="isView">
+  <div class="views">
     <div class="lxs-fs-webcam" v-show="showView">
       <!-- 摄像头页面 -->
       <div class="left">
@@ -91,7 +91,6 @@
       </div>
     </div>
   </div>
-  <div v-else class="loader">loading...</div>
 </template>
 
 <script>
@@ -128,15 +127,10 @@ export default {
       videoInstance3: null
     }
   },
-  created() {
-    // this.video.idName = "lxs_major"
-    // setTimeout(() => {
-    //   this.flesh()
-    // }, 500)
-  },
   mounted() {
-    this.isView = true
-    this.initVideoDom()
+    this.$nextTick(() => {
+      this.initVideoDom()
+    })
   },
   beforeUnmount() {
     this.videoInstance1.dispose()
@@ -253,8 +247,6 @@ export default {
 
 .lxs-fs-webcam {
   position: absolute;
-  // top: 0;
-  // left: 0;
   z-index: 111;
   width: 100vw;
   height: calc(100vh - 13rem);
