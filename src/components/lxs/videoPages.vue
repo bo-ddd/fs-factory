@@ -5,8 +5,12 @@
       <div class="left">
         <div class="lxs-main_body">
           <!-- 这里放主要突出的主体摄像头画面 -->
-          <lxsBox :lxs-box-data="{ isOpenCartoon: true }" class="dom" style="width: 100%; height: 100%">
-            <video :id="video.idName" class="video-js vjs-fluid vjs-big-play-centered">
+          <lxsBox
+            :lxs-box-data="{ isOpenCartoon: true }"
+            class="dom"
+            style="width: 100%; height: 100%"
+          >
+            <video id="lxs_myvideo1" class="video-js vjs-fluid vjs-big-play-centered">
               <source :src="video.url" type="application/x-mpegURL" />
             </video>
           </lxsBox>
@@ -23,10 +27,17 @@
                 <div class="over_scroll">
                   <div class="over_scroll_item mb-1">
                     <div class="img">
-                      <img src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png" alt="" />
+                      <img
+                        src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png"
+                        alt
+                      />
                     </div>
-                    <div style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem">·</div>
-                    <div style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
+                    <div
+                      style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem"
+                    >·</div>
+                    <div
+                      style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between"
+                    >
                       <div>
                         <div class="over_scroll_item-title mb-05">设备下线</div>
                         <div class="text">C5HC(F22376921)北头</div>
@@ -36,10 +47,17 @@
                   </div>
                   <div class="over_scroll_item mb-1">
                     <div class="img">
-                      <img src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png" alt="" />
+                      <img
+                        src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png"
+                        alt
+                      />
                     </div>
-                    <div style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem">·</div>
-                    <div style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
+                    <div
+                      style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem"
+                    >·</div>
+                    <div
+                      style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between"
+                    >
                       <div>
                         <div class="over_scroll_item-title mb-05">设备下线</div>
                         <div class="text">C5HC(F22376921)北头</div>
@@ -53,7 +71,11 @@
               </div>
             </div>
             <div class="item mb-05" v-for="(item, index) in rightVideo" :key="index">
-              <video :id="item.idName" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
+              <video
+                :id="item.idName"
+                class="video-js vjs-fluid vjs-big-play-centered"
+                autoplay="true"
+              >
                 <source :src="item.url" />
               </video>
             </div>
@@ -94,17 +116,25 @@ export default {
         }
       ],
       videoList: [],
-      videoInstance: null
+      videoInstance1: null,
+      videoInstance2: null,
+      videoInstance3: null
     }
   },
   created() {
-    this.video.idName = "lxs_major"
-    setTimeout(() => {
-      this.flesh()
-    }, 500)
+    // this.video.idName = "lxs_major"
+    // setTimeout(() => {
+    //   this.flesh()
+    // }, 500)
   },
   mounted() {
+    this.isView = true
     this.initVideoDom()
+  },
+  beforeUnmount() {
+    this.videoInstance1.dispose()
+    this.videoInstance2.dispose()
+    this.videoInstance3.dispose()
   },
   methods: {
     flesh() {
@@ -118,49 +148,52 @@ export default {
       }
     },
     // 初始化video的配置
-    initVideo(id) {
+    initVideo(arr) {
       let init
-      if (id === "lxs_major") {
-        init = {
-          controls: true, // 是否显示控制条
-          preload: "auto",
-          autoplay: true,
-          fluid: true, // 自适应宽高
-          language: "zh-CN", // 设置语言
-          muted: true, // 是否静音
-          inactivityTimeout: false,
-          controlBar: {
-            // 设置控制条组件
-            /* 使用children的形式可以控制每一个控件的位置，以及显示与否 */
-            children: [
-              { name: "playToggle" }, // 播放按钮
-              {
-                name: "volumePanel", // 音量控制
-                inline: true // 不使用水平方式
-              },
-              { name: "FullscreenToggle" } // 全屏
-            ]
-          }
-        }
-      } else {
-        init = {
-          controls: false, // 是否显示控制条
-          preload: "auto",
-          muted: true // 是否静音
+      // if (id === "lxs_major") {
+      init = {
+        controls: true, // 是否显示控制条
+        preload: "auto",
+        autoplay: true,
+        fluid: true, // 自适应宽高
+        language: "zh-CN", // 设置语言
+        muted: true, // 是否静音
+        inactivityTimeout: false,
+        controlBar: {
+          // 设置控制条组件
+          /* 使用children的形式可以控制每一个控件的位置，以及显示与否 */
+          children: [
+            { name: "playToggle" }, // 播放按钮
+            {
+              name: "volumePanel", // 音量控制
+              inline: true // 不使用水平方式
+            },
+            { name: "FullscreenToggle" } // 全屏
+          ]
         }
       }
-      this.videoInstance = videojs(id, init, () => {
-        this.videoInstance.play()
-      })
+      // } else {
+      //   init = {
+      //     controls: false, // 是否显示控制条
+      //     preload: "auto",
+      //     muted: true // 是否静音
+      //   }
+      // }
+      this.videoInstance1 = videojs(arr[0], init)
+      this.videoInstance1.play()
+      this.videoInstance2 = videojs(arr[1], init)
+      this.videoInstance2.play()
+      this.videoInstance3 = videojs(arr[2], init)
+      this.videoInstance3.play()
     },
     // 初始化渲染video的dom
     initVideoDom() {
       setTimeout(() => {
-        // this.$nextTick(() => {
-        this.initVideo("lxs_major")
-        this.initVideo("lxs_myvideo2")
-        this.initVideo("lxs_myvideo3")
-        // })
+        this.$nextTick(() => {
+          this.initVideo(["lxs_myvideo1", "lxs_myvideo2", "lxs_myvideo3"])
+          // this.initVideo("lxs_myvideo2")
+          // this.initVideo("lxs_myvideo3")
+        })
       }, 200)
     },
     // 添加选中状态
@@ -209,7 +242,13 @@ export default {
 }
 
 .view {
-  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 6rem;
+  box-sizing: border-box;
+  background-image: url("https://unier.oss-cn-beijing.aliyuncs.com/avatar/bg.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .lxs-fs-webcam {
