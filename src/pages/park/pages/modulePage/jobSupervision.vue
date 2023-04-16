@@ -44,11 +44,11 @@
                 <div class="item">
                         <BorderBox12 class="datav">
                                 <div class="datav-head">
-                                        厂区特殊设备实时监测{{ temperature1 }}
+                                        厂区特殊设备实时监测
                                 </div>
                                 <div class="table  datav-content">
                                         <!-- <DataBackup></DataBackup> -->
-                                        <scroll-board :config="config3" style="width:100%;height:100%" />
+                                        <scroll-board  :config="config3" style="width:100%;height:100%" />
 
                                 </div>
                         </BorderBox12>
@@ -58,7 +58,7 @@
         </div>
 </template>
 <script setup lang="ts">
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref, computed, defineExpose } from 'vue'
 import { BorderBox12, ScrollBoard } from '@kjgl77/datav-vue3';
 import QuantityTrend from "../../../../components/jobSupervision/QuantityTrend.vue"
 import DataBackup from "../../../../components/jobSupervision/DataBackup.vue"
@@ -112,52 +112,55 @@ const config2 = reactive({
         evenRowBGC: 'none',
         align: ['center', 'center', 'center', 'center']
 })
+let data=reactive([
+                ['反应釜', '温度','250℃' , '压力', '5.5MPa'],
+                ['管道', '水流量', '1500m³/h', '压力', '1.5MPa'],
+                ['蒸汽炉', '温度', '260℃', '压力', '0.8MPa'],
+                ['橡胶加工设备', '温度', '120℃', '压力', '6MPa'],
+                ['氮气发生器', '生成氮气速度', '36L/min', '氮气纯度', '99.99%'],
+                ['变压器', '电压', '10KV', '传输效率', '95%'],
+                ['蒸汽轮机', '转速', '2000r/min', '压力', '2.5MPa'],
+                ['泵', '水流量', '500m³/h', '扬程', '100m'],
+                ['空调设备', '温度', '22℃', '湿度', '40%RH'],
+                ['车间照明设备', '关照强度', '500Lux', '射灯功率', '100W']
+        ])
+        setInterval(() => {
+        data[0][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
+        data[0][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
+        data[1][2] = Math.ceil(Math.random() * 100 + 1450)+'m³/h'
+        data[1][4] = (Math.ceil(Math.random()* 20)/10)+'MPa'
+        data[2][2] = Math.ceil(Math.random() * 4 + 257)+'℃'
+        data[2][4] = (Math.ceil(Math.random()* 20)/10)+'MPa'
+        data[3][2] = Math.ceil(Math.random() * 4 + 117)+'℃'
+        data[3][4] = (Math.ceil(Math.random()* 20)/10+5)+'MPa'
+        data[4][2] = Math.ceil(Math.random() * 8 + 32)+'L/min'
+        data[5][2] = Math.ceil(Math.random() * 4 + 8)+'KV'
+        data[5][4] = (Math.ceil(Math.random()* 40)/10+95)+'MPa'
+        data[6][2] = Math.ceil(Math.random() * 200 + 1900)+'r/min'
+        data[6][4] = (Math.ceil(Math.random()* 20)/10+2)+'MPa'
+        data[7][2] = Math.ceil(Math.random() * 40 + 450)+'m³/h'
+        data[7][4] = Math.ceil(Math.random()* 10+90)+'m'
+        data[8][2] = Math.ceil(Math.random() * 5 + 20)+'℃'
+        data[8][4] = Math.ceil(Math.random()* 10+35)+'%RH'
+        data[9][2] = Math.ceil(Math.random() * 50 + 450)+'Lux'
+        data[9][4] = Math.ceil(Math.random()* 20+90)+'W'
+}, 2000)
 
 const config3 = reactive({
         header: ['设备名称', '检测类型', '数值', '检测类型', '数值'],
-        data: [
-                ['反应釜', '温度','250℃' , '压力', '5.5MPa'],
-                ['管道', '水流量', '1500'+'吨/小时', '压力', '0.8MPa'],
-                ['蒸汽炉', '温度', '260℃', '压力', '5.5MPa'],
-                ['橡胶加工设备', '温度', '250℃', '压力', '5.5MPa'],
-                ['氮气发生器', '温度', '250℃', '压力', '5.5MPa'],
-                ['变压器', '温度', '250℃', '压力', '5.5MPa'],
-                ['蒸汽轮机', '温度', '250℃', '压力', '5.5MPa'],
-                ['泵', '温度', '250℃', '压力', '5.5MPa'],
-                ['空调设备', '温度', '250℃', '压力', '5.5MPa'],
-                ['车间照明设备', '温度', '250℃', '压力', '5.5MPa'],
-        ],
-        waitTime: 5000,
+        data:data,
+        waitTime: 1000,
+        indexHeader:'#',
+        index:true,
         rowNum: 4,
+        // carousel:'page',
         headerBGC: 'none',
         oddRowBGC: 'none',
         evenRowBGC: 'none',
-        align: ['center', 'center']
+        align: ['center', 'center', 'center', 'center', 'center']
 })
-setInterval(() => {
-        config3.data[0][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[0][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[1][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[1][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[2][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[2][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[3][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[3][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[4][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[4][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[5][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[5][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[6][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[6][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[7][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[7][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[8][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[8][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
-        config3.data[9][2] = Math.ceil(Math.random() * 4 + 247)+'℃'
-        config3.data[9][4] = (Math.ceil(Math.random()* 20)/10+4)+'MPa'
 
-
-}, 2000)
+ 
 </script>
 <style scoped lang="scss">
 .job-supervision {
