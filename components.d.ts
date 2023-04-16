@@ -21,7 +21,6 @@ declare module 'vue' {
     HiddenLineChart: typeof import('./src/components/HiddenTrouble/HiddenLineChart/HiddenLineChart.vue')['default']
     Histogram: typeof import('./src/components/parkInfo/histogram.vue')['default']
     History: typeof import('./src/components/table/history.vue')['default']
-    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     LxsBox: typeof import('./src/components/lxs/lxsBox.vue')['default']
     MainView: typeof import('./src/components/mars-work/main-view.vue')['default']
     MarsButton: typeof import('./src/components/mars-ui/mars-button/index.vue')['default']

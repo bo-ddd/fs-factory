@@ -1,85 +1,16 @@
 <template>
   <div class="view" v-show="isView">
-    <el-page-header class="pb-2 jump" @back="goBack" title="返回" content="卡口监控">
-    </el-page-header>
-    <div class="lxs-fs-webcam" v-show="showView">
-      <!-- 摄像头页面 -->
-      <div class="left">
-        <div class="lxs-main_body">
-          <!-- 这里放主要突出的主体摄像头画面 -->
-          <lxsBox :lxs-box-data="{ isOpenCartoon: true }" class="dom" style="width: 100%; height: 100%">
-            <video :id="video.idName" class="video-js vjs-fluid vjs-big-play-centered">
-              <source :src="video.url" type="application/x-mpegURL" />
-            </video>
-          </lxsBox>
-        </div>
-      </div>
-      <div class="right">
-        <div class="lxs-nav">
-          <!-- 这里放2个其余摄像头画面 和 人员经过的提示 -->
-          <div class="flex-lie-center" style="width: 100%; height: 100%">
-            <div class="item reminder_alarm">
-              <!-- 这里是提示告警 -->
-              <div class="title">提示告警</div>
-              <div class="alert">
-                <div class="over_scroll">
-                  <div class="over_scroll_item mb-1">
-                    <div class="img">
-                      <img src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png" alt="" />
-                    </div>
-                    <div style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem">·</div>
-                    <div
-                      style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
-                      <div>
-                        <div class="over_scroll_item-title mb-05">设备下线</div>
-                        <div class="text">C5HC(F22376921)北头</div>
-                      </div>
-                      <div class="date">06:30</div>
-                    </div>
-                  </div>
-                  <div class="over_scroll_item mb-1">
-                    <div class="img">
-                      <img src="https://unier.oss-cn-beijing.aliyuncs.com/avatar/%E6%8E%89%E7%BA%BF.png" alt="" />
-                    </div>
-                    <div style="color: red; font-size: 2.5rem; position: absolute; top: 0.5rem; left: 8.8rem">·</div>
-                    <div
-                      style="margin-left: 1rem; width: calc(100% - 6rem); display: flex; justify-content: space-between">
-                      <div>
-                        <div class="over_scroll_item-title mb-05">设备下线</div>
-                        <div class="text">C5HC(F22376921)北头</div>
-                      </div>
-                      <div class="date">06:30</div>
-                    </div>
-                  </div>
-
-                  <div style="text-align: center; margin-top: 1rem; color: #ccc">没有更多了！</div>
-                </div>
-              </div>
-            </div>
-            <div class="item mb-05">
-              <video id="lxs_myvideo2" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
-                <source
-                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9D0PAZA5DDA/0/1/20220330T143518/55d0d87f67c0f0225c97aec0b3eb4fa6.m3u8?proto=https" />
-              </video>
-            </div>
-
-            <div class="item mb-05">
-              <video id="lxs_myvideo3" class="video-js vjs-fluid vjs-big-play-centered" autoplay="false">
-                <source
-                  src="https://cmgw-vpc.lechange.com:8890/LCO/7C0C9C9RAZ53814/0/1/20220330T143455/0d365f3d47ca04c359b83b945d5d8162.m3u8?proto=https" />
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <el-page-header class="pb-2 jump" @back="goBack" title="返回" content="卡口监控"></el-page-header>
+    <video-pages></video-pages>
   </div>
   <div class="loader" v-if="!isView">loading</div>
 </template>
   
 <script>
 import videojs from "video.js"
+import videoPages from "@mars/components/lxs/videoPages.vue"
 export default {
+  // components: { videoPages },
   name: "lxsFsFormwork1",
   data() {
     return {
@@ -425,15 +356,16 @@ export default {
   height: 100%;
 }
 
-.jump{
-  color:#fff;
-  padding:2rem 0 2rem 0.5rem;
+.jump {
+  color: #fff;
+  padding: 2rem 0 2rem 0.5rem;
   box-sizing: border-box;
+
 }
-:deep(.el-page-header__content){
+:deep(.el-page-header__content) {
   color: #fff !important;
 }
-:deep(.el-page-header__back):hover{
+:deep(.el-page-header__back):hover {
   color: #02e4f2;
 }
 </style>
