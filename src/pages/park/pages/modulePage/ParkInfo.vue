@@ -57,14 +57,28 @@
 
         <!-- 园区企业信息 -->
         <div class="enterprise-info">
-            <borderBox title="园区企业信息">
-                <enterpriseInfo></enterpriseInfo>
+            <borderBox title="消防设备列表">
+                <el-tooltip
+                    :disabled="disabled"
+                    :content="alContent"
+                    placement="left"
+                    effect="light"
+                >
+                    <scroll-board :config="fireFightingInfo" @mouseover="tabInfo" />
+                </el-tooltip>
             </borderBox>
         </div>
         <!-- 园区车辆信息  开停车状态 -->
         <div class="car-info">
             <borderBox title="园区设备开停车">
-                <scroll-board :config="carInfo" />
+                <el-tooltip
+                    :disabled="disabled"
+                    :content="alContent"
+                    placement="left"
+                    effect="light"
+                >
+                    <scroll-board :config="carInfo" @mouseover="tabInfo" />
+                </el-tooltip>
             </borderBox>
         </div>
         <!-- 园区物流情况 -->
@@ -93,10 +107,30 @@ import iconBuilding from '../../assets/images/icon-building.png';
 import { ElMessage } from 'element-plus';
 
 import AMapLoader from "@amap/amap-jsapi-loader"
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, onUnmounted } from 'vue';
 
 const isActivity = ref(false);
-
+const disabled = ref(false);
+let alContent = ref('暂无数据哦');
+let map = null;
+const fireFightingInfo = {
+    header: ['设备名称', '种类', '数量', '位置', '使用寿命', '检查周期'],
+    data: [
+        ['灭火器1', '粉末灭火器', '2', 'A厂房1楼北侧', '5年', '每月检查'],
+        ['灭火器2', '二氧化碳灭火器', '1', 'C厂房2楼南侧', '5年', '每月检查'],
+        ['灭火器3', '泡沫灭火器', '3', 'D厂房3楼东侧', '3年', '每月检查'],
+        ['消火栓1', '室外消火栓', '5', '化工园区南侧', '10年', '每3个月检查'],
+        ['消火栓2', '室内消火栓', '2', 'B厂房1楼东侧', '10年', '每3个月检查'],
+        ['喷洒系统1', '七氟丙烷气体灭火系统', '1', '仓库2楼北侧', '15年', '每6个月检查'],
+        ['喷洒系统2', '自动喷水灭火系统', '1', 'E厂房1楼西侧', '15年', '每6个月检查'],
+        ['喷洒系统3', '二氧化碳气体灭火系统', '1', 'C厂房3楼南侧', '15年', '每6个月检查'],
+        ['排烟系统1', '机械排烟系统', '2', '化工园区中心广场', '15年', '每年检查'],
+        ['排烟系统2', '负压排烟系统', '3', 'A厂房4楼南侧', '15年', '每年检查']
+    ],
+    headerBGC:'none',
+    oddRowBGC:'none',
+    evenRowBGC:'none',
+}
 const carInfo = {
     header: ['时间', '关停原因', '关停时间', '检修内容', '检修时间', '重启时间', '责任人'],
     data: [
@@ -144,13 +178,13 @@ const parkInfo = [
         id: 3,
         imgPath: iconOccupancy,
         title: '占地面积',
-        content: '300亩'
+        content: '2.27平方公里'
     },
     {
         id: 4,
         imgPath: iconBuilding,
         title: '建筑面积',
-        content: '100亩'
+        content: '2.1平方公里'
     },
 ]
 const open = () => {
@@ -173,17 +207,7 @@ const aMap = () => {
 async function mapInit() {
     await aMap()
         .then((AMap) => {
-            const map = new AMap.Map("map", {
-                // center: [111.8478, 36.02333333333333],
-                // zoom: 15,
-                // pitch: 40,
-                // mapStyle: "amap://styles/blue",
-                // viewMode: "3D",
-                // showMarker: true,
-                // showCircle: true,
-                // panToLocation: true,
-                // zoomToAccuracy: true
-
+            map = new AMap.Map("map", {
                 resizeEnable: true,
                 rotateEnable: true,
                 pitchEnable: true,
@@ -214,8 +238,15 @@ async function mapInit() {
             console.log(e)
         })
 }
+const tabInfo = function(e){
+    console.log(e);
+    alContent.value = e.ceil;
+}
 onMounted(() => {
     mapInit();
+});
+onUnmounted(() => {
+    map && map.destroy();
 })
 </script>
 

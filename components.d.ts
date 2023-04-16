@@ -10,6 +10,7 @@ declare module 'vue' {
     ClassifyChart: typeof import('./src/components/ClassifyChart/ClassifyChart.vue')['default']
     DataBackup: typeof import('./src/components/jobSupervision/DataBackup.vue')['default']
     Duty: typeof import('./src/components/table/duty.vue')['default']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     EnergyManagementView: typeof import('./src/components/EnergyManagementView.vue')['default']
     EnterpriseInfo: typeof import('./src/components/parkInfo/enterpriseInfo.vue')['default']
     HazardContrast: typeof import('./src/components/HazardContrast/HazardContrast.vue')['default']
