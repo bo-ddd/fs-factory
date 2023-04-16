@@ -156,7 +156,7 @@ const parkBod = function () {
             {
                 type: 'category',
                 axisTick: { show: false },
-                data: ['2019', '2020', '2021', '2022', '2023'],
+                data: ['2022-12', '2023-01', '2023-02', '2023-03', '2023-04'],
             }
         ],
         textStyle:{
@@ -190,7 +190,7 @@ const parkBod = function () {
                 emphasis: {
                     focus: 'series'
                 },
-                data: [370, 414, 392, 388, 420],
+                data: [20, 24, 22, 24, 30],
             },
             {
                 name: '园区内从业人员数',
@@ -205,7 +205,7 @@ const parkBod = function () {
                 emphasis: {
                     focus: 'series'
                 },
-                data: [220, 182, 191, 234, 290]
+                data:[30, 20, 28, 21, 29]
             },
             {
                 name: '园区外从业人员数',
@@ -220,7 +220,7 @@ const parkBod = function () {
                 emphasis: {
                     focus: 'series'
                 },
-                data: [150, 232, 201, 154, 190]
+                data: [30, 26, 32, 25, 28]
             }
         ]
     };
