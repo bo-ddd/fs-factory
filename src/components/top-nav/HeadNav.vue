@@ -37,12 +37,12 @@ const tabledate: any = reactive([
     isActive: true,
     path: "/parkInfo",
   },
-  {
-    title: "卡口监控",
-    id: 2,
-    isActive: false,
-    path: "/securityMonitoringManagement",
-  },
+  // {
+  //   title: "卡口监控",
+  //   id: 2,
+  //   isActive: false,
+  //   path: "/securityMonitoringManagement",
+  // },
   {
     title: "双重预防机制",
     id: 2,
