@@ -132,8 +132,8 @@ const parkBod = function () {
         },
         legend: {
             data: ['园区从业人员总数', '园区内从业人员数', '园区外从业人员数'],
-            textStyle:{
-                color:'#fff'
+            textStyle: {
+                color: '#fff'
             }
         },
         toolbox: {
@@ -148,8 +148,8 @@ const parkBod = function () {
             //     restore: { show: true },
             //     saveAsImage: { show: true }
             // },
-            iconStyle:{
-                color:'#fff',
+            iconStyle: {
+                color: '#fff',
             }
         },
         xAxis: [
@@ -159,14 +159,14 @@ const parkBod = function () {
                 data: ['2022-12', '2023-01', '2023-02', '2023-03', '2023-04'],
             }
         ],
-        textStyle:{
-            color:'#fff',
+        textStyle: {
+            color: '#fff',
         },
         grid: {
-            top: "10%",
+            top: "20%",
             bottom: "0%",
             left: '0%',
-            right: '10%',
+            right: '2%',
             containLabel: true
 
         },
@@ -184,8 +184,8 @@ const parkBod = function () {
                     show: true,
                     position: 'right',
                     valueAnimation: true,
-                    color:'#fff',
-                    fontSize:10,
+                    color: '#fff',
+                    fontSize: 10,
                 },
                 emphasis: {
                     focus: 'series'
@@ -199,13 +199,13 @@ const parkBod = function () {
                     show: true,
                     position: 'right',
                     valueAnimation: true,
-                    color:'#fff',
-                    fontSize:10,
+                    color: '#fff',
+                    fontSize: 10,
                 },
                 emphasis: {
                     focus: 'series'
                 },
-                data:[30, 20, 28, 21, 29]
+                data: [30, 20, 28, 21, 29]
             },
             {
                 name: '园区外从业人员数',
@@ -214,8 +214,8 @@ const parkBod = function () {
                     show: true,
                     position: 'right',
                     valueAnimation: true,
-                    color:'#fff',
-                    fontSize:10,
+                    color: '#fff',
+                    fontSize: 10,
                 },
                 emphasis: {
                     focus: 'series'

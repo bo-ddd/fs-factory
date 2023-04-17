@@ -7,7 +7,10 @@
                                         厂区特殊作业管理
                                 </div>
                                 <div class="table  datav-content">
-                                        <scroll-board :config="config" style="width:100%;height:100%; "></scroll-board>
+                                        <el-tooltip :disabled="disabled" :content="alContent" placement="left" effect="light">
+                                                <scroll-board :config="config" style="width:100%;height:100%; "
+                                                        @mouseover="tabInfo"></scroll-board>
+                                        </el-tooltip>
                                 </div>
                         </BorderBox12>
                 </div>
@@ -17,7 +20,10 @@
                                         厂区特殊作业环境监测
                                 </div>
                                 <div class="table  datav-content">
-                                        <scroll-board :config="config1" style="width:100%;height:100%; "></scroll-board>
+                                        <el-tooltip :disabled="disabled" :content="alContent" placement="left" effect="light">
+                                                <scroll-board :config="config1" style="width:100%;height:100%;"
+                                                        @mouseover="tabInfo"></scroll-board>
+                                        </el-tooltip>
                                 </div>
                         </BorderBox12>
                 </div>
@@ -27,7 +33,10 @@
                                         厂区特殊作业智能告警
                                 </div>
                                 <div class="table  datav-content">
-                                        <scroll-board :config="config2" style="width:100%;height:100%" />
+                                        <el-tooltip :disabled="disabled" :content="alContent" placement="left" effect="light">
+                                                <scroll-board :config="config2" style="width:100%;height:100%"
+                                                        @mouseover="tabInfo" />
+                                        </el-tooltip>
                                 </div>
                         </BorderBox12>
                 </div>
@@ -48,8 +57,10 @@
                                 </div>
                                 <div class="table  datav-content">
                                         <!-- <DataBackup></DataBackup> -->
-                                        <scroll-board :config="config3" style="width:100%;height:100%" />
-
+                                        <el-tooltip :disabled="disabled" :content="alContent" placement="left" effect="light">
+                                                <scroll-board :config="config3" style="width:100%;height:100%"
+                                                        @mouseover="tabInfo" />
+                                        </el-tooltip>
                                 </div>
                         </BorderBox12>
 
@@ -161,6 +172,11 @@ const config3 = reactive({
         evenRowBGC: 'none',
         align: ['center', 'center', 'center', 'center', 'center']
 })
+let alContent = ref('暂无数据哦');
+const disabled = ref(false);
+const tabInfo = function (e) {
+        alContent.value = e.ceil;
+}
 
 
 </script>

@@ -41,6 +41,7 @@ declare module 'vue' {
     MarsSwitch: typeof import('./src/components/mars-ui/mars-switch/index.vue')['default']
     MarsTable: typeof import('./src/components/mars-ui/mars-table/index.vue')['default']
     MarsTextarea: typeof import('./src/components/mars-ui/mars-textarea/index.vue')['default']
+    Mart3D: typeof import('./src/components/mart3D/mart3D.vue')['default']
     MenuGroup: typeof import('./src/components/mars-ui/mars-menu/menu-group.vue')['default']
     MenuItem: typeof import('./src/components/mars-ui/mars-menu/menu-item.vue')['default']
     ParkAreaInfo: typeof import('./src/components/parkInfo/parkAreaInfo.vue')['default']

@@ -289,7 +289,7 @@ onUnmounted(() => {
     display: grid;
     gap: 1rem;
     box-sizing: border-box;
-    grid-template-columns: 3fr 2fr 1fr 2fr 3fr;
+    grid-template-columns: 3fr 1.5fr 1fr 1.5fr 3fr;
     grid-template-rows: 6rem 4fr 4fr 4fr;
     grid-template-areas:
         'title title title title title'
@@ -303,6 +303,7 @@ onUnmounted(() => {
 .info-box {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     height: 100%;
 }
 
