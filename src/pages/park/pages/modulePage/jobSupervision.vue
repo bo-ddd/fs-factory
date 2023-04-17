@@ -152,6 +152,8 @@ const config3 = reactive({
         waitTime: 1000,
         indexHeader: '#',
         index: true,
+        // indexHeader:'#',
+        // index:true,
         rowNum: 4,
         // carousel:'page',
         headerBGC: 'none',
