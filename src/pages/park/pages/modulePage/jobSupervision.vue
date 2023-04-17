@@ -149,9 +149,9 @@ let data=reactive([
 const config3 = reactive({
         header: ['设备名称', '检测类型', '数值', '检测类型', '数值'],
         data:data,
-        waitTime: 5000,
-        // indexHeader:'#',
-        // index:true,
+        waitTime: 1000,
+        indexHeader:'#',
+        index:true,
         rowNum: 4,
         // carousel:'page',
         headerBGC: 'none',
