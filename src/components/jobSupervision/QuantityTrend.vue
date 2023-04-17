@@ -8,79 +8,162 @@ const typeComparison = function () {
   type EChartsOption = echarts.EChartsOption
   const chartDomTrend = document.getElementById('quantity-trend');
   const myChartTrend = echarts.init(chartDomTrend);
-  const date = new Date()
-  const data = []
-  let day = date.getDate()
-  for (let i = 0; i < 7; i++) {
-    day--
-    data.unshift((date.getMonth() + 1) + '月' + day + '日')
-  }
-  const optionTrend: EChartsOption = {
-    textStyle:{
-      color:'#fff'
-    },
-  tooltip: {
-    trigger: 'axis',
-  },
-  toolbox: {
-    // feature: {
-    //   magicType: { show: true, type: ['line', 'bar'] },
-    //   restore: { show: true },
-    //   saveAsImage: { show: true }
-    // },
+  let app: any = {}
+  const posList = [
+    'left',
+    'right',
+    'top',
+    'bottom',
+    'inside',
+    'insideTop',
+    'insideLeft',
+    'insideRight',
+    'insideBottom',
+    'insideTopLeft',
+    'insideTopRight',
+    'insideBottomLeft',
+    'insideBottomRight'
+  ] as const;
 
-  },
-  grid: {
-            left: '5%',
-            right: '5%',
-            bottom: '10%',
-            top: '10%',
-            containLabel: true
-        },
-  legend: {
-    data: ['特殊作业数量', '监测数据数量', '告警数量'],
-    top:'top',
-    textStyle:{
-      color:'#fff'
+  app.configParameters = {
+    rotate: {
+      min: -90,
+      max: 90
+    },
+    align: {
+      options: {
+        left: 'left',
+        center: 'center',
+        right: 'right'
+      }
+    },
+    verticalAlign: {
+      options: {
+        top: 'top',
+        middle: 'middle',
+        bottom: 'bottom'
+      }
+    },
+    position: {
+      options: posList.reduce(function (map, pos) {
+        map[pos] = pos;
+        return map;
+      }, {} as Record<string, string>)
+    },
+    distance: {
+      min: 0,
+      max: 100
     }
-  },
-  xAxis: [
-    {
-      type: 'category',
-      data: data,
+  };
+  type BarLabelOption = NonNullable<echarts.BarSeriesOption['label']>;
+
+
+  app.config = {
+    rotate: 90,
+    align: 'left',
+    verticalAlign: 'middle',
+    position: 'insideBottom',
+    distance: 15,
+    onChange: function () {
+      const labelOption: BarLabelOption = {
+        rotate: app.config.rotate as BarLabelOption['rotate'],
+        align: app.config.align as BarLabelOption['align'],
+        verticalAlign: app.config
+          .verticalAlign as BarLabelOption['verticalAlign'],
+        position: app.config.position as BarLabelOption['position'],
+        distance: app.config.distance as BarLabelOption['distance']
+      };
+      myChartTrend.setOption<echarts.EChartsOption>({
+        series: [
+          {
+            label: labelOption
+          },
+          {
+            label: labelOption
+          },
+          {
+            label: labelOption
+          },
+          {
+            label: labelOption
+          }
+        ]
+      });
+    }
+  };
+
+
+  const labelOption: BarLabelOption = {
+    show: true,
+    position: app.config.position as BarLabelOption['position'],
+    distance: app.config.distance as BarLabelOption['distance'],
+    align: app.config.align as BarLabelOption['align'],
+    verticalAlign: app.config.verticalAlign as BarLabelOption['verticalAlign'],
+    rotate: app.config.rotate as BarLabelOption['rotate'],
+    fontSize: 16,
+    rich: {
+      name: {}
+    }
+  };
+  const optionTrend: EChartsOption = {
+    tooltip: {
+      trigger: 'axis',
       axisPointer: {
         type: 'shadow'
       }
-    }
-  ],
-  yAxis: [
-    {
-      type: 'value',
-      interval: 2,
     },
-  ],
-  series: [
-    {
-      name: '特殊作业数量',
-      type: 'bar',
-      data: [
-        2, 4, 7, 2, 2, 7, 1
-      ]
+    textStyle: {
+      color: '#fff'
     },
-    {
-      name: '监测数据数量',
-      type: 'line',
-      data: [
-        2, 5, 9, 3, 2, 6, 1
-      ]
+    legend: {
+      data: ['特殊作业数量', '监测数据数量', '告警数量'],
+      textStyle: {
+        color: '#fff'
+      }
     },
-    {
-      name: '告警数量',
-      type: 'line',
-      data: [1, 2, 3, 4, 6, 1, 2]
-    }
-  ]
-};
+    xAxis: [
+      {
+        type: 'category',
+        axisTick: { show: false },
+        data: ['4月10日', '4月11日', '4月12日', '4月13日', '4月14日', '4月15日', '4月16日']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value'
+      }
+    ],
+    series: [
+      {
+        name: '特殊作业数量',
+        type: 'bar',
+        barGap: 0,
+        label: labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [320, 332, 301, 334, 390, 210, 455]
+      },
+      {
+        name: '监测数据数量',
+        type: 'bar',
+        label: labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [220, 182, 191, 234, 290, 324, 414]
+      },
+      {
+        name: '告警数量',
+        type: 'bar',
+        label: labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: [3, 2, 3, 1, 2, 1, 2],
+      }
+    ]
+  };
   optionTrend && myChartTrend.setOption(optionTrend);
   window.addEventListener('resize', function () {
     myChartTrend.resize()
