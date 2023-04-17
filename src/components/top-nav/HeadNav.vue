@@ -2,8 +2,8 @@
   <div>
     <div class="top-nav">
       <div class="LOGO">
-        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" alt />
-        <div class="textshadow">浮山双新产业园区</div>
+        <img class="icon-get" src="../../../public/img/parkInfo/LOGO.png" />
+        <div class="textshadow">浮山化工园区安全监管平台</div>
       </div>
       <div class="nav-list">
         <template v-for="(item, i) in tabledate" :key="i">
@@ -103,7 +103,7 @@ const nav = (item: any) => {
 <style lang="scss">
 .nav-get {
   line-height: initial;
-  // font-size: 1.9rem;
+  font-size: 2.4rem;
   font-weight: bold;
 }
 .top-nav {
@@ -166,7 +166,7 @@ const nav = (item: any) => {
     display: flex;
     align-items: center;
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     white-space: nowrap;
   }
 }

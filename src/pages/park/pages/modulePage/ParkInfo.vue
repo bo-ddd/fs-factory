@@ -58,12 +58,7 @@
         <!-- 园区企业信息 -->
         <div class="enterprise-info">
             <borderBox title="消防设备列表">
-                <el-tooltip
-                    :disabled="disabled"
-                    :content="alContent"
-                    placement="left"
-                    effect="light"
-                >
+                <el-tooltip :disabled="disabled" :content="alContent" placement="left" effect="light">
                     <scroll-board :config="fireFightingInfo" @mouseover="tabInfo" />
                 </el-tooltip>
             </borderBox>
@@ -71,12 +66,7 @@
         <!-- 园区车辆信息  开停车状态 -->
         <div class="car-info">
             <borderBox title="园区设备开停车">
-                <el-tooltip
-                    :disabled="disabled"
-                    :content="alContent"
-                    placement="left"
-                    effect="light"
-                >
+                <el-tooltip :disabled="disabled" :content="alContent" placement="left" effect="light">
                     <scroll-board :config="carInfo" @mouseover="tabInfo" />
                 </el-tooltip>
             </borderBox>
@@ -127,9 +117,9 @@ const fireFightingInfo = {
         ['排烟系统1', '机械排烟系统', '化工园区中心广场', '每年检查'],
         ['排烟系统2', '负压排烟系统', 'A厂房4楼南侧', '每年检查']
     ],
-    headerBGC:'none',
-    oddRowBGC:'none',
-    evenRowBGC:'none',
+    headerBGC: 'none',
+    oddRowBGC: 'none',
+    evenRowBGC: 'none',
     // header: ['设备名称', '种类', '数量', '位置', '使用寿命', '检查周期'],
     // data: [
     //     ['灭火器1', '粉末灭火器', '2', 'A厂房1楼北侧', '5年', '每月检查'],
@@ -147,13 +137,13 @@ const fireFightingInfo = {
 const carInfo = {
     header: ['关停原因', '时间', '检修内容', '时间', '重启时间', '责任人'],
     data: [
-        ['排放', '08:00', '更换阀门', '10', '此日', '张三'],
-        ['自查', '10:00', '维护设备', '5', '此日', '李四'],
-        ['检查', '12:00', '检修管道', '7', '此日', '王五'],
-        ['防爆', '09:00', '更换电缆', '8', '此日', '赵六'],
-        ['安检', '13:00', '维修变压器', '6', '此日', '艳七'],
-        ['改造', '11:00', '升级泵站', '12', '此日', '钱八'],
-        ['维修', '14:00', '更换仪表', '3', '此日', '孙九']
+        ['排放', '08:00', '更换阀门', '10', '此日', '高强'],
+        ['自查', '10:00', '维护设备', '5', '此日', '王继华'],
+        ['检查', '12:00', '检修管道', '7', '此日', '陈瑶'],
+        ['防爆', '09:00', '更换电缆', '8', '此日', '赵少飞'],
+        ['安检', '13:00', '维修变压器', '6', '此日', '赵少飞'],
+        ['改造', '11:00', '升级泵站', '12', '此日', '张林'],
+        ['维修', '14:00', '更换仪表', '3', '此日', '陈瑶']
     ],
     // header: ['时间', '关停原因', '关停时间', '检修内容', '检修时间', '重启时间', '责任人'],
     // data: [
@@ -165,9 +155,9 @@ const carInfo = {
     //     ['2022-01-07', '改造', '11:00', '升级泵站', '12', '2022-01-08 11:00', '钱八'],
     //     ['2022-01-08', '维修', '14:00', '更换仪表', '3', '2022-01-08 17:00', '孙九']
     // ],
-    headerBGC:'none',
-    oddRowBGC:'none',
-    evenRowBGC:'none',
+    headerBGC: 'none',
+    oddRowBGC: 'none',
+    evenRowBGC: 'none',
 }
 const logisticsInfo = {
     header: ['物流ID', '物流企业', '物流状态', '记录'],
@@ -243,6 +233,7 @@ async function mapInit() {
                 zooms: [3, 20],
                 center: [111.8478, 36.02333333333333]
             })
+            map.setMapStyle('amap://styles/darkblue')
             const markerContent =
                 "" + '<div class="custom-content-marker">' + '  <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/dir-via-marker.png">' + "</div>"
             const marker = new AMap.Marker({
@@ -253,15 +244,16 @@ async function mapInit() {
                 offset: new AMap.Pixel(-13, -30)
             })
             map.add(marker);
-            map.on("complete", function(){
+            map.on("complete", function () {
                 isActivity.value = true;
             });
+
         })
         .catch((e) => {
             console.log(e)
         })
 }
-const tabInfo = function(e){
+const tabInfo = function (e) {
     console.log(e);
     alContent.value = e.ceil;
 }
@@ -274,12 +266,18 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="less">
-.none{
+.none {
     display: none;
 }
+
 ::v-deep(canvas) {
     width: 100% !important;
     height: 100% !important;
+}
+
+::v-deep(.ceil) {
+    width: 100%;
+    // height: 100% !important;
 }
 
 .main {
@@ -291,7 +289,7 @@ onUnmounted(() => {
     display: grid;
     gap: 1rem;
     box-sizing: border-box;
-    grid-template-columns: 3fr 2fr 2fr 2fr 3fr;
+    grid-template-columns: 3fr 1.5fr 1fr 1.5fr 3fr;
     grid-template-rows: 6rem 4fr 4fr 4fr;
     grid-template-areas:
         'title title title title title'
@@ -305,6 +303,7 @@ onUnmounted(() => {
 .info-box {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     height: 100%;
 }
 
