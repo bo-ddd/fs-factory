@@ -210,22 +210,22 @@ const maps = function () {
 
   option4 = {
     title: {
-      text: '应急事件处理',
+      text: '应急演练',
       left: 'center',
-      textStyle:{
-        color:'#fff'
+      textStyle: {
+        color: '#fff'
       }
     },
     tooltip: {
-      trigger: 'item'
+      trigger: 'item',
     },
     legend: {
       orient: 'vertical',
       left: 'left',
-      textStyle:{
-        color:'#fff'
+      textStyle: {
+        color: '#fff'
       },
-      top:'5%'
+      top: '5%'
     },
     series: [
       {
@@ -233,14 +233,19 @@ const maps = function () {
         type: 'pie',
         radius: '50%',
         data: [
-          { value: 20, name: '火灾应急演练' },
-          { value: 10, name: '网络攻击演练' },
-          { value: 15, name: '公共卫生事件演练' },
-          { value: 25, name: '停电演练' },
-          { value: 10, name: '事故演练' },
-          { value: 5, name: '地震演练' }
+          { value: 2, name: '火灾应急演练（ 2次 ）' },
+          { value: 1, name: '网络攻击演练（ 1次 ）' },
+          { value: 1, name: '公共卫生事件演练（ 1次 ）' },
+          { value: 3, name: '停电演练（ 3次 ）' },
+          { value: 1, name: '事故演练（ 1次 ）' },
+          { value: 1, name: '地震演练（ 1次 ）' }
         ],
         emphasis: {
+          label: {
+            show: true,
+            fontSize: 20,
+            fontWeight: 'bold'
+          },
           itemStyle: {
             shadowBlur: 10,
             shadowOffsetX: 0,
@@ -361,16 +366,17 @@ onMounted(() => {
   height: 4rem;
   line-height: 4rem;
 }
+
 :deep(.dv-scroll-board .rows .ceil) {
-    padding: 0;
-    background-color: #01c0d500 !important;
-    white-space: normal !important;
-    color: #01c0d5;
+  padding: 0;
+  background-color: #01c0d500 !important;
+  white-space: normal !important;
+  color: #01c0d5;
 }
 
 :deep(.dv-scroll-board .header) {
-    background-color: #01c0d500 !important;
-    font-weight: 600;
-    color: #01c0d5;
+  background-color: #01c0d500 !important;
+  font-weight: 600;
+  color: #01c0d5;
 }
 </style>
